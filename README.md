@@ -7,10 +7,10 @@
 * Eclipse IDE
 
 #Technology stack:
- * Appium (mobile testing)
+ * Appium (Mobile Automation Tool)
  * Selenium (web app testing) [Used as a wrapper for appium]
  * TestNG (test runner)
- * Cucumber (reporting)
+ * Cucumber (Reporting)
  * Java (Programming Language)
  * Maven (Dependency Manager)
  * Page Object Model
@@ -21,18 +21,18 @@
 * Appium server must be installed through the command line via npm. (Considering nodejs is already installed in the system and system variable is already set in environmental variables).  
 * Below is the command for the same.
 
-  npm install -g appium --chromedriver_version="2.16"
+  npm install -g appium --chromedriver_version="2.42"
 (This would avoid the comptability issue with chromedriver)
   
  
 #Steps to run the code: 
-* Clone/Download the project and import it in Eclipse IDE
-* Once code is imported, click on 'Project' from eclipse header toolbar, then select and click 'Clean'
+* Clone/Download the project into a local directory. Import the downloaded project in Eclipse IDE
+* Once code is imported, click on 'Project' from eclipse header toolbar, then select and click 'Clean' from the drop-down
 * From project explorer, right click on the OneDine project and select Maven - > Update the project 
 * Now start appium server through cmd/terminal via below command:
   * appium --allow-insecure chromedriver_autodownload  
 * Open an emulator/simulator
-* Go to the project directory throgh cmd/terminal and run the below command and it will start running.
+* Go to the project directory through cmd/terminal and run the below command and it will start running.
   * mvn clean verify
   
  
