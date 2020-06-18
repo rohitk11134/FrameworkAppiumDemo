@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.DataFormatter;
 
 public class ReadExcel {
 	
@@ -26,8 +27,10 @@ public class ReadExcel {
 		for(int i=0;i<totalRows;i++) {
 			Row row = sheet.getRow(i+1);
 			for(int j=0;j<totalCols;j++) {
-				if(row.getCell(j)!=null) {
-					inputData[i][j] = row.getCell(j).getStringCellValue();
+				String data = new DataFormatter().formatCellValue(row.getCell(j));
+				if(data!=null) {
+//					System.out.println("inside");
+					inputData[i][j] = data;
 				}
 			}
 		}

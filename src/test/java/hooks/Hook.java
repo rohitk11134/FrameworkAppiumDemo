@@ -80,7 +80,7 @@ public class Hook extends TestBase {
 		try {
 			driver = new AppiumDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
 			log.info("Initializing driver ::: " + driver);
-			driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			if (driver != null) {
 				log.info("SetUp Appium Driver for Device = " + capabilities);
 				driver.get(prop.getProperty("APP_URL"));

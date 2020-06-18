@@ -25,7 +25,7 @@ public class LandingScreen extends TestBase {
 //	final String scanQRCode = "//img[@class='dashboard_scanImag__3s2q-']";
 //	final String scanQRCode = "//img[@class='dashboard_scanImag__2hjQD']";
 //	Changed XPATH
-	final String scanQRCode = "//img[@class='dashboard_scanImag__2gbDx']";
+	final String scanQRCode = "//img[@alt='QR Code']";
 
 	final String spotCode = "//input[@name='spotCode']";
 
@@ -81,7 +81,7 @@ public class LandingScreen extends TestBase {
 
 	// To enter the excel data into email and password fields
 	public void populateLandingScreenFields(String[][] formData) {
-		System.out.println("LandingPage - data: " + formData);
+
 		// TO get the error/success message key from excel sheet
 		expectedMessageKeys = commonUtility.flatten(formData)[commonUtility.flatten(formData).length - 1];
 		// To check if the size of formdata and fields are same

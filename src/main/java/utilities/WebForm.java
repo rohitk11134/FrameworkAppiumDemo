@@ -24,6 +24,8 @@ public class WebForm extends TestBase {
 		String[] testData = commonUtility.flatten(formData);
 		for (int i = 0; i <= FIELDS.length - 1; i++) {
 			tagName = base.getTagName(FIELDS[i]);
+			System.out.println("Field  :: "+FIELDS[i]+"   Formdta :: "+testData[i]);
+			System.out.println("Tag Name :: "+tagName);
 			if (!tagName.equals("NotFound")) {
 				inputData(FIELDS[i], tagName, testData[i]);
 //				outcome = new SuccessOutcome();
@@ -106,6 +108,14 @@ public class WebForm extends TestBase {
 			break;
 
 		case "textarea":
+			base.populateFields(field, data);
+			break;
+			
+		case "number":
+			base.populateFields(field, data);
+			break;
+			
+		case "div":
 			base.populateFields(field, data);
 			break;
 		}

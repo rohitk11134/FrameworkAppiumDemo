@@ -60,10 +60,6 @@ public class LoginSteps {
 		loginScreen.tapSignInWButton_LoginScreen();
 	}
 
-	@Then("I naviagte to spot number screen")
-	public void i_naviagte_to_spot_number_screen() {
-		loginScreen.verifySpotNumberScreen();
-	}
 
 	@Then("I verify the error message\\(s) displayed on Login Screen")
 	public void i_verify_the_error_message_s_displayed_on_Login_Screen() {

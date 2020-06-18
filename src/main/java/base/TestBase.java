@@ -6,12 +6,15 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -37,7 +40,7 @@ import io.appium.java_client.touch.offset.PointOption;
 @SuppressWarnings("deprecation")
 public class TestBase {
 
-	protected static AppiumDriver<MobileElement> driver;
+	public static AppiumDriver<MobileElement> driver;
 
 	protected static WebDriverWait wait;
 
@@ -102,6 +105,15 @@ public class TestBase {
 		try {
 			driver.hideKeyboard();
 		} catch (WebDriverException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void delay(long l) {
+		try {
+			Thread.sleep(l);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -247,8 +259,8 @@ public class TestBase {
 	}
 
 	// To verify that the checkBox is selected or not
-	public boolean isSelected(String xpath) {
-		MobileElement element = driver.findElement(By.xpath(xpath));
+	public boolean isSelected(String inputElement) {
+		MobileElement element = getElement(XPATH, inputElement);
 		boolean isSelected = false;
 		try {
 			if (element != null) {
@@ -405,7 +417,6 @@ public class TestBase {
 		List<MobileElement> elementList = null;
 		try {
 			elementList = driver.findElements(By.xpath(element));
-//		waitForElementToBeClickable(elementList.get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -424,7 +435,6 @@ public class TestBase {
 		try {
 			MobileElement dropDownListBox = driver.findElement(By.xpath(element));
 			List<MobileElement> lists = dropDownListBox.findElements(By.tagName("option"));
-			// delay(1000)
 			for (int i = 0; i <= lists.size() - 1; i++) {
 				String dropdownValue = lists.get(i).getText().trim();
 				if (value.equals(dropdownValue)) {
@@ -578,6 +588,11 @@ public class TestBase {
 		} catch (TimeoutException e) {
 		}
 		return false;
+	}
+	
+	public void scrollToElementUsingJS(String input) {
+		MobileElement element = getElement(XPATH, input);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
 	public void scrollTo(String text) {
@@ -847,13 +862,35 @@ public class TestBase {
 
 	}
 
+	public static void scrollDowntoXPath(String xPath) {
+		boolean flag = true;
+		int count = 1;
+		while (flag) {
+			try {
+				driver.findElement(By.xpath(xPath));
+				flag = false;
+				break;
+			} catch (Exception NoSuchElementException) {
+				count = count + 1;
+				Map<String, Object> params = new HashMap<>();
+				params.put("start", "40%,90%");
+				params.put("end", "40%,20%");
+				params.put("duration", "2");
+				Object res = driver.executeScript("mobile:touch:swipe", params);
+				if (count == 5) {
+					break;
+				}
+			}
+		}
+	}
+
 	/**
 	 * Tap in x and y coordinates
 	 * 
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
-	public static void TapByCoordinates(int x, int y) {
+	public void TapByCoordinates(int x, int y) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(PointOption.point(x, y)).perform();
 	}
@@ -866,7 +903,7 @@ public class TestBase {
 	 * @param endPoint   in y coordinates
 	 * @param anchor     in x coordinates
 	 */
-	public static void SwipeVerticalByCoordinates(int startPoint, int endPoint, int anchor) {
+	public void SwipeVerticalByCoordinates(int startPoint, int endPoint, int anchor) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.press(PointOption.point(anchor, startPoint))
 				.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2))).moveTo(PointOption.point(anchor, endPoint))
@@ -925,7 +962,7 @@ public class TestBase {
 	 */
 	public List<String> getValidationMessages(String[] fields) {
 		List<String> validationMessages = new ArrayList<String>();
-		if (!validationMessages.isEmpty()){
+		if (!validationMessages.isEmpty()) {
 			validationMessages.clear();
 		}
 		for (String errMessageFields : fields) {

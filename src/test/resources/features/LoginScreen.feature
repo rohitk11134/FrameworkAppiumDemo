@@ -1,6 +1,7 @@
 Feature: Login Screen 
-	As an org admin or learner of the vleap application
- 	I want to login to the application
+	In order to test Landing Page of OneDine's application in mobile browser
+  	As a Registered user
+  	I want to specify the features of Login page
 
 Background: flow till Check-in screen
 	Given I open the Onedine application in the mobile browser
@@ -29,7 +30,7 @@ Scenario: To Verify Successful Sign In to the OneDine application with a passwor
 	And I tap on the link Sign in with a password
 	And I enter valid login credentials from the excel sheet name "Login_Success"
 	And I tap on Sign In button present in Login Screen
-	Then I naviagte to spot number screen
+	Then I naviagte to spot number screen and verify the message displayed on the screen
 	
 @sanity
 Scenario: Login with invalid credential and verify the error messages displayed

@@ -27,9 +27,11 @@ public class LoginScreen extends TestBase {
 
 	final String checkInPlace_CheckInScreen = "//div[@class='fs-18 fw-600 my-1 text-center']";
 
-//	final String beforeSignInMessageElement = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1t5Js']";
+//	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1t5Js']";
+//	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__3DFEZ']";
+//	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__2m452']";
 //	Changed XPATH
-	final String beforeSignInMessageElement = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__3DFEZ']";
+	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__25pEs']";
 
 	final String signInButton_CheckInScreen = "//button[@type='button'][@class='btn btn-primary w-100']";
 
@@ -39,14 +41,20 @@ public class LoginScreen extends TestBase {
 //	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2SyDW']";
 //	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__342zP']";
 //	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__1G44x']";
+//	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2Y-Yu']";
+//	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__5oGJl']";
 //	 Changed XPATH
-	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2Y-Yu']";
+	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2UaIO']";
 
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3bFiF']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3htGi']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__bqgDs']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3MsT8']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center loginForm_colorBlue__EQ0d7']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__1IChm']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__LaESd']";
 //	 Changed XPATH
-	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3MsT8']";
+	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2JnJ5']";
 
 	final String userName = "//input[@name='username']";
 
@@ -56,8 +64,6 @@ public class LoginScreen extends TestBase {
 
 	public String[] fields = { userName, password };
 
-	// Spot Number Screen Element
-	final String spotNumberScreenTextElement = "//div[@class='mt-20 p-20 pb-0']/label[@class='fs-20 fw-600 mb-2']";
 
 	// the error fields.
 	final String FORM_ERROR = ".//*[@class='error']";
@@ -68,12 +74,10 @@ public class LoginScreen extends TestBase {
 
 	final String expectedWelcomeMessage_CheckInPage = "You checked in at:";
 
-	final String beforeSignInMessage_CheckInPage = "You'll need to sign in before you can order.";
+	final String signInWarningMessage_CheckInPage = "You'll need to sign in before you can order.";
 	
-
 	final String expectedHeaderTextOnLoginScreen = "Sign in with your phone number:";
-
-	final String expectedSpotNumberMessage = "What's your spot number?";
+	
 
 	String checkInPlace = "";
 
@@ -86,11 +90,11 @@ public class LoginScreen extends TestBase {
 	public void verifyCheckInMessages() {
 
 		if (base.getElement(XPATH, welcomeMessageCheckInPageElement) != null) {
-			if (base.getElement(XPATH, beforeSignInMessageElement) != null) {
-				String actualSignInMessage = base.gettext(beforeSignInMessageElement);
-				Assert.assertEquals(actualSignInMessage, beforeSignInMessage_CheckInPage);
+			if (base.getElement(XPATH, signInWarningMessage) != null) {
+				String actualSignInMessage = base.gettext(signInWarningMessage);
+				Assert.assertEquals(actualSignInMessage, signInWarningMessage_CheckInPage);
 			} else {
-				Assert.assertFalse(base.isDisplayed(beforeSignInMessageElement),
+				Assert.assertFalse(base.isDisplayed(signInWarningMessage),
 						"Sign-in alert message is not being displayed on check-in screen");
 			}
 			String actualcheckInMessage = base.gettext(welcomeMessageCheckInPageElement);
@@ -146,7 +150,7 @@ public class LoginScreen extends TestBase {
 
 	// To enter the excel data into email and password fields
 	public void populateLoginScreenFields(String[][] formData) {
-		System.out.println("Login Screen - data: " + formData);
+
 		// TO get the error/success message key from excel sheet
 		expectedMessageKeys = commonUtility.flatten(formData)[commonUtility.flatten(formData).length - 1];
 		// To check if the size of formdata and fields are same
@@ -156,7 +160,6 @@ public class LoginScreen extends TestBase {
 		if (outcome) {
 			webForm.enterData(formData, fields);
 		}
-
 	}
 
 	// Verify the error or success message once next button is tapped
@@ -201,11 +204,6 @@ public class LoginScreen extends TestBase {
 
 	}
 
-	// Verify the message displayed on Spot Number screen
-	public void verifySpotNumberScreen() {
-		String actualSpotNumberMessage = base.gettext(spotNumberScreenTextElement);
-		Assert.assertEquals(actualSpotNumberMessage.trim(), expectedSpotNumberMessage.trim());
-	}
 
 	public void tapSignInWButton_LoginScreen() {
 
