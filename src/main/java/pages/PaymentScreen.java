@@ -24,7 +24,7 @@ public class PaymentScreen extends TestBase {
 
 	final String expiryDate = "//input[@placeholder='MM/YY']";
 
-	final String CVV = "//div[contains(text(),'CVV')]";
+	final String CVV = "//input[@name='tsep-cvv2'][@placeholder='CVV'][@type='number']";
 
 	final String zipCode = "//input[@id='tsep-zip']";
 
@@ -36,9 +36,11 @@ public class PaymentScreen extends TestBase {
 
 	final String pay_NowButton = "//button[@class='btn btn-primary od-btn-primary w-100']";
 
+	final String noTipButton = "//div[contains(text(),'No Tip')]";
+
 	// the error fields.
 	final String FORM_ERROR = ".//*[@class='error']";
-	
+
 	final String TOAST_ERROR = "//div[@role='alert']";
 
 //	final String TOAST_ERROR = "//div[@class='notification_notificationBar__3SXBY notification_notificationOpen__OwCns notification_alertDanger__Fa5MG']";
@@ -63,7 +65,7 @@ public class PaymentScreen extends TestBase {
 		// To check if the size of formdata and fields are same
 		boolean outcome = webForm.checkFormFieldsData(formData, fields);
 		Assert.assertTrue(webForm.checkFormFieldsData(formData, fields));
-		
+
 		base.scrollToElementUsingJS(cardNumber);
 		// To enter the data
 		if (outcome) {
@@ -72,32 +74,32 @@ public class PaymentScreen extends TestBase {
 	}
 
 	public void tapPayNowButton() {
-		
-		if (base.getElement(XPATH, pay_NowButton) != null ) {
-			if(base.isDisplayed(pay_NowButton)){
+
+		if (base.getElement(XPATH, pay_NowButton) != null) {
+			if (base.isDisplayed(pay_NowButton)) {
 				base.tapElement(pay_NowButton);
-				wait = new WebDriverWait(this.driver, 5);	
-				base.delay(5000L);			
+				wait = new WebDriverWait(this.driver, 5);
+				base.delay(5000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton), "Not able to tap on 'Pay Now' button");
 			}
 		} else {
-			Assert.fail("Pay Now button is not displayed"+base.getElement(XPATH, pay_NowButton));
+			Assert.fail("Pay Now button is not displayed" + base.getElement(XPATH, pay_NowButton));
 		}
 	}
 
 	public void tapConfirmButton() {
-		
-		if (base.getElement(XPATH, confirmButton) != null ) {
-			if(base.isDisplayed(confirmButton)){
+
+		if (base.getElement(XPATH, confirmButton) != null) {
+			if (base.isDisplayed(confirmButton)) {
 				base.tapElement(confirmButton);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(5000L);
+				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(confirmButton), "Not able to tap on 'Confrim' button");
 			}
 		} else {
-			Assert.fail("Confirm button is not displayed"+base.getElement(XPATH, confirmButton));
+			Assert.fail("Confirm button is not displayed" + base.getElement(XPATH, confirmButton));
 		}
 	}
 
@@ -106,7 +108,6 @@ public class PaymentScreen extends TestBase {
 		paymentScreenErrorMessageMap.put("invalid_CardDetails", "Card information entered is invalid");
 		paymentScreenErrorMessageMap.put("invalid_TipCardDetails", "Invalid tip and card details");
 
-
 		// List of all error message displayed in the screen
 		List<String> actualValidationMsg = base.getValidationMessages(ERROR_MESSAGE_FIELDS);
 
@@ -114,13 +115,27 @@ public class PaymentScreen extends TestBase {
 		List<String> actualValidationMsgKeys = webForm.getActualErrorMessageKeys(actualValidationMsg,
 				paymentScreenErrorMessageMap);
 
-		// Comparing expected error message keys from excel to actual error keys of
-		// displayed error messages
+		// Comparing expected error message keys from excel to actual error keys of displayed error messages
 		webForm.compareMessageKeys(expectedMessageKeys, actualValidationMsgKeys);
 	}
 
 	public void verifyPaymentConfirmationScreen() {
 		// TODO Auto-generated method stub
 		System.out.println("--------------------");
+	}
+
+	public void selectTipAmount() {
+
+		if (base.getElement(XPATH, noTipButton) != null) {
+			if (base.isDisplayed(noTipButton)) {
+				base.tapElement(noTipButton);
+				wait = new WebDriverWait(this.driver, 5);
+				base.delay(2000L);
+			} else {
+				Assert.assertFalse(base.isDisplayed(noTipButton), "Not able to tap on 'No Tip' button");
+			}
+		} else {
+			Assert.fail("No Tip button is not displayed" + base.getElement(XPATH, noTipButton));
+		}
 	}
 }

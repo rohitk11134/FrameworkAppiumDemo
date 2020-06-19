@@ -33,6 +33,7 @@ Scenario: Make a successfull payment with valid card details for curbside flow
 	And I tap on Pay Now button
 	Then I should be able to navigate to Payment screen of the application
 	And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+	And I select No Tip as a tip amount
 	And I tap on Pay Now button available on payment screen
 	And I tap on Confirm button to proceed the payment
 	Then I am on payment confirmation screen

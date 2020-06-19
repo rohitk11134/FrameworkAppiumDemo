@@ -14,11 +14,11 @@ Background: flow till Sign in to the application
 	And I enter valid login credentials from the excel sheet name "Login_Success"
 	And I tap on Sign In button present in Login Screen
 
-@Demo
+@sanity
 Scenario: To verify if user navigated to Spot number screen after login to the application 
 	Then I navigate to spot number screen and verify the message displayed on the screen
 		
-@Demo
+@sanity
 Scenario: Enter the valid spot number into the field and submit the form 
 	Then I navigate to spot number screen and verify the message displayed on the screen
 	And I enter the Spot Number from the excel sheet "SpotNo_Success" in the Spot Number field
@@ -26,14 +26,14 @@ Scenario: Enter the valid spot number into the field and submit the form
 	Then it navigates to the Order screen and I verify if the Order tab is selected in the bottom footer
 	
 	
-@Demo
+@sanity
 Scenario: Enter the field with empty or blank spot number and verify the displayed error message 
 	Then I navigate to spot number screen and verify the message displayed on the screen
 	And I enter the Spot Number from the excel sheet "SpotNo_Failure" in the Spot Number field
 	And I tap on next arrow button and submit the spot number
 	Then I verify the error message displayed
 	
-@Demo
+@sanity
 Scenario: Enter special characters as an invalid spot number into the field and verify the displayed error message 
 	Then I navigate to spot number screen and verify the message displayed on the screen
 	And I enter the Spot Number from the excel sheet "EmptySpotNo_Failure" in the Spot Number field

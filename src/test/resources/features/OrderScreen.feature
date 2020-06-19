@@ -17,7 +17,7 @@ Background: flow till Sign in to the application and enter the spot number
 	And I enter the Spot Number from the excel sheet "SpotNo_Success" in the Spot Number field
 	And I tap on next arrow button and submit the spot number
 	
-@demo
+@sanity
 Scenario: Select Coffee as a hot beverage and add it to the bag without changing modifier
 	Then I should be able to navigate to 'Order' screen
 	And I verify that selected category is 'Beverages'

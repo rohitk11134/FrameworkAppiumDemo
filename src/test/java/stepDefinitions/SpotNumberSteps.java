@@ -10,6 +10,11 @@ public class SpotNumberSteps {
 
 	SpotNumberScreen spotNoScreen = new SpotNumberScreen();
 
+	@Then("I naviagte to spot number screen and verify the message displayed on the screen")
+	public void i_naviagte_to_spot_number_screen_and_verify_the_message_displayed_on_the_screen() {
+		spotNoScreen.verifySpotNumberScreen();
+	}
+	
 	@Then("I navigate to spot number screen and verify the message displayed on the screen")
 	public void i_navigate_to_spot_number_screen_and_verify_the_message_displayed_on_the_screen() {
 		spotNoScreen.verifySpotNumberScreen();

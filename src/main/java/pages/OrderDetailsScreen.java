@@ -17,13 +17,15 @@ public class OrderDetailsScreen extends TestBase {
 
 	final String selectedTab = "//div[@class='text-primary od-text-primary tab-icon']/div";
 
-	final String selectedCategory = "//button[@type='button'][@class='orders_category__3qtrD orders_selectedCategory__38Rp7']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3qtrD orders_selectedCategory__38Rp7']";
+//	Changed XPATH
+	final String selectedCategory = "//button[@type='button'][@class='orders_category__3lpLF orders_selectedCategory__1K3uK']";
 
-	final String menu_Item = "//div[@class='orders_itemName__2tLGY fw-700'][text()='temp']";
+	final String menu_Item = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']";
 
-	final String orderMenu = "//div[@class='orders_itemName__2tLGY fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+	final String orderMenu = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
 
-	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__1gI_D orderItem_buttonContainer__2X1ww btn-primary w-100']";
+	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__2ztXy orderItem_buttonContainer__2If4B btn-primary w-100']";
 
 	final String menuItemName = "//div[@id='itemName']/h3";
 

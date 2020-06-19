@@ -30,8 +30,9 @@ public class LoginScreen extends TestBase {
 //	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1t5Js']";
 //	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__3DFEZ']";
 //	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__2m452']";
+//	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__25pEs']";
 //	Changed XPATH
-	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__25pEs']";
+	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1HzBU']";
 
 	final String signInButton_CheckInScreen = "//button[@type='button'][@class='btn btn-primary w-100']";
 
@@ -44,7 +45,7 @@ public class LoginScreen extends TestBase {
 //	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2Y-Yu']";
 //	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__5oGJl']";
 //	 Changed XPATH
-	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__2UaIO']";
+	final String checkedInPlace_LoginScreenElement = "//div[@class='fs-14 fw-600 signUp_colorWhite__27Dfm']";
 
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3bFiF']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__3htGi']";
@@ -53,8 +54,9 @@ public class LoginScreen extends TestBase {
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center loginForm_colorBlue__EQ0d7']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__1IChm']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__LaESd']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2JnJ5']";
 //	 Changed XPATH
-	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2JnJ5']";
+	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2iYhJ']";
 
 	final String userName = "//input[@name='username']";
 
