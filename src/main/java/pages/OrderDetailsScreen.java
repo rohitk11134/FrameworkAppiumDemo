@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -18,15 +19,38 @@ public class OrderDetailsScreen extends TestBase {
 	final String selectedTab = "//div[@class='text-primary od-text-primary tab-icon']/div";
 
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__3qtrD orders_selectedCategory__38Rp7']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3lpLF orders_selectedCategory__1K3uK']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__zri33 orders_selectedCategory__XHgn2']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__Gt4ys orders_selectedCategory__2EGCq']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3IPVa orders_selectedCategory__1jTh2']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__1_qRB orders_selectedCategory__2jPKa']";
 //	Changed XPATH
-	final String selectedCategory = "//button[@type='button'][@class='orders_category__3lpLF orders_selectedCategory__1K3uK']";
+	final String selectedCategory = "//button[@type='button'][@class='orders_category__9KyuI orders_selectedCategory__-PJsa']";
 
-	final String menu_Item = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']";
+//	final String menu_Item = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']";
+//	final String menu_Item = "//div[@class='orders_itemName__3tT2n fw-700'][text()='temp']";
+//	final String menu_Item = "//div[@class='orders_itemName__1CSbE fw-700'][text()='temp']";
+//	final String menu_Item = "//div[@class='orders_itemName__dvitJ fw-700'][text()='temp']";
+//	final String menu_Item = "//div[@class='orders_itemName__1jLPF fw-700'][text()='temp']";
+//	Changed XPATH
+	final String menu_Item = "//div[@class='orders_itemName__QDULD fw-700'][text()='temp']";
 
-	final String orderMenu = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
-
-	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__2ztXy orderItem_buttonContainer__2If4B btn-primary w-100']";
-
+//	final String orderMenu = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+//	final String orderMenu = "//div[@class='orders_itemName__3tT2n fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+//	final String orderMenu = "//div[@class='orders_itemName__1CSbE fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+//	final String orderMenu = "//div[@class='orders_itemName__dvitJ fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+//	final String orderMenu = "//div[@class='orders_itemName__1jLPF fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+//	Changed XPATH
+	final String orderMenu = "//div[@class='orders_itemName__QDULD fw-700'][text()='temp']/ancestor::div[1]/descendant::button";
+	
+	
+//	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__2ztXy orderItem_buttonContainer__2If4B btn-primary w-100']";
+//	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__nDJAT orderItem_buttonContainer__1o5bw btn-primary w-100']";
+//	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__w5-YO orderItem_buttonContainer__1l7Ho btn-primary w-100']";
+//	final String addToBag = "//button[@type='button'][@class='orderItem_btnUpdated__2engT orderItem_buttonContainer__191V7 btn-primary od-btn-primary w-100']";
+//	Changed XPATH
+	final String addToBag = "//button[text()='Add to Bag']";
+	
 	final String menuItemName = "//div[@id='itemName']/h3";
 
 	String storedMenuItem = "";
@@ -59,7 +83,9 @@ public class OrderDetailsScreen extends TestBase {
 		String coffee_MenuItem = menu_Item.replace("temp", menuItem);
 
 		if (base.getElement(XPATH, coffee_MenuItem) != null) {
+			System.out.println("Scrolling");
 			base.scrollToElementUsingJS(coffee_MenuItem);
+			System.out.println("Scrolled");
 			base.tapElement(coffee_MenuItem);
 		} else {
 			Assert.assertNull(base.getElement(XPATH, coffee_MenuItem), "Coffee menu item is not available");
@@ -79,6 +105,7 @@ public class OrderDetailsScreen extends TestBase {
 
 	}
 
+
 	public void verifyMenuDetailsScreen() {
 
 		if (base.getElement(XPATH, menuItemName) != null) {
@@ -93,6 +120,7 @@ public class OrderDetailsScreen extends TestBase {
 			Assert.assertNull(base.getElement(XPATH, menuItemName), "Menu item details are not available");
 		}
 	}
+
 
 	public void tapAddToBagButton() {
 

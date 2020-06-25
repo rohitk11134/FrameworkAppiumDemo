@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -52,6 +53,7 @@ public class PaymentScreen extends TestBase {
 	// error message map (Key-Value Pair)
 	HashMap<String, String> paymentScreenErrorMessageMap = new HashMap<String, String>();
 
+
 	public void verifyPaymentScreen() {
 		// TODO Auto-generated method stub
 		System.out.println("TBD");
@@ -73,6 +75,7 @@ public class PaymentScreen extends TestBase {
 		}
 	}
 
+
 	public void tapPayNowButton() {
 
 		if (base.getElement(XPATH, pay_NowButton) != null) {
@@ -88,13 +91,14 @@ public class PaymentScreen extends TestBase {
 		}
 	}
 
+
 	public void tapConfirmButton() {
 
 		if (base.getElement(XPATH, confirmButton) != null) {
 			if (base.isDisplayed(confirmButton)) {
 				base.tapElement(confirmButton);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(3000L);
+				base.delay(6000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(confirmButton), "Not able to tap on 'Confrim' button");
 			}
@@ -102,6 +106,7 @@ public class PaymentScreen extends TestBase {
 			Assert.fail("Confirm button is not displayed" + base.getElement(XPATH, confirmButton));
 		}
 	}
+
 
 	public void verifyScreenErrorMessage() {
 
@@ -119,10 +124,12 @@ public class PaymentScreen extends TestBase {
 		webForm.compareMessageKeys(expectedMessageKeys, actualValidationMsgKeys);
 	}
 
+
 	public void verifyPaymentConfirmationScreen() {
 		// TODO Auto-generated method stub
 		System.out.println("--------------------");
 	}
+
 
 	public void selectTipAmount() {
 

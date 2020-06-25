@@ -5,10 +5,9 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
-import outcomes.Outcome;
-import outcomes.SuccessOutcome;
 import utilities.CommonUtility;
 import utilities.WebForm;
 
@@ -56,7 +55,8 @@ public class LoginScreen extends TestBase {
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__LaESd']";
 //	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2JnJ5']";
 //	 Changed XPATH
-	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2iYhJ']";
+//	final String signInWithPassword = "//div[@class='fs-14 mt-15 mb-15 text-center signUp_colorBlue__2iYhJ']";
+	final String signInWithPassword = "//div[contains(text(), 'Sign in with a password')]";
 
 	final String userName = "//input[@name='username']";
 
@@ -196,6 +196,7 @@ public class LoginScreen extends TestBase {
 		if (base.getElement(XPATH, signInWithPassword) != null) {
 			if (base.isDisplayed(signInWithPassword)) {
 				base.tapElement(signInWithPassword);
+				base.delay(1500L);
 			} else {
 				Assert.assertTrue(base.isDisplayed(signInWithPassword), "Link 'Sign in with password' is not clicked");
 			}

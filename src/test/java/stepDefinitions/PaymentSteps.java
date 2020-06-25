@@ -5,7 +5,7 @@ import java.io.IOException;
 import cucumber.api.java.en.Then;
 import pages.MyBagScreen;
 import pages.PaymentScreen;
-import reader.StaticDataProvider;
+import utilities.StaticDataProvider;
 
 public class PaymentSteps {
 

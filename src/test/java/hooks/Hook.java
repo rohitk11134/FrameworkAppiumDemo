@@ -3,6 +3,7 @@ package hooks;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
@@ -26,18 +27,17 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import utilities.CommonUtility;
 
-
 public class Hook extends TestBase {
 
 	public static Properties prop;
 
 	public static Properties propertyFile;
 
-	public static Logger log = Logger.getLogger(TestBase.class);
+//	public static Logger log = Logger.getLogger(TestBase.class);
 
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 
-	String prop_filePath = System.getProperty("user.dir") + "/src/test/resources/properties/config.properties";
+	String prop_filePath = "config.properties";
 
 	TestBase base;
 
@@ -50,20 +50,16 @@ public class Hook extends TestBase {
 	@Before
 	public void setUp() throws MalformedURLException {
 
-		PropertyConfigurator
-				.configure(System.getProperty("user.dir") + "/src/test/resources/properties/Log4j.properties");
+//		PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/test/resources/properties/Log4j.properties");
 
-		prop = loadProperty(prop_filePath);
-
-		String loadPropertyFile = prop.getProperty("loadPropertyFile");
+		prop = loadProperty("config.properties");
+		String loadPropertyFile = prop.getProperty("platform_Property");
 		System.out.println("Property File To Read:: " + loadPropertyFile);
 
 		if (loadPropertyFile.startsWith("Android_")) {
-			propertyFile = loadProperty(
-					System.getProperty("user.dir") + "/src/test/resources/properties/Android_Capabilities.properties");
+			propertyFile = loadProperty("Android_Capabilities.properties");
 		} else if (loadPropertyFile.startsWith("IOS_")) {
-			propertyFile = loadProperty(
-					System.getProperty("user.dir") + "/src/test/resources/properties/IOS_Capabilities.properties");
+			propertyFile = loadProperty("IOS_Capabilities.properties");
 		}
 
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, propertyFile.getProperty("automationName"));
@@ -73,21 +69,18 @@ public class Hook extends TestBase {
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));
 		capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 
-
-
-		log.info("Capabilities::: " + capabilities);
+//		log.info("Capabilities::: " + capabilities);
 
 		try {
 			driver = new AppiumDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
-			log.info("Initializing driver ::: " + driver);
+//			log.info("Initializing driver ::: " + driver);
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			if (driver != null) {
-				log.info("SetUp Appium Driver for Device = " + capabilities);
+//				log.info("SetUp Appium Driver for Device = " + capabilities);
 				driver.get(prop.getProperty("APP_URL"));
 				wait = new WebDriverWait(this.driver, 30);
 
 			}
-//			wait = new WebDriverWait(this.driver, 30);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -95,23 +88,27 @@ public class Hook extends TestBase {
 	}
 
 	public Properties loadProperty(String filePath) {
-		Properties property = new Properties();
-		try {
-			FileInputStream fs = new FileInputStream(filePath);
-			property.load(fs);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		Properties prop = new Properties();
+		try (InputStream input = Hook.class.getClassLoader().getResourceAsStream(filePath)) {
+
+			if (input == null) {
+				System.out.println("Sorry, unable to find config.properties");
+				return prop;
+			}
+
+			// load a properties file from class path, inside static method
+			prop.load(input);
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
-		return property;
+		return prop;
 	}
 
 	@After
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {
 			base.takeScreenShot(scenario.getName());
-//			commonUtility.returnFailureOutcome(fileName, message)
 //			base.resetApp();
 		}
 		base.deleteCookies();

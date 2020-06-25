@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;

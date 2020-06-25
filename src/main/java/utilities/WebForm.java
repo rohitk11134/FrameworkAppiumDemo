@@ -8,10 +8,6 @@ import java.util.Map.Entry;
 import org.testng.Assert;
 
 import base.TestBase;
-import outcomes.FailureOutcome;
-import outcomes.Outcome;
-import outcomes.SuccessOutcome;
-
 public class WebForm extends TestBase {
 
 	TestBase base = new TestBase();

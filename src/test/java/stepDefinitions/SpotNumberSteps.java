@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import cucumber.api.java.en.Then;
 import pages.SpotNumberScreen;
-import reader.StaticDataProvider;
+import utilities.StaticDataProvider;
 
 public class SpotNumberSteps {
 

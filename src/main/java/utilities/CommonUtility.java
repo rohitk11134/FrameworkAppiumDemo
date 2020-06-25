@@ -4,25 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import base.TestBase;
-import outcomes.FailureOutcome;
-import outcomes.Outcome;
-import outcomes.SuccessOutcome;
 
 public class CommonUtility extends TestBase {
 
 	TestBase base = new TestBase();
 
-	/**
-	 * To return Failure outcome
-	 * 
-	 * @param fileName
-	 * @param message
-	 * @return
-	 */
-	public FailureOutcome returnFailureOutcome(String fileName, String message) {
-		base.takeScreenShot(fileName);
-		return new FailureOutcome(message);
-	}
+
 
 	/**
 	 * get coloumns from excel which has data

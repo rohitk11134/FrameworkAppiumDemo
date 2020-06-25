@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -17,9 +18,10 @@ public class MyBagScreen extends TestBase {
 
 	final String myBagTab = "//div[@class='footer footerBtm']//div[2]";
 
-	final String nextButton = "//div[@class='offset-2 col-8 text-center']//button[@class='btn btn-primary w-100 my-2 text-uppercase'][contains(text(),'Next')]";
-
+	final String nextButton = "//div[@class='offset-2 col-8 text-center']//button[@class='btn btn-primary od-btn-primary w-100 my-2 text-uppercase'][contains(text(),'Next')]";
+																							
 	final String payNowButton = "//button[@type='button'][@class='btn btn-primary od-btn-primary w-100']";
+
 
 	public void tapOnMyBagTab() {
 		// Tap on 'My Bag' tab
@@ -27,6 +29,7 @@ public class MyBagScreen extends TestBase {
 			if (base.isDisplayed(myBagTab)) {
 				base.tapElement(myBagTab);
 				wait = new WebDriverWait(this.driver, 5);
+				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(myBagTab), "Not able to tap on 'My Bag' tab");
 			}
@@ -35,12 +38,14 @@ public class MyBagScreen extends TestBase {
 		}
 	}
 
+
 	public void tapOnNextButton() {
 		// Tap on 'NEXT' tab
 		if (base.getElement(XPATH, nextButton) != null) {
 			if (base.isDisplayed(nextButton)) {
 				base.tapElement(nextButton);
 				wait = new WebDriverWait(this.driver, 5);
+				base.delay(1500L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(nextButton), "Not able to tap on 'NEXT' tab");
 			}
@@ -48,6 +53,7 @@ public class MyBagScreen extends TestBase {
 			Assert.assertNull(base.getElement(XPATH, nextButton), "NEXT button is not present on the footer");
 		}
 	}
+
 
 	public void verifyCheckOutScreen() {
 
@@ -58,10 +64,12 @@ public class MyBagScreen extends TestBase {
 		}
 	}
 
+
 	public void verifyAddedMenuIsDisplayed() {
 
 		// To Be Done
 	}
+
 
 	public void tapOnPayNowButton() {
 		

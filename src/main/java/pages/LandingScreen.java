@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -114,6 +115,7 @@ public class LandingScreen extends TestBase {
 
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
+				base.hideKeyboard();
 				base.tapElement(submitNextButton);
 				wait = new WebDriverWait(this.driver, 5);
 			} else {

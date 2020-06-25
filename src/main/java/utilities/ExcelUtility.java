@@ -1,22 +1,23 @@
-package reader;
+package utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-
+import java.io.InputStream;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.apache.poi.ss.usermodel.DataFormatter;
 
-public class ReadExcel {
+public class ExcelUtility {
 	
 	@SuppressWarnings("resource")
 	public static String[][] readData(String sheetName) throws IOException{
 		String[][] inputData;
+	
+		InputStream input = ExcelUtility.class.getClassLoader().getResourceAsStream("TestData/InputData.xlsx");
 		
-		String filePath = System.getProperty("user.dir")+"/src/test/resources/TestData/";
-		FileInputStream fis = new FileInputStream(filePath+"InputData.xlsx");
-		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFWorkbook workbook = new XSSFWorkbook(input);
 		XSSFSheet sheet = workbook.getSheet(sheetName);
 		
 		int totalRows = sheet.getLastRowNum()-sheet.getFirstRowNum();

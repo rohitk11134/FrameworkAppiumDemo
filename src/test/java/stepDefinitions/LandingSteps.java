@@ -6,7 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import pages.LandingScreen;
 import pages.LoginScreen;
-import reader.StaticDataProvider;
+import utilities.StaticDataProvider;
 
 public class LandingSteps {
 	
