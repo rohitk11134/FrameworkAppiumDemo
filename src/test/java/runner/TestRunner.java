@@ -12,7 +12,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 @CucumberOptions(features = "classpath:features", plugin = { "pretty",
 		"json:target/cucumber.json", "html:target/site/cucumber-pretty" }, monochrome = false, dryRun = false, glue = {
-				"stepDefinitions", "hooks" }, tags = { "@Test" })
+				"stepDefinitions", "hooks" }, tags = { "@End2End" })
 public class TestRunner {
 
 	private TestNGCucumberRunner testNGCucumberRunner;

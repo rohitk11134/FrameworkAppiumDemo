@@ -1,7 +1,5 @@
 package hooks;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -9,9 +7,6 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,7 +18,6 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import utilities.CommonUtility;
 
@@ -41,11 +35,11 @@ public class Hook extends TestBase {
 
 	TestBase base;
 
-	CommonUtility commonUtility = new CommonUtility();
-
 	public Hook(TestBase base) {
 		this.base = base;
 	}
+
+	CommonUtility commonUtility = new CommonUtility();
 
 	@Before
 	public void setUp() throws MalformedURLException {
@@ -58,17 +52,25 @@ public class Hook extends TestBase {
 
 		if (loadPropertyFile.startsWith("Android_")) {
 			propertyFile = loadProperty("Android_Capabilities.properties");
+			capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 		} else if (loadPropertyFile.startsWith("IOS_")) {
 			propertyFile = loadProperty("IOS_Capabilities.properties");
-		}
+//			capabilities.setCapability(MobileCapabilityType.UDID, propertyFile.getProperty("udid"));
+			capabilities.setCapability("connectHardwareKeyboard", false);
 
+		}
+//		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "v1.17.1");
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, propertyFile.getProperty("automationName"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, propertyFile.getProperty("platformName"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, propertyFile.getProperty("platformVersion"));
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, propertyFile.getProperty("deviceName"));
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));
-		capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
+//		capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
+		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, false);
 
+
+		System.out.println("Capabilities::: " + capabilities);
 //		log.info("Capabilities::: " + capabilities);
 
 		try {
@@ -77,6 +79,7 @@ public class Hook extends TestBase {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			if (driver != null) {
 //				log.info("SetUp Appium Driver for Device = " + capabilities);
+
 				driver.get(prop.getProperty("APP_URL"));
 				wait = new WebDriverWait(this.driver, 30);
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -32,7 +31,7 @@ public class LandingScreen extends TestBase {
 
 	final String submitNextButton = "//button[@type='submit']";
 
-	final String signInButton = "//button[@type='button'][@class='btn btn-primary w-100']";
+	final String signInButton = "//button[@class='btn btn-primary w-100']";
 
 	public String[] fields = { spotCode };
 
@@ -112,10 +111,13 @@ public class LandingScreen extends TestBase {
 
 	// Tap on Next arrow mark button after entering the data
 	public void tapNextButton() {
+		
+		if(base.isKeyBoardOpen()) {
+			base.hideKeyboard();			
+		}
 
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
-				base.hideKeyboard();
 				base.tapElement(submitNextButton);
 				wait = new WebDriverWait(this.driver, 5);
 			} else {
@@ -150,5 +152,6 @@ public class LandingScreen extends TestBase {
 		verifyWelcomeMessage();
 		verifyQRScannerDisplayed();		
 	}
+	
 
 }

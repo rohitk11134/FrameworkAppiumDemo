@@ -44,6 +44,16 @@ public class PaymentSteps {
 		payment.tapConfirmButton();
 	}
 
+	@Then("I tap on Pay at the Restaurant button available on the Payment screen")
+	public void i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen() {
+		payment.tapPayAtRestaurantButton();
+	}
+	
+	@Then("I tap on Order Now button")
+	public void i_tap_on_Order_Now_button() {
+	    payment.tapOnOrderNowButton();
+	}
+	
 	@Then("I am on payment confirmation screen")
 	public void i_am_on_payment_confirmation_screen() {
 		payment.verifyPaymentConfirmationScreen();

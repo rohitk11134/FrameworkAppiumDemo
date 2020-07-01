@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -29,6 +28,8 @@ public class SpotNumberScreen extends TestBase {
 	final String checkedInPlace_SpotNoScreen = "//div[@class='fs-20 fw-600 mb-1 text-center']";
 	
 	final String selectedTab = "//div[@class='text-primary od-text-primary tab-icon']";
+	
+	final String checkedInPlaceElement = "//div[@class=\"fs-20 fw-600 mb-1 text-center\"]";
 
 	final String expectedSpotNumberMessage = "What's your spot number?";
 	
@@ -62,6 +63,10 @@ public class SpotNumberScreen extends TestBase {
 		
 		// TO get the error/success message key from excel sheet
 		expectedMessageKeys = commonUtility.flatten(formData)[commonUtility.flatten(formData).length - 1];
+		
+		// Store the check-in place
+		commonUtility.checkInPlace = base.gettext(checkedInPlaceElement);
+		System.out.println("Checked in Place :: "+commonUtility.checkInPlace);
 		System.out.println("expectedMessageKeys - data: " + expectedMessageKeys);
 		// To check if the size of formdata and fields are same
 		boolean outcome = webForm.checkFormFieldsData(formData, fields);
@@ -81,7 +86,11 @@ public class SpotNumberScreen extends TestBase {
 
 	// Tap on Next Arrow button
 	public void tapNextArrowButton() {
+		if(base.isKeyBoardOpen()) {
+			base.hideKeyboard();			
+		}
 
+		System.out.println("Checked in Place :: Arrow  "+commonUtility.checkInPlace);
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
 				base.tapElement(submitNextButton);

@@ -6,10 +6,13 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Set;
+
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
 import org.apache.commons.io.FileUtils;
@@ -23,7 +26,10 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Keyboard;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -56,6 +62,20 @@ public class TestBase {
 	public void resetApp() {
 		try {
 			driver.resetApp();
+			wait = new WebDriverWait(driver, 30);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * To launch the in-built apps
+	 * 
+	 * @param bundleId
+	 */
+	public void activateApp(String bundleId) {
+		try {
+			driver.activateApp(bundleId); // Setting - "com.apple.Preferences"
 			wait = new WebDriverWait(driver, 30);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +138,21 @@ public class TestBase {
 		}
 	}
 
+	public void setContext(String value) {
+		Set<String> contextNames = driver.getContextHandles();
+		for (String contextName : contextNames) {
+			if (contextName.contains(value)) {
+				driver.context(contextName);
+			}
+		}
+	}
+
+	public void setBrowserScale(String scaleFactor) {
+		((JavascriptExecutor) driver).executeScript("document.body.style.transform='scale(scaleFactor)';");
+		wait = new WebDriverWait(driver, 30);
+
+	}
+
 	// To verify if keypad is open
 	public boolean isKeyBoardOpen() {
 		Keyboard Element = driver.getKeyboard();
@@ -142,6 +177,7 @@ public class TestBase {
 	 * Long press on a element to view sub-options
 	 **/
 	public void longPress(LongPressOptions element) {
+		@SuppressWarnings("rawtypes")
 		TouchAction action = new TouchAction(driver);
 		try {
 			action.longPress(element).release().perform();
@@ -194,6 +230,15 @@ public class TestBase {
 		}
 	}
 
+	public MobileElement waitForElementToBeVisible(MobileElement element) {
+		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	public void waitForElementToBeVisible(String xpath) {
+		MobileElement element = getElement(XPATH, xpath);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
 	public void click_last(List<MobileElement> element) {
 		waitForElementToBeClickable(getLast(element));
 		getLast(element).click();
@@ -201,10 +246,6 @@ public class TestBase {
 
 	public MobileElement getLast(List<MobileElement> element) {
 		return element.get(element.size() - 1);
-	}
-
-	public MobileElement waitForElementToBeVisible(MobileElement element) {
-		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void waitForTextToBePresentInElement(MobileElement element, String text) {
@@ -377,6 +418,7 @@ public class TestBase {
 		boolean isDisplayed = false;
 		try {
 			if (element != null) {
+				waitForElementToBeVisible(Xpath);
 				isDisplayed = element.isDisplayed();
 			}
 		} catch (Exception e) {
@@ -563,8 +605,40 @@ public class TestBase {
 		MobileElement ele = driver.findElement(By.xpath(element));
 		try {
 			if (ele != null) {
+
+				wait = new WebDriverWait(this.driver, 15);
+				waitForElementToBeVisible(ele);
 				waitForElementToBeClickable(ele);
-				driver.findElement(By.xpath(element)).click();
+//				ele.click();
+
+//				TouchAction action = new TouchAction(driver);
+//				action.tap(PointOption.point(ele.getLocation())).perform();
+				
+				/**
+				try {
+					if (ele.isEnabled() && ele.isDisplayed()) {
+						System.out.println("Clicking on element with using java script click");
+
+						((JavascriptExecutor) driver).executeScript("arguments[0].click();", ele);
+					} else {
+						System.out.println("Unable to click on element");
+					}
+				} catch (StaleElementReferenceException e) {
+					System.out.println("Element is not attached to the page document "+ e.getStackTrace());
+				} catch (NoSuchElementException e) {
+					System.out.println("Element was not found in DOM "+ e.getStackTrace());
+				} catch (Exception e) {
+					System.out.println("Unable to click on element "+ e.getStackTrace());
+				}
+				
+				*/
+				
+				Actions ob = new Actions(driver);
+				ob.moveToElement(ele);
+				ob.click(ele);
+				Action action  = ob.build();
+				action.perform();
+
 				wait = new WebDriverWait(this.driver, 5);
 			}
 		} catch (Exception e) {
@@ -589,7 +663,7 @@ public class TestBase {
 		}
 		return false;
 	}
-	
+
 	public void scrollToElementUsingJS(String input) {
 		MobileElement element = getElement(XPATH, input);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -862,7 +936,7 @@ public class TestBase {
 
 	}
 
-	public static void scrollDowntoXPath(String xPath) {
+	public void scrollDowntoXPath(String xPath) {
 		boolean flag = true;
 		int count = 1;
 		while (flag) {

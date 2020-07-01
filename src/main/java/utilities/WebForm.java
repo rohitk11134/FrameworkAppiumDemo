@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import org.testng.Assert;
 
 import base.TestBase;
+
 public class WebForm extends TestBase {
 
 	TestBase base = new TestBase();
@@ -15,7 +16,6 @@ public class WebForm extends TestBase {
 
 	public void enterData(String[][] formData, String[] FIELDS) {
 		String tagName = "";
-//		Outcome outcome = null;
 		
 		String[] testData = commonUtility.flatten(formData);
 		for (int i = 0; i <= FIELDS.length - 1; i++) {
@@ -24,10 +24,9 @@ public class WebForm extends TestBase {
 			System.out.println("Tag Name :: "+tagName);
 			if (!tagName.equals("NotFound")) {
 				inputData(FIELDS[i], tagName, testData[i]);
-//				outcome = new SuccessOutcome();
 			} else {
 				String message = "Input Element not Found :" + FIELDS[i];
-//				outcome = commonUtility.returnFailureOutcome("ElementNotFound", message);
+				Assert.fail(message);
 				break;
 			}
 		}
@@ -36,21 +35,18 @@ public class WebForm extends TestBase {
 	// Verify Input fields and data from excel
 	public boolean checkFormFieldsData(String[][] formData, String[] FIELDS) {
 		boolean flag = true;
-//		Outcome outcome;
 		String[] testData = commonUtility.flatten(formData);
 		if (testData.length == FIELDS.length+1) {
-			return flag = true;
+			 flag = true;
 		} else {
 			if (testData.length > FIELDS.length) {
-//				outcome = new FailureOutcome("Excel Data has more fields than the actual Form Fields");
 				Assert.fail("Excel Data has more fields than the actual Form Fields");
-				return flag = false;
 			} else {
-//				outcome = new FailureOutcome("Excel Data has less fields than the actual Form Fields");
 				Assert.fail("Excel Data has less fields than the actual Form Fields");
-				return flag = false;
 			}
+			 flag = false;
 		}
+		return flag;
 	}
 	
 

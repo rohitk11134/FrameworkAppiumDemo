@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -33,7 +32,7 @@ public class LoginScreen extends TestBase {
 //	Changed XPATH
 	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1HzBU']";
 
-	final String signInButton_CheckInScreen = "//button[@type='button'][@class='btn btn-primary w-100']";
+	final String signInButton_CheckInScreen = "//*[@class='btn btn-primary w-100']";
 
 	// Login Screen Elements
 	final String headerTextLoginScreenElement = "//div[@class='text-center fs-20 fw-700 p-10 pb-15']";
@@ -62,7 +61,7 @@ public class LoginScreen extends TestBase {
 
 	final String password = "//input[@name='password']";
 
-	final String signInButton_LoginScreen = "//button[@type='submit'][@class='btn btn-primary btn-block btn-md']";
+	final String signInButton_LoginScreen = "//*[@class='btn btn-primary btn-block btn-md'][@type='submit']";
 
 	public String[] fields = { userName, password };
 
@@ -210,7 +209,9 @@ public class LoginScreen extends TestBase {
 
 	public void tapSignInWButton_LoginScreen() {
 
-		base.hideKeyboard();
+		if(base.isKeyBoardOpen()) {
+			base.hideKeyboard();			
+		}
 		if (base.getElement(XPATH, signInButton_LoginScreen) != null) {
 			if (base.isDisplayed(signInButton_LoginScreen)) {
 				base.tapElement(signInButton_LoginScreen);

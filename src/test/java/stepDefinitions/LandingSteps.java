@@ -3,18 +3,24 @@ package stepDefinitions;
 import java.io.IOException;
 
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import pages.LandingScreen;
-import pages.LoginScreen;
+import utilities.CommonUtility;
 import utilities.StaticDataProvider;
 
 public class LandingSteps {
 	
 	LandingScreen landingScreen = new LandingScreen();
+	
+	CommonUtility commonUtility = new CommonUtility();
 
 	@Given("I open the Onedine application in the mobile browser")
 	public void i_open_the_Onedine_application_in_the_mobile_browser() {
 		landingScreen.verifyWelcomeMessage();
+	}
+	
+	@Given("I change the font size of {string} with the scale factor of {string}")
+	public void i_change_the_font_size_of_with_the_scale_factor_of(String osName, String scaleFactor) {
+		commonUtility.changeFontOfDevice(osName, scaleFactor);
 	}
 	
 	@Given("I verify that QR code scanner and Spot Code fields are displayed")

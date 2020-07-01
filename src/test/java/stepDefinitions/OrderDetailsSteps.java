@@ -36,4 +36,10 @@ public class OrderDetailsSteps {
 	public void i_tap_on_Add_to_Bag_button() {
 		orderDetails.tapAddToBagButton();
 	}
+	
+
+	@Then("I select {string} , {string} and {string} as the required modifiers")
+	public void i_select_and_as_the_required_modifiers(String modifier1, String modifier2, String modifier3) {
+		 orderDetails.selectRequiredModifiers(modifier1, modifier2, modifier3);
+	}
 }

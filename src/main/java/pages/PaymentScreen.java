@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import base.TestBase;
 import utilities.CommonUtility;
@@ -37,6 +36,14 @@ public class PaymentScreen extends TestBase {
 
 	final String pay_NowButton = "//button[@class='btn btn-primary od-btn-primary w-100']";
 
+//	final String pay_At_Restaurant = "//button[@class='selectedCart_lineHeight__3-Fpc btn btn-secondary od-btn-secondary w-100']";
+//	Changed Xpath
+	final String pay_At_Restaurant = "//button[@class='selectedCart_lineHeight__1cko_ btn btn-secondary od-btn-secondary w-100']";
+
+	final String confirmation_CheckInPlace = "//div[@class='fs-18 fw-600 my-2 text-center' or @class='row m-0 justify-content-center pt-15']";
+
+	final String orderNow_Button = "//button[@class='btn btn-primary od-btn-primary w-100'][contains(text(), 'Order Now')]";
+
 	final String noTipButton = "//div[contains(text(),'No Tip')]";
 
 	// the error fields.
@@ -52,7 +59,6 @@ public class PaymentScreen extends TestBase {
 
 	// error message map (Key-Value Pair)
 	HashMap<String, String> paymentScreenErrorMessageMap = new HashMap<String, String>();
-
 
 	public void verifyPaymentScreen() {
 		// TODO Auto-generated method stub
@@ -75,14 +81,12 @@ public class PaymentScreen extends TestBase {
 		}
 	}
 
-
 	public void tapPayNowButton() {
 
 		if (base.getElement(XPATH, pay_NowButton) != null) {
 			if (base.isDisplayed(pay_NowButton)) {
 				base.tapElement(pay_NowButton);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(5000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton), "Not able to tap on 'Pay Now' button");
 			}
@@ -91,6 +95,36 @@ public class PaymentScreen extends TestBase {
 		}
 	}
 
+	public void tapPayAtRestaurantButton() {
+
+		if (base.getElement(XPATH, pay_At_Restaurant) != null) {
+			if (base.isDisplayed(pay_At_Restaurant)) {
+				base.tapElement(pay_At_Restaurant);
+				wait = new WebDriverWait(this.driver, 5);
+				base.delay(3000L);
+			} else {
+				Assert.assertFalse(base.isDisplayed(pay_NowButton),
+						"Not able to tap on 'Pay at the Restaurant' button");
+			}
+		} else {
+			Assert.fail("Pay Now button is not displayed" + base.getElement(XPATH, pay_At_Restaurant));
+		}
+	}
+
+	public void tapOnOrderNowButton() {
+
+		if (base.getElement(XPATH, orderNow_Button) != null) {
+			if (base.isDisplayed(orderNow_Button)) {
+				base.tapElement(orderNow_Button);
+				wait = new WebDriverWait(this.driver, 5);
+				base.delay(3000L);
+			} else {
+				Assert.assertFalse(base.isDisplayed(orderNow_Button), "Not able to tap on 'Order Now' button");
+			}
+		} else {
+			Assert.fail("Pay Now button is not displayed" + base.getElement(XPATH, orderNow_Button));
+		}
+	}
 
 	public void tapConfirmButton() {
 
@@ -107,7 +141,6 @@ public class PaymentScreen extends TestBase {
 		}
 	}
 
-
 	public void verifyScreenErrorMessage() {
 
 		paymentScreenErrorMessageMap.put("invalid_CardDetails", "Card information entered is invalid");
@@ -120,18 +153,31 @@ public class PaymentScreen extends TestBase {
 		List<String> actualValidationMsgKeys = webForm.getActualErrorMessageKeys(actualValidationMsg,
 				paymentScreenErrorMessageMap);
 
-		// Comparing expected error message keys from excel to actual error keys of displayed error messages
+		// Comparing expected error message keys from excel to actual error keys of
+		// displayed error messages
 		webForm.compareMessageKeys(expectedMessageKeys, actualValidationMsgKeys);
 	}
 
-
 	public void verifyPaymentConfirmationScreen() {
-		// TODO Auto-generated method stub
-		System.out.println("--------------------");
+
+		base.waitForElementToBeVisible(confirmation_CheckInPlace);
+		System.out.println("Displayed OR not :: " + base.isDisplayed(confirmation_CheckInPlace));
+		if (base.getElement(XPATH, confirmation_CheckInPlace) != null) {
+			String confirmation_CheckInPlaceText = base.gettext(confirmation_CheckInPlace);
+			Assert.assertTrue(confirmation_CheckInPlaceText.trim().equalsIgnoreCase(commonUtility.checkInPlace.trim()),
+					"");
+		} else {
+			Assert.fail("Check-in place Confirm element is not displayed"
+					+ base.getElement(XPATH, confirmation_CheckInPlace));
+		}
+
 	}
 
-
 	public void selectTipAmount() {
+
+		if (base.isKeyBoardOpen()) {
+			base.hideKeyboard();
+		}
 
 		if (base.getElement(XPATH, noTipButton) != null) {
 			if (base.isDisplayed(noTipButton)) {
@@ -145,4 +191,5 @@ public class PaymentScreen extends TestBase {
 			Assert.fail("No Tip button is not displayed" + base.getElement(XPATH, noTipButton));
 		}
 	}
+
 }
