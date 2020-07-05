@@ -32,8 +32,6 @@ public class Hook extends TestBase {
 
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 
-	String prop_filePath = "config.properties";
-
 	TestBase base;
 
 	public Hook(TestBase base) {
@@ -46,19 +44,19 @@ public class Hook extends TestBase {
 	public void setUp() throws MalformedURLException {
 
 //		PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/test/resources/properties/Log4j.properties");
-//		ropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("Log4j.properties"));
+//		ropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("properties/Log4j.properties"));
 
-		prop = loadProperty("config.properties");
+		prop = loadProperty("properties/config.properties");
 		String loadPropertyFile = prop.getProperty("platform_Property");
 		System.out.println("Property File To Read:: " + loadPropertyFile);
 
 		if (loadPropertyFile.startsWith("Android_")) {
-			propertyFile = loadProperty("Android_Capabilities.properties");
+			propertyFile = loadProperty("properties/Android_Capabilities.properties");
 			capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 			capabilities.setCapability("unicodeKeyboard", true);
 			capabilities.setCapability("resetKeyboard", true);
 		} else if (loadPropertyFile.startsWith("IOS_")) {
-			propertyFile = loadProperty("IOS_Capabilities.properties");
+			propertyFile = loadProperty("properties/IOS_Capabilities.properties");
 //			capabilities.setCapability(MobileCapabilityType.UDID, propertyFile.getProperty("udid"));
 			capabilities.setCapability(IOSMobileCapabilityType.START_IWDP, true);
 			capabilities.setCapability(IOSMobileCapabilityType.SAFARI_ALLOW_POPUPS, true);

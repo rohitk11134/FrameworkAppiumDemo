@@ -16,11 +16,11 @@ public class WebForm extends TestBase {
 
 	public void enterData(String[][] formData, String[] FIELDS) {
 		String tagName = "";
-		
+
 		String[] testData = commonUtility.flatten(formData);
 		for (int i = 0; i <= FIELDS.length - 1; i++) {
 			tagName = base.getTagName(FIELDS[i]);
-			System.out.println("Field  :: "+FIELDS[i]+"   Formdata :: "+testData[i]);
+			System.out.println("Field  :: " + FIELDS[i] + "   Formdata :: " + testData[i]);
 			if (!tagName.equals("NotFound")) {
 				inputData(FIELDS[i], tagName, testData[i]);
 			} else {
@@ -35,40 +35,39 @@ public class WebForm extends TestBase {
 	public boolean checkFormFieldsData(String[][] formData, String[] FIELDS) {
 		boolean flag = true;
 		String[] testData = commonUtility.flatten(formData);
-		if (testData.length == FIELDS.length+1) {
-			 flag = true;
+		if (testData.length == FIELDS.length + 1) {
+			flag = true;
 		} else {
 			if (testData.length > FIELDS.length) {
 				Assert.fail("Excel Data has more fields than the actual Form Fields");
 			} else {
 				Assert.fail("Excel Data has less fields than the actual Form Fields");
 			}
-			 flag = false;
+			flag = false;
 		}
 		return flag;
 	}
-	
 
-	
 	/**
-	 * To get the actual message keys 
-	 * @param actualMessages       actual validation messages from the page
-	 * @param pageErrorMessageMap  Error map containing key-value pair
-	 * @return  actualValidationMsgKeys  keys of the actual messages
+	 * To get the actual message keys
+	 * 
+	 * @param actualMessages      actual validation messages from the page
+	 * @param pageErrorMessageMap Error map containing key-value pair
+	 * @return actualValidationMsgKeys keys of the actual messages
 	 */
-	public List<String>  getActualErrorMessageKeys(List<String> actualMessages, HashMap<String, String> pageErrorMessageMap){
+	public List<String> getActualErrorMessageKeys(List<String> actualMessages,
+			HashMap<String, String> pageErrorMessageMap) {
 		List<String> actualValidationMsgKeys = new ArrayList<String>();
 
-		for(String validationMessage : actualMessages) {
-	        for (Entry<String, String> me : pageErrorMessageMap.entrySet()) {
-	            if(me.getValue().trim().equalsIgnoreCase(validationMessage.trim())) {
-	            	actualValidationMsgKeys.add(me.getKey());
-	            }
-	          }
+		for (String validationMessage : actualMessages) {
+			for (Entry<String, String> me : pageErrorMessageMap.entrySet()) {
+				if (me.getValue().trim().equalsIgnoreCase(validationMessage.trim())) {
+					actualValidationMsgKeys.add(me.getKey());
+				}
+			}
 		}
 		return actualValidationMsgKeys;
 	}
-	
 
 	public void inputData(String field, String tagName, String data) {
 		switch (tagName) {
@@ -101,14 +100,14 @@ public class WebForm extends TestBase {
 		case "textarea":
 			base.populateFields(field, data);
 			break;
-			
+
 		case "number":
-			System.out.println("Inside case : number");
 			base.tapElement(field);
 			base.delay(500L);
+			base.tapElement(field);
 			base.populateFields(field, data);
 			break;
-			
+
 		case "div":
 			base.populateFields(field, data);
 			break;
@@ -116,18 +115,19 @@ public class WebForm extends TestBase {
 	}
 
 	public void compareMessageKeys(String expectedMessageKeys, List<String> actualValidationMsgKeysList) {
-		
+
 		List<String> expectedMessageKeysList = new ArrayList<String>();
-		if(expectedMessageKeys.contains(",")) {
+		if (expectedMessageKeys.contains(",")) {
 			String[] splitKeys = expectedMessageKeys.split(",");
-			for(int i =0 ; i<= splitKeys.length-1 ; i++) {
+			for (int i = 0; i <= splitKeys.length - 1; i++) {
 				expectedMessageKeysList.add(splitKeys[i].trim());
 			}
 		} else {
 			expectedMessageKeysList.add(expectedMessageKeys);
 		}
 
-		Assert.assertTrue(expectedMessageKeysList.equals(actualValidationMsgKeysList), "Expected and Actual error messages are not matched");
+		Assert.assertTrue(expectedMessageKeysList.equals(actualValidationMsgKeysList),
+				"Expected and Actual error messages are not matched");
 
 	}
 
