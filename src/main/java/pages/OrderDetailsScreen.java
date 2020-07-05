@@ -38,8 +38,15 @@ public class OrderDetailsScreen extends TestBase {
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__1rv0F orders_selectedCategory__XEwdL']";
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__Yi0dU orders_selectedCategory__1VNUD']";
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__8CxDf orders_selectedCategory__rNuEd']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__1WgIL orders_selectedCategory__3INlq']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3eAlB orders_selectedCategory__6xlq6']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__1VU2_ orders_selectedCategory__2luHB']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3RNvn orders_selectedCategory__eW--3']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__OT5Z2 orders_selectedCategory__3YlXR']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__HCe-G orders_selectedCategory__2nf57']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__3SBNr orders_selectedCategory__2Uwlt']";
 //	Changed XPATH
-	final String selectedCategory = "//button[@type='button'][@class='orders_category__1WgIL orders_selectedCategory__3INlq']";
+	final String selectedCategory = "//button[@type='button'][@class='orders_category__1cAlC orders_selectedCategory__26yV8']";
 
 //	final String menu_Item = "//div[@class='orders_itemName__2Wt62 fw-700'][text()='temp']";
 //	final String menu_Item = "//div[@class='orders_itemName__3tT2n fw-700'][text()='temp']";
@@ -111,6 +118,7 @@ public class OrderDetailsScreen extends TestBase {
 		String menuItemToBeClicked = menu_Item.replace("temp", menuItem);
 		if (base.getElement(XPATH, menuItemToBeClicked) != null) {
 			base.scrollToElementUsingJS(menuItemToBeClicked);
+			base.delay(1500L);
 			base.tapElement(menuItemToBeClicked);
 			base.delay(1500L);
 		} else {
@@ -171,18 +179,18 @@ public class OrderDetailsScreen extends TestBase {
 		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);;
 		
 		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
-			base.tapElement(modifier1_Xpath);
+			base.scrollAndClickElementUsingJS(modifier1_Xpath);
 			base.delay(1500L);
 			if (base.getElement(XPATH, modifier2_Xpath) != null) {
-				base.scrollToElementUsingJS(modifier2_Xpath);
-				base.delay(1500L);
-				base.tapElement(modifier2_Xpath);
+				base.scrollAndClickElementUsingJS(modifier2_Xpath);
+//				base.delay(1500L);
+//				base.tapElement(modifier2_Xpath);
 				base.delay(1500L);
 				if (base.getElement(XPATH, modifier3_Xpath) != null) {
-					base.scrollToElementUsingJS(modifier3_Xpath);
+					base.scrollAndClickElementUsingJS(modifier3_Xpath);
 					base.delay(1500L);
-					base.tapElement(modifier3_Xpath);
-					base.delay(1500L);
+//					base.tapElement(modifier3_Xpath);
+//					base.delay(1500L);
 				} else {
 					Assert.fail(modifier3_Xpath + " element is not found");
 				}

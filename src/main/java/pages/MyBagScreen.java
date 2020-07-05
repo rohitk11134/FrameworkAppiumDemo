@@ -44,7 +44,7 @@ public class MyBagScreen extends TestBase {
 			if (base.isDisplayed(nextButton)) {
 				base.tapElement(nextButton);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(1500L);
+				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(nextButton), "Not able to tap on 'NEXT' tab");
 			}

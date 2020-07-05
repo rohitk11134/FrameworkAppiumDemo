@@ -24,7 +24,7 @@ public class PaymentScreen extends TestBase {
 
 	final String expiryDate = "//input[@placeholder='MM/YY']";
 
-	final String CVV = "//input[@name='tsep-cvv2'][@placeholder='CVV'][@type='number']";
+	final String CVV = "//input[@name='tsep-cvv2'][@type='number']";
 
 	final String zipCode = "//input[@id='tsep-zip']";
 
@@ -86,7 +86,8 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, pay_NowButton) != null) {
 			if (base.isDisplayed(pay_NowButton)) {
 				base.tapElement(pay_NowButton);
-				wait = new WebDriverWait(this.driver, 5);
+				wait = new WebDriverWait(driver, 5);
+				base.delay(1500L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton), "Not able to tap on 'Pay Now' button");
 			}
@@ -100,7 +101,7 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, pay_At_Restaurant) != null) {
 			if (base.isDisplayed(pay_At_Restaurant)) {
 				base.tapElement(pay_At_Restaurant);
-				wait = new WebDriverWait(this.driver, 5);
+				wait = new WebDriverWait(driver, 5);
 				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton),
@@ -116,7 +117,7 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, orderNow_Button) != null) {
 			if (base.isDisplayed(orderNow_Button)) {
 				base.tapElement(orderNow_Button);
-				wait = new WebDriverWait(this.driver, 5);
+				wait = new WebDriverWait(driver, 5);
 				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(orderNow_Button), "Not able to tap on 'Order Now' button");
@@ -131,7 +132,7 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, confirmButton) != null) {
 			if (base.isDisplayed(confirmButton)) {
 				base.tapElement(confirmButton);
-				wait = new WebDriverWait(this.driver, 5);
+				wait = new WebDriverWait(driver, 5);
 				base.delay(6000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(confirmButton), "Not able to tap on 'Confrim' button");
@@ -175,15 +176,11 @@ public class PaymentScreen extends TestBase {
 
 	public void selectTipAmount() {
 
-		if (base.isKeyBoardOpen()) {
-			base.hideKeyboard();
-		}
 
 		if (base.getElement(XPATH, noTipButton) != null) {
 			if (base.isDisplayed(noTipButton)) {
 				base.tapElement(noTipButton);
-				wait = new WebDriverWait(this.driver, 5);
-				base.delay(2000L);
+				wait = new WebDriverWait(driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(noTipButton), "Not able to tap on 'No Tip' button");
 			}

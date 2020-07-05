@@ -20,8 +20,7 @@ public class WebForm extends TestBase {
 		String[] testData = commonUtility.flatten(formData);
 		for (int i = 0; i <= FIELDS.length - 1; i++) {
 			tagName = base.getTagName(FIELDS[i]);
-			System.out.println("Field  :: "+FIELDS[i]+"   Formdta :: "+testData[i]);
-			System.out.println("Tag Name :: "+tagName);
+			System.out.println("Field  :: "+FIELDS[i]+"   Formdata :: "+testData[i]);
 			if (!tagName.equals("NotFound")) {
 				inputData(FIELDS[i], tagName, testData[i]);
 			} else {
@@ -104,6 +103,9 @@ public class WebForm extends TestBase {
 			break;
 			
 		case "number":
+			System.out.println("Inside case : number");
+			base.tapElement(field);
+			base.delay(500L);
 			base.populateFields(field, data);
 			break;
 			

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +25,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Keyboard;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -212,9 +208,8 @@ public class TestBase {
 		};
 	}
 
-	public void waitForElementToBeClickable(MobileElement webElement) {
-		wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+	public MobileElement waitForElementToBeClickable(MobileElement mobileElement) {
+		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(mobileElement));
 	}
 
 	public void waitForElementToBeVisible(By by) {
@@ -231,12 +226,12 @@ public class TestBase {
 	}
 
 	public MobileElement waitForElementToBeVisible(MobileElement element) {
-		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
 	}
 
-	public void waitForElementToBeVisible(String xpath) {
+	public MobileElement waitForElementToBeVisible(String xpath) {
 		MobileElement element = getElement(XPATH, xpath);
-		wait.until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement)new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void click_last(List<MobileElement> element) {
@@ -414,11 +409,11 @@ public class TestBase {
 
 	// To verify if element is displayed
 	public boolean isDisplayed(String Xpath) {
+		waitForElementToBeVisible(Xpath);
 		MobileElement element = driver.findElement(By.xpath(Xpath));
 		boolean isDisplayed = false;
 		try {
 			if (element != null) {
-				waitForElementToBeVisible(Xpath);
 				isDisplayed = element.isDisplayed();
 			}
 		} catch (Exception e) {
@@ -528,7 +523,7 @@ public class TestBase {
 	public MobileElement getElement(String locator, String inputElement) {
 
 		By byElement;
-		MobileElement query = null;
+		MobileElement query;
 		switch (locator) {
 		case "xpath":
 			byElement = By.xpath(inputElement);
@@ -559,7 +554,7 @@ public class TestBase {
 		}
 
 		try {
-			query = driver.findElement(byElement);
+			query = (MobileElement) driver.findElement(byElement);
 			return query;
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -576,15 +571,15 @@ public class TestBase {
 	 * @param text    String value of data to enter
 	 */
 	public void populateFields(String element, String text) {
-		MobileElement elem = driver.findElement(By.xpath(element));
+		MobileElement elem = (MobileElement) driver.findElementByXPath(element);
 		try {
 			if (elem != null) {
 				waitForElementToBeClickable(elem);
-				elem.click();
 				if (text != null) {
-					if (!elem.getText().isEmpty()) {
+					if (!elem.getText().isEmpty() && elem.getText() != null) {
 						elem.clear();
 					}
+					delay(500L);
 					elem.sendKeys(text);
 				} else {
 					Assert.assertNotNull(elem.getText());
@@ -602,49 +597,21 @@ public class TestBase {
 	 * @param element xpath (String) of the element
 	 */
 	public void tapElement(String element) {
-		MobileElement ele = driver.findElement(By.xpath(element));
+		MobileElement ele = (MobileElement) driver.findElement(By.xpath(element));
 		try {
 			if (ele != null) {
-
-				wait = new WebDriverWait(this.driver, 15);
 				waitForElementToBeVisible(ele);
 				waitForElementToBeClickable(ele);
-//				ele.click();
+				delay(500L);
+				ele.click();
 
-//				TouchAction action = new TouchAction(driver);
-//				action.tap(PointOption.point(ele.getLocation())).perform();
-				
-				/**
-				try {
-					if (ele.isEnabled() && ele.isDisplayed()) {
-						System.out.println("Clicking on element with using java script click");
-
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", ele);
-					} else {
-						System.out.println("Unable to click on element");
-					}
-				} catch (StaleElementReferenceException e) {
-					System.out.println("Element is not attached to the page document "+ e.getStackTrace());
-				} catch (NoSuchElementException e) {
-					System.out.println("Element was not found in DOM "+ e.getStackTrace());
-				} catch (Exception e) {
-					System.out.println("Unable to click on element "+ e.getStackTrace());
-				}
-				
-				*/
-				
-				Actions ob = new Actions(driver);
-				ob.moveToElement(ele);
-				ob.click(ele);
-				Action action  = ob.build();
-				action.perform();
-
-				wait = new WebDriverWait(this.driver, 5);
+//				wait = new WebDriverWait(this.driver, 30);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 
 	/**
 	 * TO allow the permission pop-up
@@ -667,6 +634,13 @@ public class TestBase {
 	public void scrollToElementUsingJS(String input) {
 		MobileElement element = getElement(XPATH, input);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	public void scrollAndClickElementUsingJS(String input) {
+		MobileElement element = getElement(XPATH, input);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		delay(1500L);
 	}
 
 	public void scrollTo(String text) {
@@ -770,6 +744,7 @@ public class TestBase {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void scrollDown() {
 		int height = driver.manage().window().getSize().getHeight();
 

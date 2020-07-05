@@ -21,10 +21,6 @@ public class LandingScreen extends TestBase {
 	// Landing Screen Elements
 	final String welcomeMessageElement = "//div[@class='fs-20 fw-700 pb-10']";
 
-//	final String scanQRCode = "//img[@class='dashboard_scanImag__3DYal']";
-//	final String scanQRCode = "//img[@class='dashboard_scanImag__3s2q-']";
-//	final String scanQRCode = "//img[@class='dashboard_scanImag__2hjQD']";
-//	Changed XPATH
 	final String scanQRCode = "//img[@alt='QR Code']";
 
 	final String spotCode = "//input[@name='spotCode']";
@@ -60,7 +56,8 @@ public class LandingScreen extends TestBase {
 				Assert.assertFalse(base.isDisplayed(welcomeMessageElement), "Welcome Message is not being displayed");
 			}
 		} else {
-			Assert.assertNull(base.getElement(XPATH, submitNextButton), "Next (Arrow Mark) button is not clicked");
+			Assert.assertNull(base.getElement(XPATH, welcomeMessageElement),
+					"Welcome Message Element is not displayed");
 		}
 	}
 
@@ -71,7 +68,7 @@ public class LandingScreen extends TestBase {
 			if (base.isDisplayed(scanQRCode)) {
 				Assert.assertTrue(base.isDisplayed(scanQRCode), "QR Scan Code button is displayed");
 			} else {
-				Assert.assertFalse(base.isDisplayed(scanQRCode), "QR Scan Code is not displayed");
+				Assert.fail("QR Scan Code is not displayed");
 			}
 		} else {
 			Assert.assertNull(base.getElement(XPATH, scanQRCode),
@@ -111,10 +108,6 @@ public class LandingScreen extends TestBase {
 
 	// Tap on Next arrow mark button after entering the data
 	public void tapNextButton() {
-		
-		if(base.isKeyBoardOpen()) {
-			base.hideKeyboard();			
-		}
 
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
@@ -142,16 +135,16 @@ public class LandingScreen extends TestBase {
 		List<String> actualValidationMsgKeys = webForm.getActualErrorMessageKeys(actualValidationMsg,
 				landingScreenErrorMessageMap);
 
-		// Comparing expected error message keys from excel to actual error keys of displayed error messages
+		// Comparing expected error message keys from excel to actual error keys of
+		// displayed error messages
 		webForm.compareMessageKeys(expectedMessageKeys, actualValidationMsgKeys);
 	}
-	
+
 	// Verify the screen is Landing Page Screen
 	public void verifyLandingScreen() {
-		
+
 		verifyWelcomeMessage();
-		verifyQRScannerDisplayed();		
+		verifyQRScannerDisplayed();
 	}
-	
 
 }

@@ -86,9 +86,6 @@ public class SpotNumberScreen extends TestBase {
 
 	// Tap on Next Arrow button
 	public void tapNextArrowButton() {
-		if(base.isKeyBoardOpen()) {
-			base.hideKeyboard();			
-		}
 
 		System.out.println("Checked in Place :: Arrow  "+commonUtility.checkInPlace);
 		if (base.getElement(XPATH, submitNextButton) != null) {

@@ -209,9 +209,7 @@ public class LoginScreen extends TestBase {
 
 	public void tapSignInWButton_LoginScreen() {
 
-		if(base.isKeyBoardOpen()) {
-			base.hideKeyboard();			
-		}
+
 		if (base.getElement(XPATH, signInButton_LoginScreen) != null) {
 			if (base.isDisplayed(signInButton_LoginScreen)) {
 				base.tapElement(signInButton_LoginScreen);
