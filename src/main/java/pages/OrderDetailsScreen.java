@@ -17,7 +17,7 @@ public class OrderDetailsScreen extends TestBase {
 
 	final String selectedTab = "//div[@class='text-primary od-text-primary tab-icon']/div";
 
-	final String selectedCategory = "//button[@type='button'][@class='orders_category__1cAlC orders_selectedCategory__26yV8']";
+	final String selectedCategory = "//button[@type='button'][@class='orders_category__1tJaO orders_selectedCategory__xmTaY']";
 
 //	Changed XPATH
 	final String menu_Item = "//div[text()='temp']/ancestor::div[2]";
@@ -53,6 +53,7 @@ public class OrderDetailsScreen extends TestBase {
 					.equalsIgnoreCase(expectedCategoryName.toLowerCase().trim())) {
 				categoryToClick = categoryToClick.replace("temp", expectedCategoryName);
 				base.tapElement(categoryToClick);
+				base.delay(1000L);
 				actual_SelectedCategory = base.gettext(selectedCategory);
 				Assert.assertEquals(actual_SelectedCategory.toLowerCase().trim(),
 						expectedCategoryName.toLowerCase().trim(),

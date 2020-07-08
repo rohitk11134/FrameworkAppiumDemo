@@ -71,6 +71,8 @@ public class Hook extends TestBase {
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, propertyFile.getProperty("deviceName"));
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 3000);
+		capabilities.setCapability("autoAcceptAlerts", true);
+		capabilities.setCapability("autoGrantPermissions", true);
 //		capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, false);

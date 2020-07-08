@@ -37,6 +37,8 @@ public class PaymentScreen extends TestBase {
 	final String pay_NowButton = "//button[@class='btn btn-primary od-btn-primary w-100']";
 
 	final String pay_At_Restaurant = "//button[@class='selectedCart_lineHeight__1cko_ btn btn-secondary od-btn-secondary w-100']";
+	
+	final String payLater = "//button[contains(text(), 'pay later')]";
 
 	final String confirmation_CheckInPlace = "//div[@class='fs-18 fw-600 my-2 text-center' or @class='row m-0 justify-content-center pt-15']";
 
@@ -96,17 +98,17 @@ public class PaymentScreen extends TestBase {
 
 	public void tapPayAtRestaurantButton() {
 
-		if (base.getElement(XPATH, pay_At_Restaurant) != null) {
-			if (base.isDisplayed(pay_At_Restaurant)) {
-				base.tapElement(pay_At_Restaurant);
+		if (base.getElement(XPATH, payLater) != null) {
+			if (base.isDisplayed(payLater)) {
+				base.tapElement(payLater);
 				wait = new WebDriverWait(driver, 5);
 				base.delay(3000L);
 			} else {
-				Assert.assertFalse(base.isDisplayed(pay_NowButton),
+				Assert.assertFalse(base.isDisplayed(payLater),
 						"Not able to tap on 'Pay at the Restaurant' button");
 			}
 		} else {
-			Assert.fail("Pay at the restaurant button is not displayed" + base.getElement(XPATH, pay_At_Restaurant));
+			Assert.fail("Pay at the restaurant button is not displayed" + base.getElement(XPATH, payLater));
 		}
 	}
 

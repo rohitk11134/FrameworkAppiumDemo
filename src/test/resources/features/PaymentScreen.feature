@@ -40,6 +40,7 @@ Scenario: Pay Now - Make a successfull payment with valid card details for curbs
 	Then I am on payment confirmation screen
 	
 
+@End2End
 Scenario: Pay At Restaurant - Make a successfull payment with valid card details for curbside flow
 	Then I should be able to navigate to 'Order' screen
 	And I verify that selected category is 'Beverages'

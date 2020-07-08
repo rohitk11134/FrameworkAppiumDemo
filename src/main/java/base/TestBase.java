@@ -15,6 +15,7 @@ import java.util.Set;
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.tools.ant.property.GetProperty;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -209,7 +210,14 @@ public class TestBase {
 	}
 
 	public MobileElement waitForElementToBeClickable(MobileElement mobileElement) {
-		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(mobileElement));
+		return (MobileElement) new WebDriverWait(driver, 30)
+				.until(ExpectedConditions.elementToBeClickable(mobileElement));
+	}
+
+	public MobileElement waitForElementToBeClickable(String inputElement) {
+		MobileElement mobileElement = driver.findElement(By.xpath(inputElement));
+		return (MobileElement) new WebDriverWait(driver, 30)
+				.until(ExpectedConditions.elementToBeClickable(mobileElement));
 	}
 
 	public void waitForElementToBeVisible(By by) {
@@ -231,7 +239,7 @@ public class TestBase {
 
 	public MobileElement waitForElementToBeVisible(String xpath) {
 		MobileElement element = getElement(XPATH, xpath);
-		return (MobileElement)new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void click_last(List<MobileElement> element) {
@@ -571,18 +579,18 @@ public class TestBase {
 	 * @param text    String value of data to enter
 	 */
 	public void populateFields(String element, String text) {
-		MobileElement elem = (MobileElement) driver.findElementByXPath(element);
+		MobileElement elem = waitForElementToBeVisible(element);
 		try {
 			if (elem != null) {
-				waitForElementToBeClickable(elem);
+				MobileElement ele = waitForElementToBeClickable(element);
 				if (text != null) {
-					if (!elem.getText().isEmpty() && elem.getText() != null) {
-						elem.clear();
+					if (!ele.getText().isEmpty() && ele.getText() != null) {
+						ele.clear();
 					}
 					delay(500L);
-					elem.sendKeys(text);
+					ele.sendKeys(text);
 				} else {
-					Assert.assertNotNull(elem.getText());
+					Assert.assertNotNull(ele.getText());
 				}
 			}
 		} catch (Exception e) {
@@ -597,11 +605,9 @@ public class TestBase {
 	 * @param element xpath (String) of the element
 	 */
 	public void tapElement(String element) {
-		MobileElement ele = (MobileElement) driver.findElement(By.xpath(element));
+		MobileElement ele = waitForElementToBeClickable(element);
 		try {
 			if (ele != null) {
-				waitForElementToBeVisible(ele);
-				waitForElementToBeClickable(ele);
 				delay(500L);
 				ele.click();
 
