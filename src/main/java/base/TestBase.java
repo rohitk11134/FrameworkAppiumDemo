@@ -579,7 +579,9 @@ public class TestBase {
 	 * @param text    String value of data to enter
 	 */
 	public void populateFields(String element, String text) {
+		Object platformName = driver.getCapabilities().getCapability("platformName");
 		MobileElement elem = waitForElementToBeVisible(element);
+
 		try {
 			if (elem != null) {
 				MobileElement ele = waitForElementToBeClickable(element);
@@ -588,7 +590,19 @@ public class TestBase {
 						ele.clear();
 					}
 					delay(500L);
-					ele.sendKeys(text);
+					if (platformName.equals("iOS")) {
+						System.out.println("Inside iOS device");
+						((JavascriptExecutor) driver).executeScript(
+								"let input = arguments[0];var setValue = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;setValue.call(input, '"
+										+ text
+										+ "');var e = new Event('input', { bubbles: true });input.dispatchEvent(e);",
+								ele);
+						delay(1000L);
+					} else if (platformName.equals("Android")) {
+//						ele.click();
+//						delay(1500L);
+						ele.sendKeys(text);
+					}
 				} else {
 					Assert.assertNotNull(ele.getText());
 				}
@@ -596,7 +610,6 @@ public class TestBase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -617,7 +630,6 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-	
 
 	/**
 	 * TO allow the permission pop-up

@@ -32,6 +32,7 @@
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__OT5Z2 orders_selectedCategory__3YlXR']";
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__HCe-G orders_selectedCategory__2nf57']";
 //	final String selectedCategory = "//button[@type='button'][@class='orders_category__3SBNr orders_selectedCategory__2Uwlt']";
+//	final String selectedCategory = "//button[@type='button'][@class='orders_category__1tJaO orders_selectedCategory__xmTaY']";
 
 
 

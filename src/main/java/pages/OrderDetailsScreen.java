@@ -17,7 +17,7 @@ public class OrderDetailsScreen extends TestBase {
 
 	final String selectedTab = "//div[@class='text-primary od-text-primary tab-icon']/div";
 
-	final String selectedCategory = "//button[@type='button'][@class='orders_category__1tJaO orders_selectedCategory__xmTaY']";
+	final String selectedCategory = "//button[@type='button'][@class='orders_category__3qNZD orders_selectedCategory__2hLkV']";
 
 //	Changed XPATH
 	final String menu_Item = "//div[text()='temp']/ancestor::div[2]";
