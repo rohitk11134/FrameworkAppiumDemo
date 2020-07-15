@@ -34,8 +34,10 @@
 * Once code is imported, click on 'Project' from eclipse header toolbar, then select and click 'Clean' from the drop-down
 * From project explorer, right click on the OneDine project and select Maven - > Update the project 
 * Now start appium server through cmd/terminal via below command:
-  * For Android -     appium --allow-insecure chromedriver_autodownload
-  * For iOS -         appium
+  * For Android:
+               $ appium --allow-insecure chromedriver_autodownload
+  * For iOS:
+               $ appium
 * Open an emulator/simulator
 * Go to the project directory through cmd/terminal and run the below command and it will start running.
   * mvn clean verify
