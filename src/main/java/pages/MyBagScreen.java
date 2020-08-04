@@ -15,9 +15,9 @@ public class MyBagScreen extends TestBase {
 
 	WebForm webForm = new WebForm();
 
-	final String myBagTab = "//div[@class='footer footerBtm']//div[2]";
+	final String myBagTab = "//div[contains(@class, 'footer footerBtm')]//div[2]";
 
-	final String nextButton = "//div[@class='offset-2 col-8 col-sm-4 offset-sm-4 text-center']//button[@class='btn btn-primary od-btn-primary w-100 my-2 text-uppercase'][contains(text(),'Next')]";
+	final String nextButton = "//button[contains(text(),'Next')]";
 																							
 	final String payNowButton = "//button[@type='button'][@class='btn btn-primary od-btn-primary w-100']";
 

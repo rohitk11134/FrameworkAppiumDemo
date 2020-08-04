@@ -8,7 +8,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -28,7 +29,7 @@ public class Hook extends TestBase {
 
 	public static Properties propertyFile;
 
-//	public static Logger log = Logger.getLogger(TestBase.class);
+	public static Logger log = LoggerFactory.getLogger(Hook.class);
 
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -44,7 +45,7 @@ public class Hook extends TestBase {
 	public void setUp() throws MalformedURLException {
 
 //		PropertyConfigurator.configure(System.getProperty("user.dir") + "/src/test/resources/properties/Log4j.properties");
-//		ropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("properties/Log4j.properties"));
+//		PropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("properties/Log4j.properties"));
 
 		prop = loadProperty("properties/config.properties");
 		String loadPropertyFile = prop.getProperty("platform_Property");

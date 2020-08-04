@@ -591,7 +591,6 @@ public class TestBase {
 					}
 					delay(500L);
 					if (platformName.equals("iOS")) {
-						System.out.println("Inside iOS device");
 						((JavascriptExecutor) driver).executeScript(
 								"let input = arguments[0];var setValue = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;setValue.call(input, '"
 										+ text
