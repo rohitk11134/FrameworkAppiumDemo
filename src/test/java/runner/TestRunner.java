@@ -10,9 +10,9 @@ import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features = "classpath:features", plugin = { "pretty",
-		"json:target/cucumber.json", "html:target/site/cucumber-pretty" }, monochrome = false, dryRun = false, glue = {
-				"stepDefinitions", "hooks" }, tags = { "@End2End" })
+@CucumberOptions(features = "classpath:features", plugin = { "pretty", "json:target/cucumber.json",
+		"html:target/site/cucumber-pretty" }, monochrome = true, strict = false, dryRun = false, glue = {
+				"stepDefinitions", "hooks" }, tags = { "@RegressionTest" })
 public class TestRunner {
 
 	private TestNGCucumberRunner testNGCucumberRunner;
@@ -36,6 +36,5 @@ public class TestRunner {
 	public void tearDownClass() throws Exception {
 		testNGCucumberRunner.finish();
 	}
-	
 
 }

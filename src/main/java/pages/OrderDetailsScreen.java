@@ -30,7 +30,7 @@ public class OrderDetailsScreen extends TestBase {
 
 	final String addToBag = "//button[text()='Add to Bag']";
 
-	final String menuItemName = "//div[@id='itemName']/h3";
+	final String menuItemName = "//div[@id='itemName']";
 
 	String storedMenuItem = "";
 

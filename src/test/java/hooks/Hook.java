@@ -65,10 +65,10 @@ public class Hook extends TestBase {
 			capabilities.setCapability("connectHardwareKeyboard", false);
 
 		}
-		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "v1.17.1");
+//		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "v1.17.1");
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, propertyFile.getProperty("automationName"));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, propertyFile.getProperty("platformName"));
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, propertyFile.getProperty("platformVersion"));
+//		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, propertyFile.getProperty("platformVersion"));
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, propertyFile.getProperty("deviceName"));
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 3000);
@@ -121,6 +121,7 @@ public class Hook extends TestBase {
 	@After
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {
+			System.out.println("Scenario Name ::: "+scenario.getName()+"  Scenario ID ::: "+scenario.getId()+"  Scenario URL :: "+scenario.getUri());
 			base.takeScreenShot(scenario.getName());
 //			base.resetApp();
 		}
