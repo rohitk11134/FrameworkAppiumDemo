@@ -62,7 +62,7 @@ public class PaymentScreen extends TestBase {
 
 	public void verifyPaymentScreen() {
 		// TODO Auto-generated method stub
-		System.out.println("TBD");
+//		System.out.println("TBD");
 	}
 
 	// To enter the excel data into Payment screen fields

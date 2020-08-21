@@ -18,6 +18,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.tools.ant.property.GetProperty;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -91,6 +92,20 @@ public class TestBase {
 		}
 		return title;
 	}
+	
+	/**
+	 * To get the URL of the page
+	 */
+	public String getCurrentURL() {
+		String currentURL = "";
+		try {
+			currentURL = driver.getCurrentUrl();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return currentURL;
+	}
+	
 
 	/**
 	 * Close the app which was provided in the capabilities at session creation
@@ -210,14 +225,19 @@ public class TestBase {
 	}
 
 	public MobileElement waitForElementToBeClickable(MobileElement mobileElement) {
-		return (MobileElement) new WebDriverWait(driver, 30)
+		return (MobileElement) new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.elementToBeClickable(mobileElement));
 	}
 
 	public MobileElement waitForElementToBeClickable(String inputElement) {
 		MobileElement mobileElement = driver.findElement(By.xpath(inputElement));
-		return (MobileElement) new WebDriverWait(driver, 30)
+		return (MobileElement) new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.elementToBeClickable(mobileElement));
+	}
+
+	public boolean waitForPageToBeLoaded() {
+		return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("loaded")
+				|| ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
 	}
 
 	public void waitForElementToBeVisible(By by) {
@@ -234,12 +254,12 @@ public class TestBase {
 	}
 
 	public MobileElement waitForElementToBeVisible(MobileElement element) {
-		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public MobileElement waitForElementToBeVisible(String xpath) {
 		MobileElement element = getElement(XPATH, xpath);
-		return (MobileElement) new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void click_last(List<MobileElement> element) {
@@ -417,8 +437,8 @@ public class TestBase {
 
 	// To verify if element is displayed
 	public boolean isDisplayed(String Xpath) {
-		waitForElementToBeVisible(Xpath);
-		MobileElement element = driver.findElement(By.xpath(Xpath));
+		MobileElement element = waitForElementToBeVisible(Xpath);
+//		MobileElement element = driver.findElement(By.xpath(Xpath));
 		boolean isDisplayed = false;
 		try {
 			if (element != null) {
@@ -598,8 +618,6 @@ public class TestBase {
 								ele);
 						delay(1000L);
 					} else if (platformName.equals("Android")) {
-//						ele.click();
-//						delay(1500L);
 						ele.sendKeys(text);
 					}
 				} else {
@@ -622,8 +640,6 @@ public class TestBase {
 			if (ele != null) {
 				delay(500L);
 				ele.click();
-
-//				wait = new WebDriverWait(this.driver, 30);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -848,14 +864,11 @@ public class TestBase {
 	public void swipeRtoLOnElementUsingCount(By by, int count) {
 
 		Point p = driver.findElement(by).getLocation();
-		System.out.println(by);
 		int x_int = ((Integer) p.getX());
 		int y_int = ((Integer) p.getY());
 
 		int height = driver.manage().window().getSize().getHeight();
 		int width = driver.manage().window().getSize().getWidth();
-		System.out.println("x_int :: " + x_int);
-		System.out.println("Screen width ::" + width);
 
 		boolean flag = true;
 		int _count = 0;
@@ -879,7 +892,6 @@ public class TestBase {
 //                        .release().perform();
 
 				_count++;
-				System.out.println("Inside catch block");
 
 			}
 		}
@@ -893,15 +905,7 @@ public class TestBase {
 
 	}
 
-	public void swipeFromLeftToRight(MobileElement webElement) {
-		waitForElementToBeClickable(webElement);
-		int xAxisStartPoint = webElement.getLocation().getX();
-		int xAxisEndPoint = xAxisStartPoint + webElement.getSize().getWidth();
-		int yAxis = webElement.getLocation().getY();
-		TouchAction act = new TouchAction(driver);
-		System.out.print(xAxisStartPoint + " " + yAxis);
-//        act.longPress(xAxisStartPoint, yAxis).moveTo(xAxisEndPoint - 1, yAxis).release().perform();
-	}
+
 
 	/**
 	 * Scroll and Click an element
@@ -1044,6 +1048,16 @@ public class TestBase {
 			}
 		}
 		return validationMessages;
+	}
+
+	public void pressENTER(String inputElement) {
+		// TODO Auto-generated method stub
+		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.ENTER);		
+	}
+	
+	public void pressTAB(String inputElement) {
+		// TODO Auto-generated method stub
+		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.TAB);		
 	}
 
 }

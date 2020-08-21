@@ -66,8 +66,6 @@ public class SpotNumberScreen extends TestBase {
 		
 		// Store the check-in place
 		commonUtility.checkInPlace = base.gettext(checkedInPlaceElement);
-		System.out.println("Checked in Place :: "+commonUtility.checkInPlace);
-		System.out.println("expectedMessageKeys - data: " + expectedMessageKeys);
 		// To check if the size of formdata and fields are same
 		boolean outcome = webForm.checkFormFieldsData(formData, fields);
 		Assert.assertTrue(webForm.checkFormFieldsData(formData, fields));
@@ -87,7 +85,6 @@ public class SpotNumberScreen extends TestBase {
 	// Tap on Next Arrow button
 	public void tapNextArrowButton() {
 
-		System.out.println("Checked in Place :: Arrow  "+commonUtility.checkInPlace);
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
 				base.tapElement(submitNextButton);

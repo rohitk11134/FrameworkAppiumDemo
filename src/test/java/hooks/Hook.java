@@ -48,15 +48,14 @@ public class Hook extends TestBase {
 //		PropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("properties/Log4j.properties"));
 
 		prop = loadProperty("properties/config.properties");
-		String loadPropertyFile = prop.getProperty("platform_Property");
-		System.out.println("Property File To Read:: " + loadPropertyFile);
+		String loadPropertyFile = prop.getProperty("platform");
 
-		if (loadPropertyFile.startsWith("Android_")) {
+		if (loadPropertyFile.toLowerCase().startsWith("android")) {
 			propertyFile = loadProperty("properties/Android_Capabilities.properties");
 			capabilities.setCapability("appium:chromeOptions", ImmutableMap.of("w3c", false));
 			capabilities.setCapability("unicodeKeyboard", true);
 			capabilities.setCapability("resetKeyboard", true);
-		} else if (loadPropertyFile.startsWith("IOS_")) {
+		} else if (loadPropertyFile.toLowerCase().startsWith("ios")) {
 			propertyFile = loadProperty("properties/IOS_Capabilities.properties");
 //			capabilities.setCapability(MobileCapabilityType.UDID, propertyFile.getProperty("udid"));
 			capabilities.setCapability(IOSMobileCapabilityType.START_IWDP, true);
@@ -88,11 +87,9 @@ public class Hook extends TestBase {
 //			log.info("Initializing driver ::: " + driver);
 			if (driver != null) {
 //				log.info("SetUp Appium Driver for Device = " + capabilities);
-
 				driver.get(prop.getProperty("APP_URL"));
-				driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //				wait = new WebDriverWait(this.driver, 90);
-
 			}
 
 		} catch (MalformedURLException e) {
@@ -121,7 +118,6 @@ public class Hook extends TestBase {
 	@After
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {
-			System.out.println("Scenario Name ::: "+scenario.getName()+"  Scenario ID ::: "+scenario.getId()+"  Scenario URL :: "+scenario.getUri());
 			base.takeScreenShot(scenario.getName());
 //			base.resetApp();
 		}

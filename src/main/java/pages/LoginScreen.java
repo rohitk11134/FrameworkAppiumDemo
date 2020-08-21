@@ -106,7 +106,8 @@ public class LoginScreen extends TestBase {
 	public void tapSignInButton() {
 		// Save the check-in place text shown on check-in screen
 		checkInPlace = base.gettext(checkInPlace_CheckInScreen);
-
+		// Store the check-in place
+		commonUtility.checkInPlace = base.gettext(checkInPlace_CheckInScreen);
 		// Tap on Sign In button
 		if (base.getElement(XPATH, signInButton_CheckInScreen) != null) {
 			if (base.isDisplayed(signInButton_CheckInScreen)) {

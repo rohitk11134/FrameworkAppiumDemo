@@ -43,7 +43,6 @@ public class CommonUtility extends TestBase {
 						base.tapElement(iOS_Settings_LargeText);
 						if (base.isDisplayed(iOS_Settings_SwitchLargeAccessibility)) {
 							String text = base.gettext(iOS_Settings_SwitchLargeAccessibility, "value");
-							System.out.println("Text is ::: " + text);
 							if (text.equals("0")) {
 								iOS_Settings_SwitchLargeAccessibility_ON = iOS_Settings_SwitchLargeAccessibility_ON
 										.replace("temp", text);

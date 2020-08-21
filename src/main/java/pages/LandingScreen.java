@@ -98,7 +98,7 @@ public class LandingScreen extends TestBase {
 			if (base.isDisplayed(signInButton)) {
 				Assert.assertTrue(base.isDisplayed(signInButton), "SIGN IN button is displayed");
 			} else {
-				Assert.assertFalse(base.isDisplayed(signInButton), "SIGN IN button is not clicked");
+				Assert.fail(base.isDisplayed(signInButton)+" - SIGN IN button is not clicked");
 			}
 		} else {
 			Assert.assertNull(base.getElement(XPATH, signInButton),
@@ -112,9 +112,9 @@ public class LandingScreen extends TestBase {
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
 				base.tapElement(submitNextButton);
-				wait = new WebDriverWait(this.driver, 5);
+				wait = new WebDriverWait(driver, 5);
 			} else {
-				Assert.assertFalse(base.isDisplayed(submitNextButton), "Next (Arrow Mark) button is not clicked");
+				Assert.fail(base.isDisplayed(submitNextButton)+" - Next (Arrow Mark) button is not clicked");
 			}
 		} else {
 			Assert.assertNull(base.getElement(XPATH, submitNextButton),
@@ -145,6 +145,12 @@ public class LandingScreen extends TestBase {
 
 		verifyWelcomeMessage();
 		verifyQRScannerDisplayed();
+	}
+
+	public void enter7digitCode(String spot_Code) {
+		// TODO Auto-generated method stub
+		String tagName = base.getTagName(spotCode);
+		webForm.inputData(spotCode, tagName, spot_Code);	
 	}
 
 }
