@@ -1,9 +1,0 @@
-stepDefinitions/SpotNumberSteps.class
-runner/TestRunner.class
-stepDefinitions/LandingSteps.class
-stepDefinitions/PaymentSteps.class
-stepDefinitions/OrderDetailsSteps.class
-stepDefinitions/MyBagSteps.class
-stepDefinitions/LoginSteps.class
-stepDefinitions/PickupSteps.class
-hooks/Hook.class
