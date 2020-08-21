@@ -27,13 +27,29 @@ public class PickupScreen extends TestBase {
 	// Pickup Screen Elements
 	final String name_Field = "//input[@name='guestName']";
 
+	final String deliveryTab = "//div[contains(text(), 'Delivery')]";
+
 	final String pickUpDate_Field = "//input[@name='selectedDate']";
+	
+	final String deliveryDate_Field = "//input[@name='deliverydDate']";
 
 	final String pickUpTime_Field = "//input[@id='react-select-2-input']";
+	
+	final String deliveryTime_Field = "//input[@id='react-select-3-input']";
+	
+	final String address_Field = "//input[@name='address']";
+	
+	final String city_Field = "//input[@name='city']";
+	
+	final String state_Field = "//input[@name='state']";
+	
+	final String zip_Field = "//input[@name='zip']";
 
 	final String nextButton = "//button[@type='submit'][contains(text(), 'Next')]";
 
-	public String[] fields = { name_Field, pickUpDate_Field, pickUpTime_Field };
+	public String[] pickUp_Fields = { name_Field, pickUpDate_Field, pickUpTime_Field };
+	
+	public String[] delivery_Fields = { name_Field, deliveryDate_Field, deliveryTime_Field, address_Field,  city_Field, state_Field, zip_Field};
 
 	// the error fields.
 	final String FORM_ERROR = ".//*[contains(@class, 'error')]";
@@ -55,20 +71,42 @@ public class PickupScreen extends TestBase {
 	}
 
 	// Populate the data in to the pickup screen fields
-	public void populcatePickUpScreenFields(String guestName, String pickUpDate, String pickUpTime) {
+	public void populatePickUpScreenFields(String guestName, String pickUpDate, String pickUpTime) {
 		// TODO Auto-generated method stub
 		base.populateFields(name_Field, guestName);
-		
-		if(pickUpDate.equalsIgnoreCase("Today")) {
+
+		if (pickUpDate.equalsIgnoreCase("Today")) {
 			base.populateFields(pickUpDate_Field, pickUpDate);
 		} else if (pickUpDate.equalsIgnoreCase("Tomorrow")) {
 			pickUpDate = getPickUpDate(1);
 		}
 		base.populateFields(pickUpDate_Field, pickUpDate);
 		base.pressENTER(pickUpDate_Field);
-		
+
 		base.populateFields(pickUpTime_Field, pickUpTime);
 		base.pressTAB(pickUpTime_Field);
+	}
+	
+	// Populate the data in to the pickup screen fields
+	public void populateDeliveryScreenFields(String guestName, String deliveryDate, String deliveryTime, String address, String city, String state, String zipCode) {
+		// TODO Auto-generated method stub
+		base.populateFields(name_Field, guestName);
+
+		if (deliveryDate.equalsIgnoreCase("Today")) {
+			deliveryDate = getPickUpDate(0);
+		} else if (deliveryDate.equalsIgnoreCase("Tomorrow")) {
+			deliveryDate = getPickUpDate(1);
+		}
+		base.populateFields(deliveryDate_Field, deliveryDate);
+		base.pressENTER(deliveryDate_Field);
+
+		base.populateFields(deliveryTime_Field, deliveryTime);
+		base.pressTAB(deliveryTime_Field);
+		
+		base.populateFields(address_Field, address);
+		base.populateFields(city_Field, city);
+		base.populateFields(state_Field, state);
+		base.populateFields(zip_Field, zipCode);
 	}
 
 	public String getPickUpDate(int n) {
@@ -107,6 +145,10 @@ public class PickupScreen extends TestBase {
 
 		pickUpScreenErrorMessageMap.put("empty_GuestName", "Name field is required");
 		pickUpScreenErrorMessageMap.put("pickUpTime_Req", "Select Time field is required");
+		pickUpScreenErrorMessageMap.put("address_Req", "Address field is required");
+		pickUpScreenErrorMessageMap.put("city_Req", "City field is required");
+		pickUpScreenErrorMessageMap.put("state_Req", "State field is required");
+		pickUpScreenErrorMessageMap.put("zip_Req", "Zip field is required");
 
 		// List of all error message displayed in the screen
 		List<String> actualValidationMsg = base.getValidationMessages(ERROR_MESSAGE_FIELDS);
@@ -118,6 +160,21 @@ public class PickupScreen extends TestBase {
 		// Comparing expected error message keys from excel to actual error keys of
 		// displayed error messages
 		webForm.compareMessageKeys(expectedMessageKeys, actualValidationMsgKeys);
+	}
+
+	// Tap on delivery tab
+	public void tapDeliveryTab() {
+		// TODO Auto-generated method stub
+		if (base.getElement(XPATH, deliveryTab) != null) {
+			if (base.isDisplayed(deliveryTab)) {
+				base.tapElement(deliveryTab);
+				wait = new WebDriverWait(this.driver, 5);
+			} else {
+				Assert.fail(base.isDisplayed(deliveryTab) + " - Delivery Tab is not displayed");
+			}
+		} else {
+			Assert.assertNull(base.getElement(XPATH, deliveryTab), " - Delivery tab element is not present on the Pickup screen");
+		}
 	}
 
 }
