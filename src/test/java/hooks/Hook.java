@@ -19,6 +19,8 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import utilities.CommonUtility;
@@ -83,10 +85,15 @@ public class Hook extends TestBase {
 //		log.info("Capabilities::: " + capabilities);
 
 		try {
-			driver = new AppiumDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
+			if (loadPropertyFile.toLowerCase().startsWith("android")) {
+				driver = new AndroidDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
+			} else if (loadPropertyFile.toLowerCase().startsWith("ios")) {
+				driver = new IOSDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
+			}
 //			log.info("Initializing driver ::: " + driver);
 			if (driver != null) {
 //				log.info("SetUp Appium Driver for Device = " + capabilities);
+				base.startRecordingScreen();
 				driver.get(prop.getProperty("APP_URL"));
 				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //				wait = new WebDriverWait(this.driver, 90);
@@ -122,6 +129,12 @@ public class Hook extends TestBase {
 //			base.resetApp();
 		}
 		base.deleteCookies();
+		try {
+			base.stopRecordingScreen(scenario);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		base.tearDown();
 
 	}

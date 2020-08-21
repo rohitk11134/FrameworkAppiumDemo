@@ -3,9 +3,13 @@ package base;
 import static java.lang.Runtime.getRuntime;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +18,9 @@ import java.util.Set;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
+import cucumber.api.Scenario;
+
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.tools.ant.property.GetProperty;
 import org.openqa.selenium.By;
@@ -37,6 +44,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.screenrecording.CanRecordScreen;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
@@ -92,7 +100,7 @@ public class TestBase {
 		}
 		return title;
 	}
-	
+
 	/**
 	 * To get the URL of the page
 	 */
@@ -105,7 +113,6 @@ public class TestBase {
 		}
 		return currentURL;
 	}
-	
 
 	/**
 	 * Close the app which was provided in the capabilities at session creation
@@ -646,6 +653,52 @@ public class TestBase {
 		}
 	}
 
+	public void startRecordingScreen() {
+		((CanRecordScreen) driver).startRecordingScreen();
+	}
+
+	// stop video capturing and create *.mp4 file
+	public synchronized void stopRecordingScreen(Scenario scenario) throws Exception {
+
+		Object platformName = driver.getCapabilities().getCapability("platformName");
+		Object deviceName = driver.getCapabilities().getCapability("deviceName");
+		delay(3000L);
+		String media = ((CanRecordScreen) driver).stopRecordingScreen();
+
+		String dirPath = "videos" + File.separator + platformName + "_" + deviceName + File.separator + getDateTime();
+
+		File videoDir = new File(dirPath);
+
+		synchronized (videoDir) {
+			if (!videoDir.exists()) {
+				videoDir.mkdirs();
+			}
+		}
+		
+
+		String[] scenarios = scenario.getId().split("/");
+		String scenarioId = scenarios[1].replaceAll("(\\W|^_)*", "");
+		
+		FileOutputStream stream = null;
+		try {
+			stream = new FileOutputStream(videoDir + File.separator + scenarioId + ".mp4");
+			stream.write(Base64.decodeBase64(media));
+			stream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (stream != null) {
+				stream.close();
+			}
+		}
+	}
+
+	public String getDateTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
+
 	/**
 	 * TO allow the permission pop-up
 	 **/
@@ -905,8 +958,6 @@ public class TestBase {
 
 	}
 
-
-
 	/**
 	 * Scroll and Click an element
 	 * 
@@ -1052,12 +1103,12 @@ public class TestBase {
 
 	public void pressENTER(String inputElement) {
 		// TODO Auto-generated method stub
-		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.ENTER);		
+		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.ENTER);
 	}
-	
+
 	public void pressTAB(String inputElement) {
 		// TODO Auto-generated method stub
-		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.TAB);		
+		driver.findElement(By.xpath(inputElement)).sendKeys(Keys.TAB);
 	}
 
 }

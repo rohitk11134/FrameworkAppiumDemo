@@ -2,12 +2,7 @@ $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.
 formatter.feature({
   "name": "One Dine - mWeb Application Regression Scenarios",
   "description": "\tAs a Registered user, I want to test regression sceanrios of the application",
-  "keyword": "Feature",
-  "tags": [
-    {
-      "name": "@RegressionTest"
-    }
-  ]
+  "keyword": "Feature"
 });
 formatter.scenario({
   "name": "Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow",
@@ -16,6 +11,12 @@ formatter.scenario({
   "tags": [
     {
       "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
     }
   ]
 });
@@ -342,6 +343,12 @@ formatter.scenario({
   "tags": [
     {
       "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
     }
   ]
 });
@@ -479,7 +486,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I verify that selected category is \u0027Beverages\u0027",
+  "name": "I verify that selected category is \u0027Entrees\u0027",
   "keyword": "And "
 });
 formatter.match({
@@ -489,7 +496,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I scroll down the page till \u0027Coffee\u0027 menu and select the menu",
+  "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
   "keyword": "And "
 });
 formatter.match({
@@ -499,7 +506,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I tap on order button with \u0027Coffee\u0027 item to add it to the menu",
+  "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
   "keyword": "And "
 });
 formatter.match({
@@ -514,6 +521,16 @@ formatter.step({
 });
 formatter.match({
   "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
 });
 formatter.result({
   "status": "passed"
@@ -628,6 +645,12 @@ formatter.scenario({
   "tags": [
     {
       "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
     }
   ]
 });
@@ -954,6 +977,12 @@ formatter.scenario({
   "tags": [
     {
       "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
     }
   ]
 });
@@ -1246,7 +1275,18 @@ formatter.after({
 formatter.scenarioOutline({
   "name": "Online Delivery - Pay Later (Pay at restaurant) to make a successful order",
   "description": "",
-  "keyword": "Scenario Outline"
+  "keyword": "Scenario Outline",
+  "tags": [
+    {
+      "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
+    }
+  ]
 });
 formatter.step({
   "name": "I open the Onedine application in the mobile browser",
@@ -1400,6 +1440,12 @@ formatter.scenario({
   "tags": [
     {
       "name": "@RegressionTest"
+    },
+    {
+      "name": "@Nexus_6"
+    },
+    {
+      "name": "@iPhone_XS_Max"
     }
   ]
 });
