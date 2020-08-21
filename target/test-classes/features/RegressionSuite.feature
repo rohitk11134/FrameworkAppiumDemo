@@ -1,9 +1,8 @@
+@RegressionTest
 Feature: One Dine - mWeb Application Regression Scenarios
 	As a Registered user, I want to test regression sceanrios of the application
   	
-	@RegressionTest
-	@Nexus_6
-	@iPhone_XS_Max
+
 	Scenario: Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow 
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11CU' in the seven digit spot code field
@@ -37,9 +36,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen 
 		
-	@RegressionTest
-	@Nexus_6
-	@iPhone_XS_Max		
+	
 	Scenario: Curbside flow type-3 - Pay later (Pay At Restaurant) to make a successful order
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11CU' in the seven digit spot code field
@@ -70,9 +67,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
 		
-	@RegressionTest
-	@Nexus_6
-	@iPhone_XS_Max	
+
 	Scenario: Online Pickup - Pay Now to make a successful payment with valid card details
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11OL' in the seven digit spot code field
@@ -106,9 +101,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen 
 	
-	@RegressionTest
-	@Nexus_6
-	@iPhone_XS_Max		
+	
 	Scenario: Online Pickup - Pay Later (Pay at restaurant) to make a successful order
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11OL' in the seven digit spot code field
@@ -139,9 +132,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
 		
-	@RegressionTest
-	@Nexus_6
-	@iPhone_XS_Max
+		
 	Scenario Outline: Online Delivery - Pay Later (Pay at restaurant) to make a successful order
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11OL' in the seven digit spot code field
