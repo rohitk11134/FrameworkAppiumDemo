@@ -50,7 +50,7 @@ public class Hook extends TestBase {
 //		PropertyConfigurator.configure(Hook.class.getClassLoader().getResourceAsStream("properties/Log4j.properties"));
 
 		prop = loadProperty("properties/config.properties");
-		String loadPropertyFile = prop.getProperty("platform");
+		String loadPropertyFile = prop.getProperty("platformName");
 
 		if (loadPropertyFile.toLowerCase().startsWith("android")) {
 			propertyFile = loadProperty("properties/Android_Capabilities.properties");
@@ -68,7 +68,7 @@ public class Hook extends TestBase {
 		}
 //		capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "v1.17.1");
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, propertyFile.getProperty("automationName"));
-		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, propertyFile.getProperty("platformName"));
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, prop.getProperty("platformName"));
 //		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, propertyFile.getProperty("platformVersion"));
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, propertyFile.getProperty("deviceName"));
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));

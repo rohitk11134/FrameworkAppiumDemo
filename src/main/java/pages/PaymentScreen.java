@@ -75,6 +75,7 @@ public class PaymentScreen extends TestBase {
 		Assert.assertTrue(webForm.checkFormFieldsData(formData, fields));
 
 		base.scrollToElementUsingJS(cardNumber);
+		base.delay(1000L);
 		// To enter the data
 		if (outcome) {
 			webForm.enterData(formData, fields);
