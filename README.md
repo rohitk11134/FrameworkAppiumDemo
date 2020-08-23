@@ -9,14 +9,16 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Technology stack:
+ * Eclipse - IDE
  * Appium (Mobile Automation Tool)
  * Selenium (web app testing) [Used as a wrapper for appium]
- * TestNG (test runner)
- * Cucumber (Reporting)
+ * TestNG (Test Management library)
+ * Cucumber (Reporting framework)
  * Java (Programming Language)
  * Maven (Dependency Manager)
+ * GitHub - Version control
  * Page Object Model
- * Apache POI library
+ * Apache POI library (Test Data Management)
  
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
