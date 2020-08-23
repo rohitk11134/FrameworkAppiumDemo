@@ -77,7 +77,7 @@ public class SpotNumberScreen extends TestBase {
 
 	// Verify if 'Order' bottom tab is selected
 	public void verifySelectedOrderTab() {
-		base.delay(3000L);
+//		base.delay(3000L);
 		String actual_SelectedTab = base.gettext(selectedTab);
 		Assert.assertEquals(actual_SelectedTab.trim(), expected_SelectedTab.trim());
 	}

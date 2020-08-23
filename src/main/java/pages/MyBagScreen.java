@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -20,6 +21,8 @@ public class MyBagScreen extends TestBase {
 	final String nextButton = "//button[contains(text(),'Next')]";
 																							
 	final String payNowButton = "//button[@type='button'][@class='btn btn-primary od-btn-primary w-100']";
+	
+	final String payLater = "//button[contains(text(), 'pay later')]";
 
 
 	public void tapOnMyBagTab() {
@@ -28,7 +31,6 @@ public class MyBagScreen extends TestBase {
 			if (base.isDisplayed(myBagTab)) {
 				base.tapElement(myBagTab);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(myBagTab), "Not able to tap on 'My Bag' tab");
 			}
@@ -44,7 +46,6 @@ public class MyBagScreen extends TestBase {
 			if (base.isDisplayed(nextButton)) {
 				base.tapElement(nextButton);
 				wait = new WebDriverWait(this.driver, 5);
-				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(nextButton), "Not able to tap on 'NEXT' tab");
 			}
@@ -74,9 +75,8 @@ public class MyBagScreen extends TestBase {
 		
 		if (base.getElement(XPATH, payNowButton) != null ) {
 			if(base.isDisplayed(payNowButton)){
-				base.tapElement(payNowButton);
-				wait = new WebDriverWait(this.driver, 5);	
-				base.delay(5000L);
+				base.tapElement(payNowButton); 
+				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(payNowButton), "Not able to tap on 'Pay Now' tab");
 			}

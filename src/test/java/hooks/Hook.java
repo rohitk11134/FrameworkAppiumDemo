@@ -61,6 +61,7 @@ public class Hook extends TestBase {
 			propertyFile = loadProperty("properties/IOS_Capabilities.properties");
 //			capabilities.setCapability(MobileCapabilityType.UDID, propertyFile.getProperty("udid"));
 			capabilities.setCapability(IOSMobileCapabilityType.START_IWDP, true);
+			capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, "8101");
 			capabilities.setCapability(IOSMobileCapabilityType.SAFARI_ALLOW_POPUPS, true);
 			capabilities.setCapability(IOSMobileCapabilityType.SAFARI_OPEN_LINKS_IN_BACKGROUND, true);
 			capabilities.setCapability("connectHardwareKeyboard", false);
@@ -78,6 +79,7 @@ public class Hook extends TestBase {
 //		capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, false);
+		capabilities.setCapability("fullContextList", true);
 		capabilities.setCapability("autoDismissAlerts", true);
 		capabilities.setCapability("–session-override", true);
 

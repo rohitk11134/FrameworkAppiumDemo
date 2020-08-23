@@ -64,10 +64,9 @@ public class PickupScreen extends TestBase {
 	// Verify if the current screen is Pickup screen
 	public void verifyPickUpScreen() {
 		// TODO Auto-generated method stub
-		base.waitForElementToBeVisible(By.xpath(name_Field));
+		base.waitForVisibility(base.getElement(XPATH, name_Field));
 		String currentUrl = base.getCurrentURL();
 		Assert.assertTrue(currentUrl.toLowerCase().contains("pickup-time"), "Does not navigate to Pickup screen");
-
 	}
 
 	// Populate the data in to the pickup screen fields

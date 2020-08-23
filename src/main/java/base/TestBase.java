@@ -37,7 +37,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import io.appium.java_client.AppiumDriver;
@@ -269,6 +271,21 @@ public class TestBase {
 		return (MobileElement) new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(element));
 	}
 
+	public MobileElement waitForVisibility(MobileElement e) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
+				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+
+		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(e));
+	}
+	
+	public MobileElement waitForVisibility(By by) {
+		MobileElement e = driver.findElement(by);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
+				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+
+		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(e));
+	}
+
 	public void click_last(List<MobileElement> element) {
 		waitForElementToBeClickable(getLast(element));
 		getLast(element).click();
@@ -380,7 +397,7 @@ public class TestBase {
 	 */
 	public String gettext(String element) {
 		String text = null;
-		MobileElement Element = getElement(XPATH, element);
+		MobileElement Element = waitForVisibility(getElement(XPATH, element));
 		try {
 			if (Element != null) {
 				text = Element.getText();
@@ -399,7 +416,7 @@ public class TestBase {
 	 */
 	public String gettext(String element, String attribute) {
 		String value = null;
-		MobileElement Element = getElement(XPATH, element);
+		MobileElement Element = waitForVisibility(getElement(XPATH, element));
 		try {
 			if (Element != null) {
 				value = Element.getAttribute(attribute);
@@ -444,7 +461,7 @@ public class TestBase {
 
 	// To verify if element is displayed
 	public boolean isDisplayed(String Xpath) {
-		MobileElement element = waitForElementToBeVisible(Xpath);
+		MobileElement element = waitForVisibility(getElement(Xpath));
 //		MobileElement element = driver.findElement(By.xpath(Xpath));
 		boolean isDisplayed = false;
 		try {
@@ -589,7 +606,7 @@ public class TestBase {
 		}
 
 		try {
-			query = (MobileElement) driver.findElement(byElement);
+			query = waitForVisibility(byElement);
 			return query;
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -607,23 +624,21 @@ public class TestBase {
 	 */
 	public void populateFields(String element, String text) {
 		Object platformName = driver.getCapabilities().getCapability("platformName");
-		MobileElement elem = waitForElementToBeVisible(element);
+		MobileElement ele = waitForVisibility(getElement(element));
 
 		try {
-			if (elem != null) {
-				MobileElement ele = waitForElementToBeClickable(element);
+			if (ele != null) {
+//				MobileElement ele = waitForElementToBeClickable(element);
 				if (text != null) {
 					if (!ele.getText().isEmpty() && ele.getText() != null) {
 						ele.clear();
 					}
-					delay(500L);
 					if (platformName.equals("iOS")) {
 						((JavascriptExecutor) driver).executeScript(
 								"let input = arguments[0];var setValue = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;setValue.call(input, '"
 										+ text
 										+ "');var e = new Event('input', { bubbles: true });input.dispatchEvent(e);",
 								ele);
-						delay(1000L);
 					} else if (platformName.equals("Android")) {
 						ele.sendKeys(text);
 					}
@@ -642,10 +657,9 @@ public class TestBase {
 	 * @param element xpath (String) of the element
 	 */
 	public void tapElement(String element) {
-		MobileElement ele = waitForElementToBeClickable(element);
+		MobileElement ele = waitForVisibility(getElement(element));
 		try {
 			if (ele != null) {
-				delay(500L);
 				ele.click();
 			}
 		} catch (Exception e) {
@@ -674,11 +688,10 @@ public class TestBase {
 				videoDir.mkdirs();
 			}
 		}
-		
 
 		String[] scenarios = scenario.getId().split("/");
 		String scenarioId = scenarios[1].replaceAll("(\\W|^_)*", "");
-		
+
 		FileOutputStream stream = null;
 		try {
 			stream = new FileOutputStream(videoDir + File.separator + scenarioId + ".mp4");
@@ -718,15 +731,14 @@ public class TestBase {
 	}
 
 	public void scrollToElementUsingJS(String input) {
-		MobileElement element = getElement(XPATH, input);
+		MobileElement element = waitForVisibility(getElement(input));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
 	public void scrollAndClickElementUsingJS(String input) {
-		MobileElement element = getElement(XPATH, input);
+		MobileElement element = waitForVisibility(getElement(input));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		delay(1500L);
 	}
 
 	public void scrollTo(String text) {
@@ -1063,7 +1075,7 @@ public class TestBase {
 
 	public String getTagName(String inputElement) {
 		String tagname = "";
-		WebElement ele = getElement(XPATH, inputElement);
+		MobileElement ele = waitForVisibility(getElement(XPATH, inputElement));
 		if (ele != null) {
 			tagname = getElement(XPATH, inputElement).getTagName();
 			if (tagname.equals("input")) {

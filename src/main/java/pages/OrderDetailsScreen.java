@@ -53,7 +53,6 @@ public class OrderDetailsScreen extends TestBase {
 					.equalsIgnoreCase(expectedCategoryName.toLowerCase().trim())) {
 				categoryToClick = categoryToClick.replace("temp", expectedCategoryName);
 				base.tapElement(categoryToClick);
-				base.delay(1000L);
 				actual_SelectedCategory = base.gettext(selectedCategory);
 				Assert.assertEquals(actual_SelectedCategory.toLowerCase().trim(),
 						expectedCategoryName.toLowerCase().trim(),
@@ -72,9 +71,7 @@ public class OrderDetailsScreen extends TestBase {
 		String menuItemToBeClicked = menu_Item.replace("temp", menuItem);
 		if (base.getElement(XPATH, menuItemToBeClicked) != null) {
 			base.scrollToElementUsingJS(menuItemToBeClicked);
-			base.delay(1500L);
 			base.tapElement(menuItemToBeClicked);
-			base.delay(1500L);
 		} else {
 			Assert.assertNull(base.getElement(XPATH, menuItemToBeClicked), "Coffee menu item is not available");
 		}
@@ -115,7 +112,6 @@ public class OrderDetailsScreen extends TestBase {
 		if (base.getElement(XPATH, addToBag) != null) {
 			if (base.isDisplayed(addToBag)) {
 				base.tapElement(addToBag);
-				base.delay(3000L);
 				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(addToBag), "Not able to click Add to Bag button");
@@ -134,13 +130,10 @@ public class OrderDetailsScreen extends TestBase {
 		
 		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
 			base.scrollAndClickElementUsingJS(modifier1_Xpath);
-			base.delay(1500L);
 			if (base.getElement(XPATH, modifier2_Xpath) != null) {
 				base.scrollAndClickElementUsingJS(modifier2_Xpath);
-				base.delay(1500L);
 				if (base.getElement(XPATH, modifier3_Xpath) != null) {
 					base.scrollAndClickElementUsingJS(modifier3_Xpath);
-					base.delay(1500L);
 				} else {
 					Assert.fail(modifier3_Xpath + " element is not found");
 				}

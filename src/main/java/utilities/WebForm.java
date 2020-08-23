@@ -70,8 +70,8 @@ public class WebForm extends TestBase {
 	}
 
 	public void inputData(String field, String tagName, String data) {
-		switch (tagName) {
 
+		switch (tagName) {
 		case "text":
 			base.populateFields(field, data);
 			break;
@@ -102,9 +102,7 @@ public class WebForm extends TestBase {
 			break;
 
 		case "number":
-			base.tapElement(field);
-			base.delay(500L);
-			base.tapElement(field);
+//			base.tapElement(field);
 			base.populateFields(field, data);
 			break;
 

@@ -27,7 +27,7 @@ public class LoginScreen extends TestBase {
 
 	final String signInWarningMessage = "//div[@class='col-10 text-left pb-2 pt-2 fs-16 sensorCheckin_warningMessageColor__1HzBU']";
 
-	final String signInButton_CheckInScreen = "//*[@class='btn btn-primary w-100']";
+	final String signInButton_CheckInScreen = "//button[@type='button'][contains(@class, 'btn btn-primary')]";
 
 	// Login Screen Elements
 	final String headerTextLoginScreenElement = "//div[@class='text-center fs-20 fw-700 p-10 pb-15']";
@@ -175,7 +175,6 @@ public class LoginScreen extends TestBase {
 		if (base.getElement(XPATH, signInWithPassword) != null) {
 			if (base.isDisplayed(signInWithPassword)) {
 				base.tapElement(signInWithPassword);
-				base.delay(1500L);
 			} else {
 				Assert.assertTrue(base.isDisplayed(signInWithPassword), "Link 'Sign in with password' is not clicked");
 			}
@@ -193,7 +192,6 @@ public class LoginScreen extends TestBase {
 		if (base.getElement(XPATH, signInButton_LoginScreen) != null) {
 			if (base.isDisplayed(signInButton_LoginScreen)) {
 				base.tapElement(signInButton_LoginScreen);
-				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(signInButton_LoginScreen), "SIGN IN button is not clicked");
 			}
