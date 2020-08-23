@@ -1,0 +1,2333 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 12631707067,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.setUp()"
+            }
+          }
+        ],
+        "line": 6,
+        "name": "Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow",
+        "description": "",
+        "id": "one-dine---mweb-application-regression-scenarios;curbside-flow-type-3---pay-now---make-a-successful-payment-with-valid-card-details-for-curbside-flow",
+        "after": [
+          {
+            "result": {
+              "duration": 4784852262,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 712100806,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I open the Onedine application in the mobile browser",
+            "match": {
+              "location": "LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1020688035,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I enter the spot code as \u0027PAI11CU\u0027 in the seven digit spot code field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027PAI11CU\u0027",
+                  "offset": 25
+                }
+              ],
+              "location": "LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 452644623,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I tap on submit button",
+            "match": {
+              "location": "LandingSteps.i_tap_on_submit_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1856443313,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I verify that it navigate to check-in screen and Sign in button is displayed",
+            "match": {
+              "location": "LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 608594987,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I tap on Sign In button",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 171745955,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I navigate to the Sign In screen",
+            "match": {
+              "location": "LoginSteps.navigateToSignInScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 290022495,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I tap on the link Sign in with a password",
+            "match": {
+              "location": "LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2985898225,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I enter valid login credentials from the excel sheet name \"Login_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Login_Success\"",
+                  "offset": 58
+                }
+              ],
+              "location": "LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 331022934,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I tap on Sign In button present in Login Screen",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1876375543,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I navigate to spot number screen and verify the message displayed on the screen",
+            "match": {
+              "location": "SpotNumberSteps.i_navigate_to_spot_number_screen_and_verify_the_message_displayed_on_the_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 675624093,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "I enter the Spot Number from the excel sheet \"SpotNo_Success\" in the Spot Number field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"SpotNo_Success\"",
+                  "offset": 45
+                }
+              ],
+              "location": "SpotNumberSteps.i_enter_the_Spot_Number_from_the_excel_sheet_in_the_Spot_Number_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 632006901,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I tap on next arrow button and submit the spot number",
+            "match": {
+              "location": "SpotNumberSteps.i_tap_on_next_arrow_button_and_submit_the_spot_number()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 490018844,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I should be able to navigate to \u0027Order\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Order\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2043055100,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "I verify that selected category is \u0027Entrees\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Entrees\u0027",
+                  "offset": 35
+                }
+              ],
+              "location": "OrderDetailsSteps.i_verify_that_selected_category_is(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 471377848,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 655230156,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 27
+                }
+              ],
+              "location": "OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 796987707,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "I should be able to navigate to menu details screen",
+            "match": {
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1046817538,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Fettuccini\u0027",
+                  "offset": 9
+                },
+                {
+                  "val": "\u0027Sausage\u0027",
+                  "offset": 24
+                },
+                {
+                  "val": "\u0027Alfredo\u0027",
+                  "offset": 38
+                }
+              ],
+              "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 707914297,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "I tap on Add to Bag button",
+            "match": {
+              "location": "OrderDetailsSteps.i_tap_on_Add_to_Bag_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1052908302,
+              "status": "passed"
+            },
+            "line": 26,
+            "name": "I tap on My Bag from bottom footer",
+            "match": {
+              "location": "MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 604006585,
+              "status": "passed"
+            },
+            "line": 27,
+            "name": "I should be able to navigate to \u0027My Bag\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027My Bag\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 466991754,
+              "status": "passed"
+            },
+            "line": 28,
+            "name": "I click on the next buttton",
+            "match": {
+              "location": "MyBagSteps.i_click_on_the_next_buttton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 256374516,
+              "status": "passed"
+            },
+            "line": 29,
+            "name": "I should be able to navigate to checkout screen",
+            "match": {
+              "location": "MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 38567,
+              "status": "passed"
+            },
+            "line": 30,
+            "name": "I verify that added menu is being displayed in the screen",
+            "match": {
+              "location": "MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 573310115,
+              "status": "passed"
+            },
+            "line": 31,
+            "name": "I tap on Pay Now button",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_Now_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3139374742,
+              "status": "passed"
+            },
+            "line": 32,
+            "name": "I should be able to navigate to Payment screen of the application",
+            "match": {
+              "location": "PaymentSteps.i_should_be_able_to_navigate_to_Payment_screen_of_the_application()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5834941391,
+              "status": "passed"
+            },
+            "line": 33,
+            "name": "I enter the valid card details into the fields from the excel sheet name \"Payment_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Payment_Success\"",
+                  "offset": 73
+                }
+              ],
+              "location": "PaymentSteps.i_enter_the_valid_card_details_into_the_fields_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 332344110,
+              "status": "passed"
+            },
+            "line": 34,
+            "name": "I select No Tip as a tip amount",
+            "match": {
+              "location": "PaymentSteps.i_select_No_Tip_as_a_tip_amount()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 526823939,
+              "status": "passed"
+            },
+            "line": 35,
+            "name": "I tap on Pay Now button available on payment screen",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_Now_button_available_on_payment_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11441803983,
+              "status": "passed"
+            },
+            "line": 36,
+            "name": "I tap on Confirm button to proceed the payment",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 274038066,
+              "status": "passed"
+            },
+            "line": 37,
+            "name": "I am on payment confirmation screen",
+            "match": {
+              "location": "PaymentSteps.i_am_on_payment_confirmation_screen()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@RegressionTest"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 11039087573,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.setUp()"
+            }
+          }
+        ],
+        "line": 40,
+        "name": "Curbside flow type-3 - Pay later (Pay At Restaurant) to make a successful order",
+        "description": "",
+        "id": "one-dine---mweb-application-regression-scenarios;curbside-flow-type-3---pay-later-(pay-at-restaurant)-to-make-a-successful-order",
+        "after": [
+          {
+            "result": {
+              "duration": 4645224575,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 630529296,
+              "status": "passed"
+            },
+            "line": 41,
+            "name": "I open the Onedine application in the mobile browser",
+            "match": {
+              "location": "LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1259616045,
+              "status": "passed"
+            },
+            "line": 42,
+            "name": "I enter the spot code as \u0027PAI11CU\u0027 in the seven digit spot code field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027PAI11CU\u0027",
+                  "offset": 25
+                }
+              ],
+              "location": "LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 419749739,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I tap on submit button",
+            "match": {
+              "location": "LandingSteps.i_tap_on_submit_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1698764748,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "I verify that it navigate to check-in screen and Sign in button is displayed",
+            "match": {
+              "location": "LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 598964752,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "I tap on Sign In button",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 160301040,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "I navigate to the Sign In screen",
+            "match": {
+              "location": "LoginSteps.navigateToSignInScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 278108287,
+              "status": "passed"
+            },
+            "line": 47,
+            "name": "I tap on the link Sign in with a password",
+            "match": {
+              "location": "LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2268515438,
+              "status": "passed"
+            },
+            "line": 48,
+            "name": "I enter valid login credentials from the excel sheet name \"Login_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Login_Success\"",
+                  "offset": 58
+                }
+              ],
+              "location": "LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 331098383,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I tap on Sign In button present in Login Screen",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2035746450,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I navigate to spot number screen and verify the message displayed on the screen",
+            "match": {
+              "location": "SpotNumberSteps.i_navigate_to_spot_number_screen_and_verify_the_message_displayed_on_the_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 708312106,
+              "status": "passed"
+            },
+            "line": 51,
+            "name": "I enter the Spot Number from the excel sheet \"SpotNo_Success\" in the Spot Number field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"SpotNo_Success\"",
+                  "offset": 45
+                }
+              ],
+              "location": "SpotNumberSteps.i_enter_the_Spot_Number_from_the_excel_sheet_in_the_Spot_Number_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 601446390,
+              "status": "passed"
+            },
+            "line": 52,
+            "name": "I tap on next arrow button and submit the spot number",
+            "match": {
+              "location": "SpotNumberSteps.i_tap_on_next_arrow_button_and_submit_the_spot_number()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 528820546,
+              "status": "passed"
+            },
+            "line": 53,
+            "name": "I should be able to navigate to \u0027Order\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Order\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1895163196,
+              "status": "passed"
+            },
+            "line": 54,
+            "name": "I verify that selected category is \u0027Entrees\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Entrees\u0027",
+                  "offset": 35
+                }
+              ],
+              "location": "OrderDetailsSteps.i_verify_that_selected_category_is(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 482127925,
+              "status": "passed"
+            },
+            "line": 55,
+            "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 824612517,
+              "status": "passed"
+            },
+            "line": 56,
+            "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 27
+                }
+              ],
+              "location": "OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1085201507,
+              "status": "passed"
+            },
+            "line": 57,
+            "name": "I should be able to navigate to menu details screen",
+            "match": {
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 999293391,
+              "status": "passed"
+            },
+            "line": 58,
+            "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Fettuccini\u0027",
+                  "offset": 9
+                },
+                {
+                  "val": "\u0027Sausage\u0027",
+                  "offset": 24
+                },
+                {
+                  "val": "\u0027Alfredo\u0027",
+                  "offset": 38
+                }
+              ],
+              "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 662028982,
+              "status": "passed"
+            },
+            "line": 59,
+            "name": "I tap on Add to Bag button",
+            "match": {
+              "location": "OrderDetailsSteps.i_tap_on_Add_to_Bag_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1112362913,
+              "status": "passed"
+            },
+            "line": 60,
+            "name": "I tap on My Bag from bottom footer",
+            "match": {
+              "location": "MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 477897870,
+              "status": "passed"
+            },
+            "line": 61,
+            "name": "I should be able to navigate to \u0027My Bag\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027My Bag\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 555890111,
+              "status": "passed"
+            },
+            "line": 62,
+            "name": "I click on the next buttton",
+            "match": {
+              "location": "MyBagSteps.i_click_on_the_next_buttton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 246698092,
+              "status": "passed"
+            },
+            "line": 63,
+            "name": "I should be able to navigate to checkout screen",
+            "match": {
+              "location": "MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 43231,
+              "status": "passed"
+            },
+            "line": 64,
+            "name": "I verify that added menu is being displayed in the screen",
+            "match": {
+              "location": "MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 688617543,
+              "status": "passed"
+            },
+            "line": 65,
+            "name": "I tap on Pay at the Restaurant button available on the Payment screen",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1284767573,
+              "status": "passed"
+            },
+            "line": 66,
+            "name": "I tap on Order Now button",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Order_Now_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6465334082,
+              "status": "passed"
+            },
+            "line": 67,
+            "name": "I tap on Confirm button to proceed the payment",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 285641146,
+              "status": "passed"
+            },
+            "line": 68,
+            "name": "I am on payment confirmation screen",
+            "match": {
+              "location": "PaymentSteps.i_am_on_payment_confirmation_screen()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@RegressionTest"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 23255641359,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.setUp()"
+            }
+          }
+        ],
+        "line": 71,
+        "name": "Online Pickup - Pay Now to make a successful payment with valid card details",
+        "description": "",
+        "id": "one-dine---mweb-application-regression-scenarios;online-pickup---pay-now-to-make-a-successful-payment-with-valid-card-details",
+        "after": [
+          {
+            "result": {
+              "duration": 5692992607,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 902541735,
+              "status": "passed"
+            },
+            "line": 72,
+            "name": "I open the Onedine application in the mobile browser",
+            "match": {
+              "location": "LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1483824983,
+              "status": "passed"
+            },
+            "line": 73,
+            "name": "I enter the spot code as \u0027PAI11OL\u0027 in the seven digit spot code field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027PAI11OL\u0027",
+                  "offset": 25
+                }
+              ],
+              "location": "LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 637787785,
+              "status": "passed"
+            },
+            "line": 74,
+            "name": "I tap on submit button",
+            "match": {
+              "location": "LandingSteps.i_tap_on_submit_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2410394563,
+              "status": "passed"
+            },
+            "line": 75,
+            "name": "I verify that it navigate to check-in screen and Sign in button is displayed",
+            "match": {
+              "location": "LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 855463302,
+              "status": "passed"
+            },
+            "line": 76,
+            "name": "I tap on Sign In button",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 239732953,
+              "status": "passed"
+            },
+            "line": 77,
+            "name": "I navigate to the Sign In screen",
+            "match": {
+              "location": "LoginSteps.navigateToSignInScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 452833176,
+              "status": "passed"
+            },
+            "line": 78,
+            "name": "I tap on the link Sign in with a password",
+            "match": {
+              "location": "LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3177965671,
+              "status": "passed"
+            },
+            "line": 79,
+            "name": "I enter valid login credentials from the excel sheet name \"Login_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Login_Success\"",
+                  "offset": 58
+                }
+              ],
+              "location": "LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 511053111,
+              "status": "passed"
+            },
+            "line": 80,
+            "name": "I tap on Sign In button present in Login Screen",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4656482502,
+              "status": "passed"
+            },
+            "line": 81,
+            "name": "I should be able to navigate to Pickup screen",
+            "match": {
+              "location": "PickupSteps.i_should_be_able_to_navigate_to_Pickup_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5723614724,
+              "status": "passed"
+            },
+            "line": 82,
+            "name": "I enter the Name as \u0027John Doe\u0027 , select Pickup Date as \u0027Tomorrow\u0027 and select Pickup time as \u002708:45 PM\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027John Doe\u0027",
+                  "offset": 20
+                },
+                {
+                  "val": "\u0027Tomorrow\u0027",
+                  "offset": 55
+                },
+                {
+                  "val": "\u002708:45 PM\u0027",
+                  "offset": 92
+                }
+              ],
+              "location": "PickupSteps.i_enter_the_Name_as_select_Pickup_Date_as_and_select_Pickup_time_as(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 834567215,
+              "status": "passed"
+            },
+            "line": 83,
+            "name": "I submit the Next button with all the mandatory fields",
+            "match": {
+              "location": "PickupSteps.i_submit_the_Next_button_with_all_the_mandatory_fields()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 965241791,
+              "status": "passed"
+            },
+            "line": 84,
+            "name": "I should be able to navigate to \u0027Order\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Order\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3168137947,
+              "status": "passed"
+            },
+            "line": 85,
+            "name": "I verify that selected category is \u0027Entrees\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Entrees\u0027",
+                  "offset": 35
+                }
+              ],
+              "location": "OrderDetailsSteps.i_verify_that_selected_category_is(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2484231338,
+              "status": "passed"
+            },
+            "line": 86,
+            "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1411504347,
+              "status": "passed"
+            },
+            "line": 87,
+            "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 27
+                }
+              ],
+              "location": "OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2214782855,
+              "status": "passed"
+            },
+            "line": 88,
+            "name": "I should be able to navigate to menu details screen",
+            "match": {
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2212334225,
+              "status": "passed"
+            },
+            "line": 89,
+            "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Fettuccini\u0027",
+                  "offset": 9
+                },
+                {
+                  "val": "\u0027Sausage\u0027",
+                  "offset": 24
+                },
+                {
+                  "val": "\u0027Alfredo\u0027",
+                  "offset": 38
+                }
+              ],
+              "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1119780528,
+              "status": "passed"
+            },
+            "line": 90,
+            "name": "I tap on Add to Bag button",
+            "match": {
+              "location": "OrderDetailsSteps.i_tap_on_Add_to_Bag_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3317762773,
+              "status": "passed"
+            },
+            "line": 91,
+            "name": "I tap on My Bag from bottom footer",
+            "match": {
+              "location": "MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1078177349,
+              "status": "passed"
+            },
+            "line": 92,
+            "name": "I should be able to navigate to \u0027My Bag\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027My Bag\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 728823151,
+              "status": "passed"
+            },
+            "line": 93,
+            "name": "I click on the next buttton",
+            "match": {
+              "location": "MyBagSteps.i_click_on_the_next_buttton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 773713588,
+              "status": "passed"
+            },
+            "line": 94,
+            "name": "I should be able to navigate to checkout screen",
+            "match": {
+              "location": "MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 59775,
+              "status": "passed"
+            },
+            "line": 95,
+            "name": "I verify that added menu is being displayed in the screen",
+            "match": {
+              "location": "MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 714837426,
+              "status": "passed"
+            },
+            "line": 96,
+            "name": "I tap on Pay Now button",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_Now_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2494260401,
+              "status": "passed"
+            },
+            "line": 97,
+            "name": "I should be able to navigate to Payment screen of the application",
+            "match": {
+              "location": "PaymentSteps.i_should_be_able_to_navigate_to_Payment_screen_of_the_application()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 13785312578,
+              "status": "passed"
+            },
+            "line": 98,
+            "name": "I enter the valid card details into the fields from the excel sheet name \"Payment_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Payment_Success\"",
+                  "offset": 73
+                }
+              ],
+              "location": "PaymentSteps.i_enter_the_valid_card_details_into_the_fields_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1683333275,
+              "status": "passed"
+            },
+            "line": 99,
+            "name": "I select No Tip as a tip amount",
+            "match": {
+              "location": "PaymentSteps.i_select_No_Tip_as_a_tip_amount()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1383065300,
+              "status": "passed"
+            },
+            "line": 100,
+            "name": "I tap on Pay Now button available on payment screen",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_Now_button_available_on_payment_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 11880244383,
+              "status": "passed"
+            },
+            "line": 101,
+            "name": "I tap on Confirm button to proceed the payment",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 627967141,
+              "status": "passed"
+            },
+            "line": 102,
+            "name": "I am on payment confirmation screen",
+            "match": {
+              "location": "PaymentSteps.i_am_on_payment_confirmation_screen()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@RegressionTest"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 24866892921,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.setUp()"
+            }
+          }
+        ],
+        "line": 105,
+        "name": "Online Pickup - Pay Later (Pay at restaurant) to make a successful order",
+        "description": "",
+        "id": "one-dine---mweb-application-regression-scenarios;online-pickup---pay-later-(pay-at-restaurant)-to-make-a-successful-order",
+        "after": [
+          {
+            "result": {
+              "duration": 5157754170,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 810135074,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "I open the Onedine application in the mobile browser",
+            "match": {
+              "location": "LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2403542956,
+              "status": "passed"
+            },
+            "line": 107,
+            "name": "I enter the spot code as \u0027PAI11OL\u0027 in the seven digit spot code field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027PAI11OL\u0027",
+                  "offset": 25
+                }
+              ],
+              "location": "LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1156294680,
+              "status": "passed"
+            },
+            "line": 108,
+            "name": "I tap on submit button",
+            "match": {
+              "location": "LandingSteps.i_tap_on_submit_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4395133112,
+              "status": "passed"
+            },
+            "line": 109,
+            "name": "I verify that it navigate to check-in screen and Sign in button is displayed",
+            "match": {
+              "location": "LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1669123547,
+              "status": "passed"
+            },
+            "line": 110,
+            "name": "I tap on Sign In button",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 526489978,
+              "status": "passed"
+            },
+            "line": 111,
+            "name": "I navigate to the Sign In screen",
+            "match": {
+              "location": "LoginSteps.navigateToSignInScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 741294142,
+              "status": "passed"
+            },
+            "line": 112,
+            "name": "I tap on the link Sign in with a password",
+            "match": {
+              "location": "LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10223359614,
+              "status": "passed"
+            },
+            "line": 113,
+            "name": "I enter valid login credentials from the excel sheet name \"Login_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Login_Success\"",
+                  "offset": 58
+                }
+              ],
+              "location": "LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1133977537,
+              "status": "passed"
+            },
+            "line": 114,
+            "name": "I tap on Sign In button present in Login Screen",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 8781077629,
+              "status": "passed"
+            },
+            "line": 115,
+            "name": "I should be able to navigate to Pickup screen",
+            "match": {
+              "location": "PickupSteps.i_should_be_able_to_navigate_to_Pickup_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 8332453154,
+              "status": "passed"
+            },
+            "line": 116,
+            "name": "I enter the Name as \u0027John Doe\u0027 , select Pickup Date as \u0027Tomorrow\u0027 and select Pickup time as \u002711:45 PM\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027John Doe\u0027",
+                  "offset": 20
+                },
+                {
+                  "val": "\u0027Tomorrow\u0027",
+                  "offset": 55
+                },
+                {
+                  "val": "\u002711:45 PM\u0027",
+                  "offset": 92
+                }
+              ],
+              "location": "PickupSteps.i_enter_the_Name_as_select_Pickup_Date_as_and_select_Pickup_time_as(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1143024649,
+              "status": "passed"
+            },
+            "line": 117,
+            "name": "I submit the Next button with all the mandatory fields",
+            "match": {
+              "location": "PickupSteps.i_submit_the_Next_button_with_all_the_mandatory_fields()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 8178320622,
+              "status": "passed"
+            },
+            "line": 118,
+            "name": "I should be able to navigate to \u0027Order\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Order\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2873406212,
+              "status": "passed"
+            },
+            "line": 119,
+            "name": "I verify that selected category is \u0027Entrees\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Entrees\u0027",
+                  "offset": 35
+                }
+              ],
+              "location": "OrderDetailsSteps.i_verify_that_selected_category_is(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 934490752,
+              "status": "passed"
+            },
+            "line": 120,
+            "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1269708058,
+              "status": "passed"
+            },
+            "line": 121,
+            "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 27
+                }
+              ],
+              "location": "OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1707202601,
+              "status": "passed"
+            },
+            "line": 122,
+            "name": "I should be able to navigate to menu details screen",
+            "match": {
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2495759492,
+              "status": "passed"
+            },
+            "line": 123,
+            "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Fettuccini\u0027",
+                  "offset": 9
+                },
+                {
+                  "val": "\u0027Sausage\u0027",
+                  "offset": 24
+                },
+                {
+                  "val": "\u0027Alfredo\u0027",
+                  "offset": 38
+                }
+              ],
+              "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1307703515,
+              "status": "passed"
+            },
+            "line": 124,
+            "name": "I tap on Add to Bag button",
+            "match": {
+              "location": "OrderDetailsSteps.i_tap_on_Add_to_Bag_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3481713648,
+              "status": "passed"
+            },
+            "line": 125,
+            "name": "I tap on My Bag from bottom footer",
+            "match": {
+              "location": "MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1164397879,
+              "status": "passed"
+            },
+            "line": 126,
+            "name": "I should be able to navigate to \u0027My Bag\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027My Bag\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 854135355,
+              "status": "passed"
+            },
+            "line": 127,
+            "name": "I click on the next buttton",
+            "match": {
+              "location": "MyBagSteps.i_click_on_the_next_buttton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 781660202,
+              "status": "passed"
+            },
+            "line": 128,
+            "name": "I should be able to navigate to checkout screen",
+            "match": {
+              "location": "MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 63158,
+              "status": "passed"
+            },
+            "line": 129,
+            "name": "I verify that added menu is being displayed in the screen",
+            "match": {
+              "location": "MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 770374662,
+              "status": "passed"
+            },
+            "line": 130,
+            "name": "I tap on Pay at the Restaurant button available on the Payment screen",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2965179036,
+              "status": "passed"
+            },
+            "line": 131,
+            "name": "I tap on Order Now button",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Order_Now_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 7029234542,
+              "status": "passed"
+            },
+            "line": 132,
+            "name": "I tap on Confirm button to proceed the payment",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 515036347,
+              "status": "passed"
+            },
+            "line": 133,
+            "name": "I am on payment confirmation screen",
+            "match": {
+              "location": "PaymentSteps.i_am_on_payment_confirmation_screen()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@RegressionTest"
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 29454365850,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.setUp()"
+            }
+          }
+        ],
+        "line": 169,
+        "name": "Online Delivery - Pay Later (Pay at restaurant) to make a successful order",
+        "description": "",
+        "id": "one-dine---mweb-application-regression-scenarios;online-delivery---pay-later-(pay-at-restaurant)-to-make-a-successful-order;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 4741116920,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 782215924,
+              "status": "passed"
+            },
+            "line": 137,
+            "name": "I open the Onedine application in the mobile browser",
+            "match": {
+              "location": "LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1629832176,
+              "status": "passed"
+            },
+            "line": 138,
+            "name": "I enter the spot code as \u0027PAI11OL\u0027 in the seven digit spot code field",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027PAI11OL\u0027",
+                  "offset": 25
+                }
+              ],
+              "location": "LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 801177235,
+              "status": "passed"
+            },
+            "line": 139,
+            "name": "I tap on submit button",
+            "match": {
+              "location": "LandingSteps.i_tap_on_submit_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2773100486,
+              "status": "passed"
+            },
+            "line": 140,
+            "name": "I verify that it navigate to check-in screen and Sign in button is displayed",
+            "match": {
+              "location": "LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1119072298,
+              "status": "passed"
+            },
+            "line": 141,
+            "name": "I tap on Sign In button",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 320252347,
+              "status": "passed"
+            },
+            "line": 142,
+            "name": "I navigate to the Sign In screen",
+            "match": {
+              "location": "LoginSteps.navigateToSignInScreen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 509688041,
+              "status": "passed"
+            },
+            "line": 143,
+            "name": "I tap on the link Sign in with a password",
+            "match": {
+              "location": "LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4054894696,
+              "status": "passed"
+            },
+            "line": 144,
+            "name": "I enter valid login credentials from the excel sheet name \"Login_Success\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Login_Success\"",
+                  "offset": 58
+                }
+              ],
+              "location": "LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 579087902,
+              "status": "passed"
+            },
+            "line": 145,
+            "name": "I tap on Sign In button present in Login Screen",
+            "match": {
+              "location": "LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5943115193,
+              "status": "passed"
+            },
+            "line": 146,
+            "name": "I should be able to navigate to Pickup screen",
+            "match": {
+              "location": "PickupSteps.i_should_be_able_to_navigate_to_Pickup_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 695486409,
+              "status": "passed"
+            },
+            "line": 147,
+            "name": "I tap on the Delivery tab",
+            "match": {
+              "location": "PickupSteps.i_tap_on_the_Delivery_tab()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 15511584808,
+              "status": "passed"
+            },
+            "line": 148,
+            "name": "I enter or select the Name as \u0027John Doe\u0027 , Delivery Date as \u0027Tomorrow\u0027 , Delivery Time as \u002711:45 PM\u0027 , Address as \u0027221 B, Baker Street\u0027 , City as \u0027London\u0027 , State as \u0027LA\u0027, Zip as \u002785284\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027John Doe\u0027",
+                  "offset": 30
+                },
+                {
+                  "val": "\u0027Tomorrow\u0027",
+                  "offset": 60
+                },
+                {
+                  "val": "\u002711:45 PM\u0027",
+                  "offset": 90
+                },
+                {
+                  "val": "\u0027221 B, Baker Street\u0027",
+                  "offset": 114
+                },
+                {
+                  "val": "\u0027London\u0027",
+                  "offset": 146
+                },
+                {
+                  "val": "\u0027LA\u0027",
+                  "offset": 166
+                },
+                {
+                  "val": "\u002785284\u0027",
+                  "offset": 179
+                }
+              ],
+              "location": "PickupSteps.i_enter_or_select_the_Name_as_Delivery_Date_as_Delivery_Time_as_Address_as_City_as_State_as_Zip_as(String,String,String,String,String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1245094689,
+              "status": "passed"
+            },
+            "line": 149,
+            "name": "I submit the Next button with all the mandatory fields",
+            "match": {
+              "location": "PickupSteps.i_submit_the_Next_button_with_all_the_mandatory_fields()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1113597907,
+              "status": "passed"
+            },
+            "line": 150,
+            "name": "I should be able to navigate to \u0027Order\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Order\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3679627690,
+              "status": "passed"
+            },
+            "line": 151,
+            "name": "I verify that selected category is \u0027Entrees\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Entrees\u0027",
+                  "offset": 35
+                }
+              ],
+              "location": "OrderDetailsSteps.i_verify_that_selected_category_is(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 720498746,
+              "status": "passed"
+            },
+            "line": 152,
+            "name": "I scroll down the page till \u0027Cheese ravioli with marinara and chicken\u0027 menu and select the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1017647175,
+              "status": "passed"
+            },
+            "line": 153,
+            "name": "I tap on order button with \u0027Cheese ravioli with marinara and chicken\u0027 item to add it to the menu",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Cheese ravioli with marinara and chicken\u0027",
+                  "offset": 27
+                }
+              ],
+              "location": "OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1525950294,
+              "status": "passed"
+            },
+            "line": 154,
+            "name": "I should be able to navigate to menu details screen",
+            "match": {
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2832488978,
+              "status": "passed"
+            },
+            "line": 155,
+            "name": "I select \u0027Fettuccini\u0027 , \u0027Sausage\u0027 and \u0027Alfredo\u0027 as the required modifiers",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Fettuccini\u0027",
+                  "offset": 9
+                },
+                {
+                  "val": "\u0027Sausage\u0027",
+                  "offset": 24
+                },
+                {
+                  "val": "\u0027Alfredo\u0027",
+                  "offset": 38
+                }
+              ],
+              "location": "OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 976532204,
+              "status": "passed"
+            },
+            "line": 156,
+            "name": "I tap on Add to Bag button",
+            "match": {
+              "location": "OrderDetailsSteps.i_tap_on_Add_to_Bag_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3662229194,
+              "status": "passed"
+            },
+            "line": 157,
+            "name": "I tap on My Bag from bottom footer",
+            "match": {
+              "location": "MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1487116834,
+              "status": "passed"
+            },
+            "line": 158,
+            "name": "I should be able to navigate to \u0027My Bag\u0027 screen",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027My Bag\u0027",
+                  "offset": 32
+                }
+              ],
+              "location": "OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1059688896,
+              "status": "passed"
+            },
+            "line": 159,
+            "name": "I click on the next buttton",
+            "match": {
+              "location": "MyBagSteps.i_click_on_the_next_buttton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 453194439,
+              "status": "passed"
+            },
+            "line": 160,
+            "name": "I should be able to navigate to checkout screen",
+            "match": {
+              "location": "MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 62998,
+              "status": "passed"
+            },
+            "line": 161,
+            "name": "I verify that added menu is being displayed in the screen",
+            "match": {
+              "location": "MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 795845226,
+              "status": "passed"
+            },
+            "line": 162,
+            "name": "I tap on Pay at the Restaurant button available on the Payment screen",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2650219587,
+              "status": "passed"
+            },
+            "line": 163,
+            "name": "I tap on Order Now button",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Order_Now_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6847823269,
+              "status": "passed"
+            },
+            "line": 164,
+            "name": "I tap on Confirm button to proceed the payment",
+            "match": {
+              "location": "PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 252786396,
+              "status": "passed"
+            },
+            "line": 165,
+            "name": "I am on payment confirmation screen",
+            "match": {
+              "location": "PaymentSteps.i_am_on_payment_confirmation_screen()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@RegressionTest"
+          }
+        ]
+      }
+    ],
+    "name": "One Dine - mWeb Application Regression Scenarios",
+    "description": "\tAs a Registered user, I want to test regression sceanrios of the application",
+    "id": "one-dine---mweb-application-regression-scenarios",
+    "keyword": "Feature",
+    "uri": "features/RegressionSuite.feature",
+    "tags": [
+      {
+        "name": "@RegressionTest",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

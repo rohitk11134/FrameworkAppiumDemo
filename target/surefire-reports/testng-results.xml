@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="414422" started-at="2020-08-24T01:47:16 IST" finished-at="2020-08-24T01:54:10 IST">
+    <groups>
+      <group name="Cucumber">
+        <method signature="TestRunner.scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" class="runner.TestRunner"/>
+      </group> <!-- Cucumber -->
+    </groups>
+    <test name="Surefire test" duration-ms="414422" started-at="2020-08-24T01:47:16 IST" finished-at="2020-08-24T01:54:10 IST">
+      <class name="runner.TestRunner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:runner.TestRunner@148080bb]" name="setUpClass" is-config="true" duration-ms="152" started-at="2020-08-24T01:47:16 IST" finished-at="2020-08-24T01:47:16 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" duration-ms="60006" started-at="2020-08-24T01:47:16 IST" description="Runs Cucumber Feature" data-provider="scenarios" finished-at="2020-08-24T01:48:16 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["One Dine - mWeb Application Regression Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" duration-ms="44272" started-at="2020-08-24T01:48:16 IST" description="Runs Cucumber Feature" data-provider="scenarios" finished-at="2020-08-24T01:49:00 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Curbside flow type-3 - Pay later (Pay At Restaurant) to make a successful order"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["One Dine - mWeb Application Regression Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" duration-ms="102879" started-at="2020-08-24T01:49:00 IST" description="Runs Cucumber Feature" data-provider="scenarios" finished-at="2020-08-24T01:50:43 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Online Pickup - Pay Now to make a successful payment with valid card details"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["One Dine - mWeb Application Regression Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" duration-ms="107669" started-at="2020-08-24T01:50:43 IST" description="Runs Cucumber Feature" data-provider="scenarios" finished-at="2020-08-24T01:52:31 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Online Pickup - Pay Later (Pay at restaurant) to make a successful order"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["One Dine - mWeb Application Regression Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="scenario(cucumber.api.testng.PickleEventWrapper, cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:runner.TestRunner@148080bb]" name="scenario" duration-ms="99235" started-at="2020-08-24T01:52:31 IST" description="Runs Cucumber Feature" data-provider="scenarios" finished-at="2020-08-24T01:54:10 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Online Delivery - Pay Later (Pay at restaurant) to make a successful order"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["One Dine - mWeb Application Regression Scenarios"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenario -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:runner.TestRunner@148080bb]" name="tearDownClass" is-config="true" duration-ms="113" started-at="2020-08-24T01:54:10 IST" finished-at="2020-08-24T01:54:10 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- runner.TestRunner -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

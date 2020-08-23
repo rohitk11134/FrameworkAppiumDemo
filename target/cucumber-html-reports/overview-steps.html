@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<title>Cucumber Reports (no 1) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+                <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+    
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+              <th>Number</th>
+            <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>OneDine</td>
+              <td>1</td>
+            <td>24 Aug 2020, 01:54</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+      </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+          <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+      </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+                      <tr>
+              <td class="location">Hook.setUp()</td>
+              <td>5</td>
+              <td class="duration" data-value="20249538954">20.249</td>
+              <td class="duration" data-value="20249538954">29.454</td>
+              <td class="duration" data-value="101247694770">1:41.247</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">Hook.tearDown(Scenario)</td>
+              <td>5</td>
+              <td class="duration" data-value="5004388106">5.004</td>
+              <td class="duration" data-value="5004388106">5.692</td>
+              <td class="duration" data-value="25021940534">25.021</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LandingSteps.i_enter_the_spot_code_as_in_the_seven_digit_spot_code_field(String)</td>
+              <td>5</td>
+              <td class="duration" data-value="1559500839">1.559</td>
+              <td class="duration" data-value="1559500839">2.403</td>
+              <td class="duration" data-value="7797504195">7.797</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LandingSteps.i_open_the_Onedine_application_in_the_mobile_browser()</td>
+              <td>5</td>
+              <td class="duration" data-value="767504567">0.767</td>
+              <td class="duration" data-value="767504567">0.902</td>
+              <td class="duration" data-value="3837522835">3.837</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LandingSteps.i_tap_on_submit_button()</td>
+              <td>5</td>
+              <td class="duration" data-value="693530812">0.693</td>
+              <td class="duration" data-value="693530812">1.156</td>
+              <td class="duration" data-value="3467654062">3.467</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LandingSteps.i_verify_that_it_navigate_to_check_in_screen_and_Sign_in_button_is_displayed()</td>
+              <td>5</td>
+              <td class="duration" data-value="2626767244">2.626</td>
+              <td class="duration" data-value="2626767244">4.395</td>
+              <td class="duration" data-value="13133836222">13.133</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LoginSteps.i_enter_valid_login_credentials_from_the_excel_sheet_name(String)</td>
+              <td>5</td>
+              <td class="duration" data-value="4542126728">4.542</td>
+              <td class="duration" data-value="4542126728">10.223</td>
+              <td class="duration" data-value="22710633644">22.710</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LoginSteps.i_tap_on_Sign_In_button()</td>
+              <td>5</td>
+              <td class="duration" data-value="970243777">0.970</td>
+              <td class="duration" data-value="970243777">1.669</td>
+              <td class="duration" data-value="4851218886">4.851</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LoginSteps.i_tap_on_Sign_In_button_present_in_Login_Screen()</td>
+              <td>5</td>
+              <td class="duration" data-value="577247973">0.577</td>
+              <td class="duration" data-value="577247973">1.133</td>
+              <td class="duration" data-value="2886239867">2.886</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LoginSteps.i_tap_on_the_link_Sign_in_with_a_password()</td>
+              <td>5</td>
+              <td class="duration" data-value="454389228">0.454</td>
+              <td class="duration" data-value="454389228">0.741</td>
+              <td class="duration" data-value="2271946141">2.271</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">LoginSteps.navigateToSignInScreen()</td>
+              <td>5</td>
+              <td class="duration" data-value="283704454">0.283</td>
+              <td class="duration" data-value="283704454">0.526</td>
+              <td class="duration" data-value="1418522273">1.418</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">MyBagSteps.i_click_on_the_next_buttton()</td>
+              <td>5</td>
+              <td class="duration" data-value="733105853">0.733</td>
+              <td class="duration" data-value="733105853">1.059</td>
+              <td class="duration" data-value="3665529267">3.665</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">MyBagSteps.i_should_be_able_to_navigate_to_checkout_screen()</td>
+              <td>5</td>
+              <td class="duration" data-value="502328167">0.502</td>
+              <td class="duration" data-value="502328167">0.781</td>
+              <td class="duration" data-value="2511640837">2.511</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">MyBagSteps.i_tap_on_My_Bag_from_bottom_footer()</td>
+              <td>5</td>
+              <td class="duration" data-value="2525395366">2.525</td>
+              <td class="duration" data-value="2525395366">3.662</td>
+              <td class="duration" data-value="12626976830">12.626</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">MyBagSteps.i_verify_that_added_menu_is_being_displayed_in_the_screen()</td>
+              <td>5</td>
+              <td class="duration" data-value="53545">0.000</td>
+              <td class="duration" data-value="53545">0.000</td>
+              <td class="duration" data-value="267729">0.000</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_scroll_down_the_page_till_menu_and_select_the_menu(String)</td>
+              <td>5</td>
+              <td class="duration" data-value="1018545321">1.018</td>
+              <td class="duration" data-value="1018545321">2.484</td>
+              <td class="duration" data-value="5092726609">5.092</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_select_and_as_the_required_modifiers(String,String,String)</td>
+              <td>5</td>
+              <td class="duration" data-value="1917338724">1.917</td>
+              <td class="duration" data-value="1917338724">2.832</td>
+              <td class="duration" data-value="9586693624">9.586</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_should_be_able_to_navigate_to_menu_details_screen()</td>
+              <td>5</td>
+              <td class="duration" data-value="1466024992">1.466</td>
+              <td class="duration" data-value="1466024992">2.214</td>
+              <td class="duration" data-value="7330124964">7.330</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_should_be_able_to_navigate_to_screen(String)</td>
+              <td>10</td>
+              <td class="duration" data-value="1608759622">1.608</td>
+              <td class="duration" data-value="1608759622">8.178</td>
+              <td class="duration" data-value="16087596227">16.087</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_tap_on_Add_to_Bag_button()</td>
+              <td>5</td>
+              <td class="duration" data-value="954791905">0.954</td>
+              <td class="duration" data-value="954791905">1.307</td>
+              <td class="duration" data-value="4773959526">4.773</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_tap_on_order_button_with_item_to_add_it_to_the_menu(String)</td>
+              <td>5</td>
+              <td class="duration" data-value="1035740450">1.035</td>
+              <td class="duration" data-value="1035740450">1.411</td>
+              <td class="duration" data-value="5178702253">5.178</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">OrderDetailsSteps.i_verify_that_selected_category_is(String)</td>
+              <td>5</td>
+              <td class="duration" data-value="2731878029">2.731</td>
+              <td class="duration" data-value="2731878029">3.679</td>
+              <td class="duration" data-value="13659390145">13.659</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_am_on_payment_confirmation_screen()</td>
+              <td>5</td>
+              <td class="duration" data-value="391093819">0.391</td>
+              <td class="duration" data-value="391093819">0.627</td>
+              <td class="duration" data-value="1955469096">1.955</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_enter_the_valid_card_details_into_the_fields_from_the_excel_sheet_name(String)</td>
+              <td>2</td>
+              <td class="duration" data-value="9810126984">9.810</td>
+              <td class="duration" data-value="9810126984">13.785</td>
+              <td class="duration" data-value="19620253969">19.620</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_select_No_Tip_as_a_tip_amount()</td>
+              <td>2</td>
+              <td class="duration" data-value="1007838692">1.007</td>
+              <td class="duration" data-value="1007838692">1.683</td>
+              <td class="duration" data-value="2015677385">2.015</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_should_be_able_to_navigate_to_Payment_screen_of_the_application()</td>
+              <td>2</td>
+              <td class="duration" data-value="2816817571">2.816</td>
+              <td class="duration" data-value="2816817571">3.139</td>
+              <td class="duration" data-value="5633635143">5.633</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_tap_on_Confirm_button_to_proceed_the_payment()</td>
+              <td>5</td>
+              <td class="duration" data-value="8732888051">8.732</td>
+              <td class="duration" data-value="8732888051">11.880</td>
+              <td class="duration" data-value="43664440259">43.664</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_tap_on_Order_Now_button()</td>
+              <td>3</td>
+              <td class="duration" data-value="2300055398">2.300</td>
+              <td class="duration" data-value="2300055398">2.965</td>
+              <td class="duration" data-value="6900166196">6.900</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_tap_on_Pay_Now_button()</td>
+              <td>2</td>
+              <td class="duration" data-value="644073770">0.644</td>
+              <td class="duration" data-value="644073770">0.714</td>
+              <td class="duration" data-value="1288147541">1.288</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_tap_on_Pay_Now_button_available_on_payment_screen()</td>
+              <td>2</td>
+              <td class="duration" data-value="954944619">0.954</td>
+              <td class="duration" data-value="954944619">1.383</td>
+              <td class="duration" data-value="1909889239">1.909</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PaymentSteps.i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen()</td>
+              <td>3</td>
+              <td class="duration" data-value="751612477">0.751</td>
+              <td class="duration" data-value="751612477">0.795</td>
+              <td class="duration" data-value="2254837431">2.254</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PickupSteps.i_enter_or_select_the_Name_as_Delivery_Date_as_Delivery_Time_as_Address_as_City_as_State_as_Zip_as(String,String,String,String,String,String,String)</td>
+              <td>1</td>
+              <td class="duration" data-value="15511584808">15.511</td>
+              <td class="duration" data-value="15511584808">15.511</td>
+              <td class="duration" data-value="15511584808">15.511</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PickupSteps.i_enter_the_Name_as_select_Pickup_Date_as_and_select_Pickup_time_as(String,String,String)</td>
+              <td>2</td>
+              <td class="duration" data-value="7028033939">7.028</td>
+              <td class="duration" data-value="7028033939">8.332</td>
+              <td class="duration" data-value="14056067878">14.056</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PickupSteps.i_should_be_able_to_navigate_to_Pickup_screen()</td>
+              <td>3</td>
+              <td class="duration" data-value="6460225108">6.460</td>
+              <td class="duration" data-value="6460225108">8.781</td>
+              <td class="duration" data-value="19380675324">19.380</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PickupSteps.i_submit_the_Next_button_with_all_the_mandatory_fields()</td>
+              <td>3</td>
+              <td class="duration" data-value="1074228851">1.074</td>
+              <td class="duration" data-value="1074228851">1.245</td>
+              <td class="duration" data-value="3222686553">3.222</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">PickupSteps.i_tap_on_the_Delivery_tab()</td>
+              <td>1</td>
+              <td class="duration" data-value="695486409">0.695</td>
+              <td class="duration" data-value="695486409">0.695</td>
+              <td class="duration" data-value="695486409">0.695</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">SpotNumberSteps.i_enter_the_Spot_Number_from_the_excel_sheet_in_the_Spot_Number_field(String)</td>
+              <td>2</td>
+              <td class="duration" data-value="691968099">0.691</td>
+              <td class="duration" data-value="691968099">0.708</td>
+              <td class="duration" data-value="1383936199">1.383</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">SpotNumberSteps.i_navigate_to_spot_number_screen_and_verify_the_message_displayed_on_the_screen()</td>
+              <td>2</td>
+              <td class="duration" data-value="1956060996">1.956</td>
+              <td class="duration" data-value="1956060996">2.035</td>
+              <td class="duration" data-value="3912121993">3.912</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">SpotNumberSteps.i_tap_on_next_arrow_button_and_submit_the_spot_number()</td>
+              <td>2</td>
+              <td class="duration" data-value="616726645">0.616</td>
+              <td class="duration" data-value="616726645">0.632</td>
+              <td class="duration" data-value="1233453291">1.233</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                  </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>39</td>
+            <td>157</td>
+            <td class="duration">2.635</td>
+            <td class="duration">1:41.247</td>
+            <td class="duration">6:53.796</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
