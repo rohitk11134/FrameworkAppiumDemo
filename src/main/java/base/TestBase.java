@@ -34,6 +34,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -277,7 +278,7 @@ public class TestBase {
 
 		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(e));
 	}
-	
+
 	public MobileElement waitForVisibility(By by) {
 		MobileElement e = driver.findElement(by);
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
@@ -667,6 +668,17 @@ public class TestBase {
 		}
 	}
 
+	/**
+	 * To tap on the element *
+	 * 
+	 * @param element xpath (String) of the element
+	 */
+	public void doubleTapElement(String element) {
+		Actions actions = new Actions(driver);
+		WebElement elementLocator = getElement(XPATH, element);
+		actions.doubleClick(elementLocator).perform();
+	}
+
 	public void startRecordingScreen() {
 		((CanRecordScreen) driver).startRecordingScreen();
 	}
@@ -975,7 +987,7 @@ public class TestBase {
 	 * 
 	 * @param String xpath
 	 */
-	public void scrollAndClickAnElement(String xpathValue) {
+	public void scrollAndClickMobileElement(String xpathValue) {
 
 		MobileElement mobElement = driver.findElement(MobileBy.xpath(xpathValue));
 		try {

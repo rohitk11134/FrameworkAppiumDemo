@@ -2,7 +2,6 @@
 Feature: One Dine - mWeb Application Regression Scenarios
 	As a Registered user, I want to test regression sceanrios of the application
   	
-
 	Scenario: Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow 
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'PAI11CU' in the seven digit spot code field

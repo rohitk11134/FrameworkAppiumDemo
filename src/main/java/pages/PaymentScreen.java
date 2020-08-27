@@ -89,7 +89,9 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, pay_NowButton) != null) {
 			if (base.isDisplayed(pay_NowButton)) {
 				base.tapElement(pay_NowButton);
-				wait = new WebDriverWait(driver, 10);
+				base.delay(500L);
+				base.tapElement(pay_NowButton);
+				base.delay(2000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton), "Not able to tap on 'Pay Now' button");
 			}
@@ -103,7 +105,6 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, payLater) != null) {
 			if (base.isDisplayed(payLater)) {
 				base.tapElement(payLater);
-				wait = new WebDriverWait(driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(payLater), "Not able to tap on 'Pay at the Restaurant' button");
 			}
@@ -117,7 +118,6 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, orderNow_Button) != null) {
 			if (base.isDisplayed(orderNow_Button)) {
 				base.tapElement(orderNow_Button);
-				wait = new WebDriverWait(driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(orderNow_Button), "Not able to tap on 'Order Now' button");
 			}
@@ -131,8 +131,7 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, confirmButton) != null) {
 			if (base.isDisplayed(confirmButton)) {
 				base.tapElement(confirmButton);
-				wait = new WebDriverWait(driver, 5);
-				base.delay(6000L);
+				base.delay(4000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(confirmButton), "Not able to tap on 'Confrim' button");
 			}
@@ -172,7 +171,7 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, noTipButton) != null) {
 			if (base.isDisplayed(noTipButton)) {
 				base.tapElement(noTipButton);
-				wait = new WebDriverWait(driver, 5);
+				base.delay(1500L);
 			} else {
 				Assert.fail(base.isDisplayed(noTipButton) + " - Tip button is not displayed");
 			}

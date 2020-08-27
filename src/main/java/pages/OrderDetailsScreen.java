@@ -71,6 +71,7 @@ public class OrderDetailsScreen extends TestBase {
 		String menuItemToBeClicked = menu_Item.replace("temp", menuItem);
 		if (base.getElement(XPATH, menuItemToBeClicked) != null) {
 			base.scrollToElementUsingJS(menuItemToBeClicked);
+			base.delay(1000L);
 			base.tapElement(menuItemToBeClicked);
 		} else {
 			Assert.assertNull(base.getElement(XPATH, menuItemToBeClicked), "Coffee menu item is not available");
@@ -107,6 +108,37 @@ public class OrderDetailsScreen extends TestBase {
 		}
 	}
 
+
+
+	public void selectRequiredModifiers(String modifier1, String modifier2, String modifier3) {
+		
+		String modifier1_Xpath = modifier_Xpath.replace("temp", modifier1);
+		String modifier2_Xpath = modifier_Xpath.replace("temp", modifier2);;
+		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);;
+		
+		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
+			base.delay(1000L);
+			base.tapElement(modifier1_Xpath);
+			base.delay(1000L);
+			if (base.getElement(XPATH, modifier2_Xpath) != null) {
+				base.scrollToElementUsingJS(modifier1_Xpath+"/ancestor::div[contains(@class, 'modifiers_modifierContainer')]/descendant::span[contains(text(),'Pick 1')]");				
+				base.tapElement(modifier2_Xpath);
+				base.delay(1000L);
+				if (base.getElement(XPATH, modifier3_Xpath) != null) {
+					base.scrollToElementUsingJS(modifier2_Xpath+"/ancestor::div[contains(@class, 'modifiers_modifierContainer')]/descendant::span[contains(text(),'Pick 1')]");
+					base.tapElement(modifier3_Xpath);
+					base.delay(1000L);
+				} else {
+					Assert.fail(modifier3_Xpath + " element is not found");
+				}
+			} else {
+				Assert.fail(modifier2_Xpath + " element is not found");
+			}
+		} else {
+			Assert.fail(modifier1_Xpath + " element is not found");
+		}
+	}
+	
 	public void tapAddToBagButton() {
 
 		if (base.getElement(XPATH, addToBag) != null) {
@@ -120,29 +152,6 @@ public class OrderDetailsScreen extends TestBase {
 			Assert.assertNull(base.getElement(XPATH, addToBag), "Add to Bag button is not available");
 		}
 
-	}
-
-	public void selectRequiredModifiers(String modifier1, String modifier2, String modifier3) {
-		
-		String modifier1_Xpath = modifier_Xpath.replace("temp", modifier1);
-		String modifier2_Xpath = modifier_Xpath.replace("temp", modifier2);;
-		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);;
-		
-		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
-			base.scrollAndClickElementUsingJS(modifier1_Xpath);
-			if (base.getElement(XPATH, modifier2_Xpath) != null) {
-				base.scrollAndClickElementUsingJS(modifier2_Xpath);
-				if (base.getElement(XPATH, modifier3_Xpath) != null) {
-					base.scrollAndClickElementUsingJS(modifier3_Xpath);
-				} else {
-					Assert.fail(modifier3_Xpath + " element is not found");
-				}
-			} else {
-				Assert.fail(modifier2_Xpath + " element is not found");
-			}
-		} else {
-			Assert.fail(modifier1_Xpath + " element is not found");
-		}
 	}
 
 }

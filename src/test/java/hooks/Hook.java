@@ -61,7 +61,7 @@ public class Hook extends TestBase {
 			propertyFile = loadProperty("properties/IOS_Capabilities.properties");
 //			capabilities.setCapability(MobileCapabilityType.UDID, propertyFile.getProperty("udid"));
 			capabilities.setCapability(IOSMobileCapabilityType.START_IWDP, true);
-			capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, "8101");
+//			capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, "8101");
 			capabilities.setCapability(IOSMobileCapabilityType.SAFARI_ALLOW_POPUPS, true);
 			capabilities.setCapability(IOSMobileCapabilityType.SAFARI_OPEN_LINKS_IN_BACKGROUND, true);
 			capabilities.setCapability("connectHardwareKeyboard", false);
@@ -74,13 +74,13 @@ public class Hook extends TestBase {
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, propertyFile.getProperty("deviceName"));
 		capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, propertyFile.getProperty("browserName"));
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 3000);
-		capabilities.setCapability("autoAcceptAlerts", true);
+		capabilities.setCapability("autoAcceptAlerts", false);
 		capabilities.setCapability("autoGrantPermissions", true);
 //		capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
-		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, false);
+		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
 		capabilities.setCapability("fullContextList", true);
-		capabilities.setCapability("autoDismissAlerts", true);
+		capabilities.setCapability("autoDismissAlerts", false);
 		capabilities.setCapability("–session-override", true);
 
 		System.out.println("Capabilities::: " + capabilities);
@@ -97,8 +97,7 @@ public class Hook extends TestBase {
 //				log.info("SetUp Appium Driver for Device = " + capabilities);
 				base.startRecordingScreen();
 				driver.get(prop.getProperty("APP_URL"));
-				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//				wait = new WebDriverWait(this.driver, 90);
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			}
 
 		} catch (MalformedURLException e) {

@@ -30,7 +30,6 @@ public class MyBagScreen extends TestBase {
 		if (base.getElement(XPATH, myBagTab) != null) {
 			if (base.isDisplayed(myBagTab)) {
 				base.tapElement(myBagTab);
-				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(myBagTab), "Not able to tap on 'My Bag' tab");
 			}
@@ -45,7 +44,6 @@ public class MyBagScreen extends TestBase {
 		if (base.getElement(XPATH, nextButton) != null) {
 			if (base.isDisplayed(nextButton)) {
 				base.tapElement(nextButton);
-				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(nextButton), "Not able to tap on 'NEXT' tab");
 			}
@@ -76,7 +74,7 @@ public class MyBagScreen extends TestBase {
 		if (base.getElement(XPATH, payNowButton) != null ) {
 			if(base.isDisplayed(payNowButton)){
 				base.tapElement(payNowButton); 
-				wait = new WebDriverWait(this.driver, 5);
+				base.delay(3000L);
 			} else {
 				Assert.assertFalse(base.isDisplayed(payNowButton), "Not able to tap on 'Pay Now' tab");
 			}
