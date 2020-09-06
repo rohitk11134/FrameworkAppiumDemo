@@ -1,5 +1,6 @@
 Feature: One Dine - mWeb Application Regression Scenarios
 	As a Registered user, I want to test regression sceanrios of the application
+  
   	
   	@RegressionTest
 	Scenario: Curbside flow type-3 - Pay Now - Make a successful payment with valid card details for curbside flow 
