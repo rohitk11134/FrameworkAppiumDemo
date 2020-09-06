@@ -111,7 +111,7 @@ public class LandingScreen extends TestBase {
 
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
-				base.tapElement(submitNextButton);
+				base.tapElementUsingJS(submitNextButton);
 				wait = new WebDriverWait(driver, 5);
 			} else {
 				Assert.fail(base.isDisplayed(submitNextButton)+" - Next (Arrow Mark) button is not clicked");

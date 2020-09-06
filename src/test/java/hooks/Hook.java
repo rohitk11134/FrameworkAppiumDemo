@@ -76,7 +76,6 @@ public class Hook extends TestBase {
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 3000);
 		capabilities.setCapability("autoAcceptAlerts", false);
 		capabilities.setCapability("autoGrantPermissions", true);
-//		capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 		capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
 		capabilities.setCapability("fullContextList", true);
@@ -92,6 +91,9 @@ public class Hook extends TestBase {
 			} else if (loadPropertyFile.toLowerCase().startsWith("ios")) {
 				driver = new IOSDriver<MobileElement>(new URL(prop.getProperty("URL_Capability")), capabilities);
 			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} finally {
 //			log.info("Initializing driver ::: " + driver);
 			if (driver != null) {
 //				log.info("SetUp Appium Driver for Device = " + capabilities);
@@ -99,9 +101,6 @@ public class Hook extends TestBase {
 				driver.get(prop.getProperty("APP_URL"));
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			}
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
 		}
 	}
 

@@ -42,4 +42,15 @@ public class OrderDetailsSteps {
 	public void i_select_and_as_the_required_modifiers(String modifier1, String modifier2, String modifier3) {
 		 orderDetails.selectRequiredModifiers(modifier1, modifier2, modifier3);
 	}
+	
+	@Then("I tap on {string} tab and verify the page header title")
+	public void i_tap_on_tab_and_verify_the_page_header_title(String selectMenuTab) {
+		orderDetails.selectRequiredMenu(selectMenuTab);
+	}
+	
+	@Then("I tap on {string} from bottom footer")
+	public void i_tap_on_from_bottom_footer(String tabToClick) {
+		orderDetails.tapOnRequiredTab(tabToClick);
+	}
+	
 }

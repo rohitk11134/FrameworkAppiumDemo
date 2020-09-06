@@ -129,7 +129,7 @@ public class PickupScreen extends TestBase {
 
 		if (base.getElement(XPATH, nextButton) != null) {
 			if (base.isDisplayed(nextButton)) {
-				base.tapElement(nextButton);
+				base.tapElementUsingJS(nextButton);
 				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.fail(base.isDisplayed(nextButton) + " - Next button is not displayed");
@@ -166,8 +166,9 @@ public class PickupScreen extends TestBase {
 		// TODO Auto-generated method stub
 		if (base.getElement(XPATH, deliveryTab) != null) {
 			if (base.isDisplayed(deliveryTab)) {
-				base.tapElement(deliveryTab);
+				base.tapElementUsingJS(deliveryTab);
 				wait = new WebDriverWait(this.driver, 5);
+//				base.allowPermissionPopup();
 			} else {
 				Assert.fail(base.isDisplayed(deliveryTab) + " - Delivery Tab is not displayed");
 			}

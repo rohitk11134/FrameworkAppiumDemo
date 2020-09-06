@@ -25,8 +25,12 @@ public class OrderDetailsScreen extends TestBase {
 	final String orderMenu = "//div[text()='temp']/ancestor::div[1]/descendant::button[@type='button']";
 
 	String categoryToClick = "//button[text()='temp']";
-	
+
 	String modifier_Xpath = "//div[text()='temp']";
+
+	final String orderTab_Xpath = "//div[text()='temp']";
+
+	final String menuTab_Xpath = "//div[contains(@class, 'tab-icon')]/div[text()='temp']";
 
 	final String addToBag = "//button[text()='Add to Bag']";
 
@@ -35,7 +39,6 @@ public class OrderDetailsScreen extends TestBase {
 	String storedMenuItem = "";
 
 	public void verifyActiveScreen(String expectedTabName) {
-
 		if (base.getElement(XPATH, selectedTab) != null) {
 			String actual_SelectedTab = base.gettext(selectedTab);
 			Assert.assertEquals(actual_SelectedTab.trim(), expectedTabName.trim(),
@@ -52,7 +55,7 @@ public class OrderDetailsScreen extends TestBase {
 			if (!actual_SelectedCategory.toLowerCase().trim()
 					.equalsIgnoreCase(expectedCategoryName.toLowerCase().trim())) {
 				categoryToClick = categoryToClick.replace("temp", expectedCategoryName);
-				base.tapElement(categoryToClick);
+				base.tapElementUsingJS(categoryToClick);
 				actual_SelectedCategory = base.gettext(selectedCategory);
 				Assert.assertEquals(actual_SelectedCategory.toLowerCase().trim(),
 						expectedCategoryName.toLowerCase().trim(),
@@ -72,9 +75,9 @@ public class OrderDetailsScreen extends TestBase {
 		if (base.getElement(XPATH, menuItemToBeClicked) != null) {
 			base.scrollToElementUsingJS(menuItemToBeClicked);
 			base.delay(1000L);
-			base.tapElement(menuItemToBeClicked);
+			base.tapElementUsingJS(menuItemToBeClicked);
 		} else {
-			Assert.assertNull(base.getElement(XPATH, menuItemToBeClicked), "Coffee menu item is not available");
+			Assert.assertNull(base.getElement(XPATH, menuItemToBeClicked), menuItem + " item is not available");
 		}
 
 	}
@@ -83,10 +86,8 @@ public class OrderDetailsScreen extends TestBase {
 
 		String order_Menu = orderMenu.replace("temp", input);
 
-		System.out.println("Order Menu button :::  " + order_Menu);
-
 		if (base.getElement(XPATH, order_Menu) != null) {
-			base.tapElement(order_Menu);
+			base.tapElementUsingJS(order_Menu);
 		} else {
 			Assert.assertNull(base.getElement(XPATH, order_Menu), "Order Menu button is not available");
 		}
@@ -108,25 +109,27 @@ public class OrderDetailsScreen extends TestBase {
 		}
 	}
 
-
-
 	public void selectRequiredModifiers(String modifier1, String modifier2, String modifier3) {
-		
+
 		String modifier1_Xpath = modifier_Xpath.replace("temp", modifier1);
-		String modifier2_Xpath = modifier_Xpath.replace("temp", modifier2);;
-		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);;
-		
+		String modifier2_Xpath = modifier_Xpath.replace("temp", modifier2);
+		;
+		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);
+		;
+
 		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
 			base.delay(1000L);
-			base.tapElement(modifier1_Xpath);
+			base.tapElementUsingJS(modifier1_Xpath);
 			base.delay(1000L);
 			if (base.getElement(XPATH, modifier2_Xpath) != null) {
-				base.scrollToElementUsingJS(modifier1_Xpath+"/ancestor::div[contains(@class, 'modifiers_modifierContainer')]/descendant::span[contains(text(),'Pick 1')]");				
-				base.tapElement(modifier2_Xpath);
+				base.scrollToElementUsingJS(modifier1_Xpath
+						+ "/ancestor::div/div[contains(@class, 'modifiers_modifierNameContainer')]/descendant::span[contains(text(),'Pick')]");
+				base.tapElementUsingJS(modifier2_Xpath);
 				base.delay(1000L);
 				if (base.getElement(XPATH, modifier3_Xpath) != null) {
-					base.scrollToElementUsingJS(modifier2_Xpath+"/ancestor::div[contains(@class, 'modifiers_modifierContainer')]/descendant::span[contains(text(),'Pick 1')]");
-					base.tapElement(modifier3_Xpath);
+					base.scrollToElementUsingJS(modifier2_Xpath
+							+ "/ancestor::div/div[contains(@class, 'modifiers_modifierNameContainer')]/descendant::span[contains(text(),'Pick')]");
+					base.tapElementUsingJS(modifier3_Xpath);
 					base.delay(1000L);
 				} else {
 					Assert.fail(modifier3_Xpath + " element is not found");
@@ -138,12 +141,12 @@ public class OrderDetailsScreen extends TestBase {
 			Assert.fail(modifier1_Xpath + " element is not found");
 		}
 	}
-	
+
 	public void tapAddToBagButton() {
 
 		if (base.getElement(XPATH, addToBag) != null) {
 			if (base.isDisplayed(addToBag)) {
-				base.tapElement(addToBag);
+				base.tapElementUsingJS(addToBag);
 				wait = new WebDriverWait(this.driver, 5);
 			} else {
 				Assert.assertFalse(base.isDisplayed(addToBag), "Not able to click Add to Bag button");
@@ -153,5 +156,42 @@ public class OrderDetailsScreen extends TestBase {
 		}
 
 	}
+	
+	
+	// Tap on bottom menu tab
+	public void tapOnRequiredTab(String tabToClick) {
+		// TODO Auto-generated method stub
+
+		String bottomMenu_Card = menuTab_Xpath.replace("temp", tabToClick);
+
+		if (base.getElement(XPATH, bottomMenu_Card) != null) {
+			if (base.isDisplayed(bottomMenu_Card)) {
+				base.tapElementUsingJS(bottomMenu_Card);
+			} else {
+				Assert.assertFalse(base.isDisplayed(bottomMenu_Card), "Not able to click " + tabToClick + " tab");
+			}
+		} else {
+			Assert.assertNull(base.getElement(XPATH, bottomMenu_Card), tabToClick + " Tab is not available");
+		}
+		
+	}
+
+	public void selectRequiredMenu(String selectMenuTab) {
+		// TODO Auto-generated method stub
+		String orderMenu_Card = orderTab_Xpath.replace("temp", selectMenuTab);
+
+		if (base.getElement(XPATH, orderMenu_Card) != null) {
+			if (base.isDisplayed(orderMenu_Card)) {
+				base.tapElementUsingJS(orderMenu_Card);
+			} else {
+				Assert.assertFalse(base.isDisplayed(orderMenu_Card), "Not able to click " + selectMenuTab + " tab");
+			}
+		} else {
+			Assert.assertNull(base.getElement(XPATH, orderMenu_Card), selectMenuTab + " Tab is not available");
+		}
+	}
+
+
+
 
 }

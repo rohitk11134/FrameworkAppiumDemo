@@ -27,5 +27,11 @@ public class MyBagSteps {
 	public void i_verify_that_added_menu_is_being_displayed_in_the_screen() {
 		myBag.verifyAddedMenuIsDisplayed();
 	}
+	
+	@Then("I enter {string} as a name for this order and submit the yes button")
+	public void i_enter_as_a_name_for_this_order_and_submit_the_yes_button(String seatName) {
+		myBag.enterSeatNameAndSubmit(seatName);
+	}
+
 
 }

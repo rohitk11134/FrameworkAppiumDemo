@@ -20,10 +20,12 @@ import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 
 import cucumber.api.Scenario;
 
-import org.apache.commons.codec.binary.Base64;
+//import org.apache.commons.codec.binary.Base64;
+import java.util.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.tools.ant.property.GetProperty;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -47,6 +49,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
+import io.appium.java_client.ios.IOSStartScreenRecordingOptions;
+import io.appium.java_client.ios.IOSStartScreenRecordingOptions.VideoQuality;
 import io.appium.java_client.screenrecording.CanRecordScreen;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
@@ -60,6 +65,7 @@ public class TestBase {
 	protected static WebDriverWait wait;
 
 	public static final String XPATH = "xpath";
+	public static final String ID = "id";
 
 	public TestBase() {
 		this.driver = driver;
@@ -235,14 +241,18 @@ public class TestBase {
 	}
 
 	public MobileElement waitForElementToBeClickable(MobileElement mobileElement) {
+
 		return (MobileElement) new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.elementToBeClickable(mobileElement));
+
 	}
 
 	public MobileElement waitForElementToBeClickable(String inputElement) {
 		MobileElement mobileElement = driver.findElement(By.xpath(inputElement));
+
 		return (MobileElement) new WebDriverWait(driver, 10)
 				.until(ExpectedConditions.elementToBeClickable(mobileElement));
+
 	}
 
 	public boolean waitForPageToBeLoaded() {
@@ -273,10 +283,11 @@ public class TestBase {
 	}
 
 	public MobileElement waitForVisibility(MobileElement e) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(30))
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(45))
 				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 
 		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(e));
+
 	}
 
 	public MobileElement waitForVisibility(By by) {
@@ -285,6 +296,7 @@ public class TestBase {
 				.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
 
 		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(e));
+
 	}
 
 	public void click_last(List<MobileElement> element) {
@@ -461,8 +473,8 @@ public class TestBase {
 	}
 
 	// To verify if element is displayed
-	public boolean isDisplayed(String Xpath) {
-		MobileElement element = waitForVisibility(getElement(Xpath));
+	public boolean isDisplayed(String inputLocator) {
+		MobileElement element = waitForVisibility(getElement(XPATH, inputLocator));
 //		MobileElement element = driver.findElement(By.xpath(Xpath));
 		boolean isDisplayed = false;
 		try {
@@ -523,7 +535,7 @@ public class TestBase {
 
 		boolean flag = false;
 		try {
-			MobileElement dropDownListBox = driver.findElement(By.xpath(element));
+			MobileElement dropDownListBox = getElement(XPATH, element);
 			List<MobileElement> lists = dropDownListBox.findElements(By.tagName("option"));
 			for (int i = 0; i <= lists.size() - 1; i++) {
 				String dropdownValue = lists.get(i).getText().trim();
@@ -651,6 +663,7 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
+	
 
 	/**
 	 * To tap on the element *
@@ -659,13 +672,46 @@ public class TestBase {
 	 */
 	public void tapElement(String element) {
 		MobileElement ele = waitForVisibility(getElement(element));
+		delay(200L);
 		try {
 			if (ele != null) {
 				ele.click();
 			}
+		} catch (StaleElementReferenceException e) {
+			waitForElementToBeClickable(ele).click();
+		} catch (ElementClickInterceptedException e) {
+			waitForElementToBeClickable(ele).click();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		delay(200L);
+
+	}
+
+	/**
+	 * To tap on the element using JavaScriptExecutor
+	 * 
+	 * @param element xpath (String) of the element
+	 */
+	public void tapElementUsingJS(String element) {
+		MobileElement elem = waitForVisibility(getElement(XPATH, element));
+		MobileElement ele = waitForElementToBeClickable(element);
+		delay(200L);
+		try {
+			if (ele != null) {
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+				jsExecutor.executeScript("arguments[0].click();", ele);
+			}
+		} catch (StaleElementReferenceException e) {
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("arguments[0].click();", ele);
+		} catch (ElementClickInterceptedException e) {
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			jsExecutor.executeScript("arguments[0].click();", ele);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		delay(200L);
 	}
 
 	/**
@@ -680,14 +726,24 @@ public class TestBase {
 	}
 
 	public void startRecordingScreen() {
-		((CanRecordScreen) driver).startRecordingScreen();
+		Object platformName = driver.getCapabilities().getCapability("platformName");
+
+		if (platformName.equals("iOS")) {
+			((CanRecordScreen) driver).startRecordingScreen(new IOSStartScreenRecordingOptions()
+					.withVideoScale("1280x720").withTimeLimit(Duration.ofSeconds(100)).withVideoType("mpeg4")
+					.withVideoQuality(VideoQuality.MEDIUM).enableForcedRestart());
+
+		} else if (platformName.equals("Android")) {
+			((CanRecordScreen) driver).startRecordingScreen(new AndroidStartScreenRecordingOptions()
+					.withVideoSize("1280x720").withTimeLimit(Duration.ofSeconds(200)));
+		}
 	}
 
 	// stop video capturing and create *.mp4 file
 	public synchronized void stopRecordingScreen(Scenario scenario) throws Exception {
 
 		Object platformName = driver.getCapabilities().getCapability("platformName");
-		Object deviceName = driver.getCapabilities().getCapability("deviceName");
+		Object deviceName = ((String) driver.getCapabilities().getCapability("deviceName")).replaceAll(" ", "_");
 		delay(3000L);
 		String media = ((CanRecordScreen) driver).stopRecordingScreen();
 
@@ -704,18 +760,9 @@ public class TestBase {
 		String[] scenarios = scenario.getId().split("/");
 		String scenarioId = scenarios[1].replaceAll("(\\W|^_)*", "");
 
-		FileOutputStream stream = null;
-		try {
-			stream = new FileOutputStream(videoDir + File.separator + scenarioId + ".mp4");
-			stream.write(Base64.decodeBase64(media));
-			stream.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (stream != null) {
-				stream.close();
-			}
-		}
+		byte[] decode = Base64.getDecoder().decode(media);
+		FileUtils.writeByteArrayToFile(new File(videoDir + File.separator + scenarioId + ".mp4"), decode);
+
 	}
 
 	public String getDateTime() {
@@ -730,7 +777,7 @@ public class TestBase {
 	public boolean allowPermissionPopup() {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
 		try {
-			By allowXpath = By.xpath("//*[@text='Allow' or @name = 'Allow']");
+			By allowXpath = By.xpath("//*[@text='Save' or @text='Allow' or @name = 'Allow']");
 			MobileElement acceptElement = (MobileElement) webDriverWait
 					.until(ExpectedConditions.elementToBeClickable(allowXpath));
 			acceptElement.click();
