@@ -147,7 +147,7 @@ public class PaymentScreen extends TestBase {
 				base.delay(1500L);
 				if (base.gettext(pay_NowButton).equalsIgnoreCase("Validating")) {
 					System.out.println("Text on the button ::: " + base.gettext(pay_NowButton));
-					base.tapElementUsingJS(pay_NowButton);
+					base.tapElement(pay_NowButton);
 				}
 			} else {
 				Assert.assertFalse(base.isDisplayed(pay_NowButton), "Not able to tap on 'Pay Now' button");
@@ -270,7 +270,7 @@ public class PaymentScreen extends TestBase {
 	public void addUSAECardDetails(String cardNumberToEnter, String expiryDateToEnter, String CVVToEnter,
 			String full_Name, String zipCodeToEnter) {
 		// TODO Auto-generated method stub
-
+		base.delay(6000L);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		try {
 			wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id("paymentCardIFrame")));
