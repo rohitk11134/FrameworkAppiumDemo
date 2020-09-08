@@ -33,6 +33,11 @@ public class PaymentSteps {
 	public void i_select_No_Tip_as_a_tip_amount() {
 		payment.selectTipAmount();
 	}
+	
+	@Then("I select {string} as a tip amount")
+	public void i_select_as_a_tip_amount(String tipAmount) {
+		payment.selectTip_Amount(tipAmount);
+	}
 
 	@Then("I tap on Pay Now button available on payment screen")
 	public void i_tap_on_Pay_Now_button_available_on_payment_screen() {

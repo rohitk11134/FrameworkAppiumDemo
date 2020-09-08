@@ -88,6 +88,7 @@ public class SpotNumberScreen extends TestBase {
 		if (base.getElement(XPATH, submitNextButton) != null) {
 			if (base.isDisplayed(submitNextButton)) {
 				base.tapElementUsingJS(submitNextButton);
+				base.delay(1000L);
 			} else {
 				Assert.assertTrue(base.isDisplayed(submitNextButton), "Next arrow button is not clicked");
 			}

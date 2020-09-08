@@ -39,8 +39,6 @@ public class PaymentScreen extends TestBase {
 
 	public String[] fields = { cardNumber, fullName, expiryDate, CVV, zipCode };
 
-	final String tipAmount = "//div[contains(text(),'No Tip')]";
-
 	final String receipt = "//button[@type='button'][contains(text(), 'Receipt')]";
 
 	final String confirmButton = "//button[@type='button'][contains(text(),'Confirm')]";
@@ -102,6 +100,8 @@ public class PaymentScreen extends TestBase {
 	// Tip Details Elements
 
 	final String noTipButton = "//div[contains(text(),'No Tip')]";
+
+	String tipAmount = "//div[contains(@class,'tips')]/div[contains(text(),'temp')]";
 
 	// the error fields.
 	final String FORM_ERROR = ".//*[@class='error']";
@@ -229,13 +229,34 @@ public class PaymentScreen extends TestBase {
 		if (base.getElement(XPATH, noTipButton) != null) {
 			if (base.isDisplayed(noTipButton)) {
 				base.tapElementUsingJS(noTipButton);
-				base.delay(1500L);
+				base.delay(1000L);
 			} else {
 				Assert.fail(base.isDisplayed(noTipButton) + " - Tip button is not displayed");
 			}
 		} else {
 			Assert.fail("No Tip button is not displayed" + base.getElement(XPATH, noTipButton));
 		}
+	}
+	
+	public void selectTip_Amount(String tip_Amount) {
+		// TODO Auto-generated method stub  //div[contains(@class,'tips')]/div[contains(text(),'temp')]
+		if(tip_Amount.contains("%")) {
+			tipAmount = tipAmount.replace("temp", tip_Amount.replaceAll("[^a-zA-Z0-9]", " ").trim());
+		} else {
+			tipAmount = tipAmount.replace("temp", tip_Amount.trim());
+		}
+		
+		if (base.getElement(XPATH, tipAmount) != null) {
+			if (base.isDisplayed(tipAmount)) {
+				base.tapElementUsingJS(tipAmount);
+				base.delay(1000L);
+			} else {
+				Assert.fail(base.isDisplayed(tipAmount) + " - Tip button is not displayed");
+			}
+		} else {
+			Assert.fail("No Tip button is not displayed" + base.getElement(XPATH, tipAmount));
+		}
+		
 	}
 
 	public void enterAVECouponCode(String couponCode) {
@@ -338,5 +359,7 @@ public class PaymentScreen extends TestBase {
 			Assert.fail("Add Card button is not displayed" + base.getElement(XPATH, add_shift4PayCard));
 		}
 	}
+
+
 
 }

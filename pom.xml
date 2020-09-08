@@ -23,6 +23,9 @@
 				<version>2.22.1</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -61,6 +64,10 @@
 				</executions>
 			</plugin>
 
+			<!-- The following plugin will build 
+				test source code (anything in the src/testdirectory) 
+				into a JAR file:
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -74,17 +81,10 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12.4</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
-				</configuration>
-			</plugin>
-
+			<!--
+				To build dependencies as JAR files.
+				This plugin below will copy all dependencies into the dependency-jars directory:
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -103,6 +103,9 @@
 				</executions>
 			</plugin>
 
+			<!-- The following plugin uses the preceding assembly to create a .zip file named zip-with-dependencies
+			 in the build output directory every time mvn package is run  
+			-->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.5.4</version>

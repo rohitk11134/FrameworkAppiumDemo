@@ -73,12 +73,14 @@ public class PickupScreen extends TestBase {
 	public void populatePickUpScreenFields(String guestName, String pickUpDate, String pickUpTime) {
 		// TODO Auto-generated method stub
 		base.populateFields(name_Field, guestName);
+		base.delay(500L);
 
 		if (pickUpDate.equalsIgnoreCase("Today")) {
 			base.populateFields(pickUpDate_Field, pickUpDate);
 		} else if (pickUpDate.equalsIgnoreCase("Tomorrow")) {
 			pickUpDate = getPickUpDate(1);
 		}
+		base.delay(500L);
 		base.populateFields(pickUpDate_Field, pickUpDate);
 		base.pressENTER(pickUpDate_Field);
 
@@ -90,12 +92,13 @@ public class PickupScreen extends TestBase {
 	public void populateDeliveryScreenFields(String guestName, String deliveryDate, String deliveryTime, String address, String city, String state, String zipCode) {
 		// TODO Auto-generated method stub
 		base.populateFields(name_Field, guestName);
-
+		base.delay(500L);
 		if (deliveryDate.equalsIgnoreCase("Today")) {
 			deliveryDate = getPickUpDate(0);
 		} else if (deliveryDate.equalsIgnoreCase("Tomorrow")) {
 			deliveryDate = getPickUpDate(1);
 		}
+		base.delay(500L);
 		base.populateFields(deliveryDate_Field, deliveryDate);
 		base.pressENTER(deliveryDate_Field);
 

@@ -30,8 +30,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I verify that added menu is being displayed in the screen 
 		And I tap on Pay Now button 
 		Then I should be able to navigate to Payment screen of the application 
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount 
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen 
@@ -95,8 +95,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I verify that added menu is being displayed in the screen 
 		And I tap on Pay Now button 
 		Then I should be able to navigate to Payment screen of the application 
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen 
@@ -198,8 +198,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I verify that added menu is being displayed in the screen 
 		And I tap on Pay Now button 
 		Then I should be able to navigate to Payment screen of the application 
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen 
@@ -270,8 +270,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		Then I should be able to navigate to Payment screen of the application
 		And I enter the AVE Coupon number as 'yelp27-mx'
 		Then I tap on apply coupon button
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount 
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -313,8 +313,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		Then I split the check by 4
 		And I tap on the Continue button
 		Then I should be able to navigate to Payment screen of the application
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -353,8 +353,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		When I tap on Click to Pay button
 		And I tap on Pay Remaining Balance button
 		Then I should be able to navigate to Payment screen of the application
-		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -393,7 +393,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Full Check button
 		Then I should be able to navigate to Payment screen of the application
 		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select No Tip as a tip amount 
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -424,14 +424,14 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Pay Now button
 		And I add the valid card details with <Card Number> , <Expiry Date> , <CVV> , <Full Name> and <Zip Code>
 		Then I tap on Add Card button
-		And I select No Tip as a tip amount 
+		And I select '15%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
 		
 	Examples:
 		|	Card Number			|	Expiry Date	|	CVV		|	Full Name		|	Zip Code	|
-		|	'4012881888818888'	|	'12/22'		|	'999'	|	'Test'			|	'	'		|
+		|	'4012881888818888'	|	'12/22'		|	'999'	|	'John Doe'			|	'85284'		|
 		
  
   @RegressionTest 
@@ -460,7 +460,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Pay Now button
 		And I select the card as <Card Type> and enter all other mandatory fields <Card Number> , <Expiration Month> , <Expiration Year> , <CCV> and <Zip Code>
 		Then I tap on Add Card button for Shift Pay
-		And I select No Tip as a tip amount 
+		And I select '15%' as a tip amount 
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
