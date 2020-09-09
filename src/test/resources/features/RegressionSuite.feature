@@ -314,7 +314,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on the Continue button
 		Then I should be able to navigate to Payment screen of the application
 		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
-		And I select '15%' as a tip amount
+		And I scroll down the page till 'Add a tip' section
+		And I select '17%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -354,7 +355,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Pay Remaining Balance button
 		Then I should be able to navigate to Payment screen of the application
 		And I enter the valid card details into the fields from the excel sheet name "Payment_Success"
-		And I select '15%' as a tip amount
+		And I scroll down the page till 'Add a tip' section
+		And I select '17%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -393,7 +395,8 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		And I tap on Full Check button
 		Then I should be able to navigate to Payment screen of the application
 		And I enter the valid card details into the fields from the excel sheet name "Payment_Success" 
-		And I select '15%' as a tip amount
+		And I scroll down the page till 'Add a tip' section
+		And I select '17%' as a tip amount
 		And I tap on Pay Now button available on payment screen 
 		And I tap on Confirm button to proceed the payment 
 		Then I am on payment confirmation screen
@@ -431,7 +434,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 		
 	Examples:
 		|	Card Number			|	Expiry Date	|	CVV		|	Full Name		|	Zip Code	|
-		|	'4012881888818888'	|	'12/22'		|	'999'	|	'John Doe'			|	'85284'		|
+		|	'4012881888818888'	|	'12/22'		|	'999'	|	'John Doe'		|	'85284'		|
 		
  
   @RegressionTest 

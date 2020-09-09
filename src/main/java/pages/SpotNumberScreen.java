@@ -23,7 +23,7 @@ public class SpotNumberScreen extends TestBase {
 
 	final String submitNextButton = "//button[@type='submit']";
 
-	final String spotNoScreenWelcomeTextElement = "//div[@class='mt-20 p-20 pb-0']/label[@class='fs-20 fw-600 mb-2']";
+	final String spotNoScreenWelcomeTextElement = "//label[@class='fs-20 fw-600 mb-2']";
 
 	final String checkedInPlace_SpotNoScreen = "//div[@class='fs-20 fw-600 mb-1 text-center']";
 	

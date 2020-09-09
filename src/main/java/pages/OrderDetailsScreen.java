@@ -73,6 +73,7 @@ public class OrderDetailsScreen extends TestBase {
 		storedMenuItem = menuItem;
 		String menuItemToBeClicked = menu_Item.replace("temp", menuItem);
 		if (base.getElement(XPATH, menuItemToBeClicked) != null) {
+			base.delay(1000L);
 			base.scrollToElementUsingJS(menuItemToBeClicked);
 			base.delay(1000L);
 			base.tapElementUsingJS(menuItemToBeClicked);
@@ -113,9 +114,8 @@ public class OrderDetailsScreen extends TestBase {
 
 		String modifier1_Xpath = modifier_Xpath.replace("temp", modifier1);
 		String modifier2_Xpath = modifier_Xpath.replace("temp", modifier2);
-		;
+
 		String modifier3_Xpath = modifier_Xpath.replace("temp", modifier3);
-		;
 
 		if (base.getElement(XPATH, modifier1_Xpath) != null && base.isDisplayed(modifier1_Xpath)) {
 			base.delay(1000L);

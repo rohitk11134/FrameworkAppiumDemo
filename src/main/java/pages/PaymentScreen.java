@@ -71,7 +71,7 @@ public class PaymentScreen extends TestBase {
 
 	final String add_CVV = "//input[@id='payjs-cvv']";
 
-	final String fullName_USAE = "//input[@id='fullName']";
+	final String fullName_USAE = "//input[contains(@id,'fullName')]";
 
 	final String add_ZipCode = "//input[@id='zip-code']";
 
@@ -85,7 +85,7 @@ public class PaymentScreen extends TestBase {
 
 	final String shift4_CardNumber = "//input[@id='i4go_cardNumber']";
 
-	final String fullName_Shift4Pay = "//input[@id='fullName']";
+	final String fullName_Shift4Pay = "//input[contains(@id,'fullName')]";
 
 	final String shift4_ExpirationMonth = "//select[@id='i4go_expirationMonth']";
 
@@ -102,6 +102,8 @@ public class PaymentScreen extends TestBase {
 	final String noTipButton = "//div[contains(text(),'No Tip')]";
 
 	String tipAmount = "//div[contains(@class,'tips')]/div[contains(text(),'temp')]";
+	
+	final String scrollToSection = "//div[contains(text(), 'temp')]";
 
 	// the error fields.
 	final String FORM_ERROR = ".//*[@class='error']";
@@ -224,6 +226,22 @@ public class PaymentScreen extends TestBase {
 				"Check-in place at the payment confirmation page is not as same as the check-in place displayed at login screen");
 
 	}
+	
+
+	public void scrollTillASection(String scrollToText) {
+		// TODO Auto-generated method stub  //div[contains(text(), 'Add a tip')]
+		
+		String scrollToRequiredSec = scrollToSection.replace("temp", scrollToText);
+		System.out.println("Scroll To Element ::: To text :: "+scrollToText);
+		if (base.getElement(XPATH, scrollToRequiredSec) != null) {
+			base.delay(1000L);
+			base.scrollToElementUsingJS(scrollToRequiredSec);
+			base.delay(1000L);
+		} else {
+			Assert.assertNull(base.getElement(XPATH, scrollToRequiredSec), scrollToText + " item is not available");
+		}
+		
+	}
 
 	public void selectTipAmount() {
 		if (base.getElement(XPATH, noTipButton) != null) {
@@ -239,7 +257,7 @@ public class PaymentScreen extends TestBase {
 	}
 	
 	public void selectTip_Amount(String tip_Amount) {
-		// TODO Auto-generated method stub  //div[contains(@class,'tips')]/div[contains(text(),'temp')]
+		// TODO Auto-generated method stub
 		if(tip_Amount.contains("%")) {
 			tipAmount = tipAmount.replace("temp", tip_Amount.replaceAll("[^a-zA-Z0-9]", " ").trim());
 		} else {
@@ -305,7 +323,7 @@ public class PaymentScreen extends TestBase {
 		base.populateFields(add_ExpiryDate, expiryDateToEnter);
 		base.populateFields(add_CVV, CVVToEnter);
 		driver.switchTo().defaultContent();
-		base.populateFields(fullName_Shift4Pay, full_Name);
+		base.populateFields(fullName_USAE, full_Name);
 		base.populateFields(add_ZipCode, zipCodeToEnter);
 	}
 
@@ -359,6 +377,7 @@ public class PaymentScreen extends TestBase {
 			Assert.fail("Add Card button is not displayed" + base.getElement(XPATH, add_shift4PayCard));
 		}
 	}
+
 
 
 

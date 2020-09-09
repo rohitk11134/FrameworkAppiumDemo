@@ -33,7 +33,12 @@ public class PaymentSteps {
 	public void i_select_No_Tip_as_a_tip_amount() {
 		payment.selectTipAmount();
 	}
-	
+
+	@Then("I scroll down the page till {string} section")
+	public void i_scroll_down_the_page_till_section(String scrollToText) {
+		payment.scrollTillASection(scrollToText);
+	}
+
 	@Then("I select {string} as a tip amount")
 	public void i_select_as_a_tip_amount(String tipAmount) {
 		payment.selectTip_Amount(tipAmount);
@@ -53,12 +58,12 @@ public class PaymentSteps {
 	public void i_tap_on_Pay_at_the_Restaurant_button_available_on_the_Payment_screen() {
 		payment.tapPayAtRestaurantButton();
 	}
-	
+
 	@Then("I tap on Order Now button")
 	public void i_tap_on_Order_Now_button() {
-	    payment.tapOnOrderNowButton();
+		payment.tapOnOrderNowButton();
 	}
-	
+
 	@Then("I am on payment confirmation screen")
 	public void i_am_on_payment_confirmation_screen() {
 		payment.verifyPaymentConfirmationScreen();
@@ -76,42 +81,44 @@ public class PaymentSteps {
 		// Write code here that turns the phrase above into concrete actions
 		payment.verifyScreenErrorMessage();
 	}
-	
+
 	@Then("I enter the AVE Coupon number as {string}")
 	public void i_enter_the_AVE_Coupon_number_as(String couponCode) {
-	    // Write code here that turns the phrase above into concrete actions
+		// Write code here that turns the phrase above into concrete actions
 		payment.enterAVECouponCode(couponCode);
 	}
 
 	@Then("I tap on apply coupon button")
 	public void i_tap_on_apply_coupon_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	    payment.tapOnApplyCoupon();
+		// Write code here that turns the phrase above into concrete actions
+		payment.tapOnApplyCoupon();
 	}
-	
+
 	@Then("I add the valid card details with {string} , {string} , {string} , {string} and {string}")
-	public void i_add_the_valid_card_details_with_and(String cardNumber, String expiryDate, String CVV, String full_Name, String zipCode) {
-	    // Write code here that turns the phrase above into concrete actions
-	    payment.addUSAECardDetails(cardNumber, expiryDate, CVV, full_Name, zipCode);
+	public void i_add_the_valid_card_details_with_and(String cardNumber, String expiryDate, String CVV,
+			String full_Name, String zipCode) {
+		// Write code here that turns the phrase above into concrete actions
+		payment.addUSAECardDetails(cardNumber, expiryDate, CVV, full_Name, zipCode);
 	}
 
 	@Then("I tap on Add Card button")
 	public void i_tap_on_Add_Card_button() {
-	    // Write code here that turns the phrase above into concrete actions
+		// Write code here that turns the phrase above into concrete actions
 		payment.tapOnAddCardButton();
 	}
-	
+
 	@Then("I tap on Add Card button for Shift Pay")
 	public void i_tap_on_Add_Card_button_for_Shift_Pay() {
-	    // Write code here that turns the phrase above into concrete actions
+		// Write code here that turns the phrase above into concrete actions
 		payment.tapOnShift4AddCardButton();
 	}
-	
-	@Then("I select the card as {string} and enter all other mandatory fields {string} , {string} , {string} , {string} and {string}")
-	public void i_select_the_card_as_and_enter_all_other_mandatory_fields_and(String cardType, String cardNumber, String expirationMonth, String expirationYear, String CVV, String zipCode) {
-	    // Write code here that turns the phrase above into concrete actions
-	    payment.addShift4CardDetails(cardType, cardNumber, expirationMonth, expirationYear, CVV, zipCode);
-;	}
 
+	@Then("I select the card as {string} and enter all other mandatory fields {string} , {string} , {string} , {string} and {string}")
+	public void i_select_the_card_as_and_enter_all_other_mandatory_fields_and(String cardType, String cardNumber,
+			String expirationMonth, String expirationYear, String CVV, String zipCode) {
+		// Write code here that turns the phrase above into concrete actions
+		payment.addShift4CardDetails(cardType, cardNumber, expirationMonth, expirationYear, CVV, zipCode);
+		;
+	}
 
 }
