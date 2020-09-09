@@ -278,6 +278,7 @@ Feature: One Dine - mWeb Application Regression Scenarios
 
 
   @RegressionTest
+  @Ignored
   Scenario: Table Payment - Split Evenly and Pay
 		Given I open the Onedine application in the mobile browser 
 		And I enter the spot code as 'aloha51' in the seven digit spot code field
